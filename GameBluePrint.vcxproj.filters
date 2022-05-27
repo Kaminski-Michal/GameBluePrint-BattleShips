@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\Printing">
+      <UniqueIdentifier>{c580894c-7176-4dc8-8571-b2b5e71cd75e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bot">
+      <UniqueIdentifier>{4ad1494a-5c72-4cc2-bb0d-2c5acdd6971c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bot\GeneratingShips">
+      <UniqueIdentifier>{efc9b828-5b94-452c-8367-d33df554c7b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bot\Movement">
+      <UniqueIdentifier>{11f88b8b-4600-4187-ba1d-0cfecc048352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common_.h">
+      <UniqueIdentifier>{bb42055a-f5bf-40eb-acf2-c0c28dc1d690}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bot\PathFinding">
+      <UniqueIdentifier>{0462eb6e-c1ce-48b9-9b83-698de2e12c60}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="GameBluePrint.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Printing_Board.h">
+      <Filter>Source Files\Printing</Filter>
+    </ClInclude>
+    <ClInclude Include="Gemerate4BlockShip.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="ValideteShipPosition.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="Enums.h">
+      <Filter>Header Files\Common_.h</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingEmptyArray.h">
+      <Filter>Header Files\Common_.h</Filter>
+    </ClInclude>
+    <ClInclude Include="NextShipSegmentGenerator.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="GenerateNavigationsDots.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinding.h">
+      <Filter>Source Files\Bot\PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinding_SuccessorTwo.h">
+      <Filter>Source Files\Bot\PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="PathFinding_SuccessorThree.h">
+      <Filter>Source Files\Bot\PathFinding</Filter>
+    </ClInclude>
+    <ClInclude Include="Generate3BlockShip.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="Generate2BlockShip.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="Generate1BlockShip.h">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
