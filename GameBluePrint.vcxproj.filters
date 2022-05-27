@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Printing">
-      <UniqueIdentifier>{c580894c-7176-4dc8-8571-b2b5e71cd75e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Bot">
       <UniqueIdentifier>{4ad1494a-5c72-4cc2-bb0d-2c5acdd6971c}</UniqueIdentifier>
     </Filter>
@@ -33,6 +30,12 @@
     </Filter>
     <Filter Include="Source Files\Bot\MainBotFunction">
       <UniqueIdentifier>{7eaa33ea-6c81-47e7-a269-c20a3aba8276}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Printing">
+      <UniqueIdentifier>{c580894c-7176-4dc8-8571-b2b5e71cd75e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Bot\ShootingAtBot">
+      <UniqueIdentifier>{f1f60099-cb97-41d9-9a8e-7cf0c4daf601}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +88,21 @@
     </ClInclude>
     <ClInclude Include="MainBotFunction.hpp">
       <Filter>Source Files\Bot\MainBotFunction</Filter>
+    </ClInclude>
+    <ClInclude Include="BotShootMovement.hpp">
+      <Filter>Source Files\Bot\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="BotMainMovementClass.hpp">
+      <Filter>Source Files\Bot\Movement</Filter>
+    </ClInclude>
+    <ClInclude Include="BotReceiveShoot.hpp">
+      <Filter>Source Files\Bot\ShootingAtBot</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvertPlayerInPutLocation.hpp">
+      <Filter>Header Files\Common_.h</Filter>
+    </ClInclude>
+    <ClInclude Include="ValidatePlayerInPutLocation.hpp">
+      <Filter>Header Files\Common_.h</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

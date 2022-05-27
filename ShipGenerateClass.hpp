@@ -19,27 +19,26 @@ public:
 				fourBlockShipGenerator.Generate4BlockShip(BotGeneratedArray);
 				generateNavigationDots.GenerateDots(BotGeneratedArray);
 			}
+
 			if (!is3BlockShipsPresent)
 			{
 				threeBlockShipGenerator.Generate3BlockShip(BotGeneratedArray);
 				generateNavigationDots.GenerateDots(BotGeneratedArray);
 			}
+
 			if (!is2BlockShipsPresent)
 			{
 				twoBlockShipGenerator.Generate2BlockShip(BotGeneratedArray);
 				generateNavigationDots.GenerateDots(BotGeneratedArray);
 
 			}
+
 			if (!is1BlockShipsPresent)
 			{
 				oneBlockShipGenerator.Generate1BlockShip(BotGeneratedArray);
 				generateNavigationDots.GenerateDots(BotGeneratedArray);
 
-			}
-			Printing Printing(BotGeneratedArray);
-			//Sleep(10000);
-			cout << "\n\n\n" << endl;
-			//system("CLS");
+			}			
 		}
 
 	}

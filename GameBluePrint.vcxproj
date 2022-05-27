@@ -142,6 +142,10 @@
     <ClCompile Include="GameBluePrint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BotMainMovementClass.hpp" />
+    <ClInclude Include="BotReceiveShoot.hpp" />
+    <ClInclude Include="BotShootMovement.hpp" />
+    <ClInclude Include="ConvertPlayerInPutLocation.hpp" />
     <ClInclude Include="Enums.hpp" />
     <ClInclude Include="Gemerate4BlockShip.hpp" />
     <ClInclude Include="Generate1BlockShip.hpp" />
@@ -156,6 +160,7 @@
     <ClInclude Include="Printing_Board.hpp" />
     <ClInclude Include="SettingEmptyArray.hpp" />
     <ClInclude Include="ShipGenerateClass.hpp" />
+    <ClInclude Include="ValidatePlayerInPutLocation.hpp" />
     <ClInclude Include="ValideteShipPosition.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

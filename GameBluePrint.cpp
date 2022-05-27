@@ -17,14 +17,34 @@ bool is2BlockShipsPresent = false;
 bool is1BlockShipsPresent = false;
 #pragma endregion
 
+#pragma region BoolMovementVarables
+bool BotMovement = true;
+bool PlayerMovement = true;
+bool PlayerHaveRemainingShips = true;
+bool BotHaveRemainingShips = true;
+
+#pragma endregion
 
 #pragma region include Common_.h_Files
 #include "Enums.hpp"
 #include "Printing_Board.hpp"
 #include "SettingEmptyArray.hpp"
+#include "ConvertPlayerInPutLocation.hpp"
+#include "ValidatePlayerInPutLocation.hpp"
 #pragma endregion
 
-#pragma region include"BotFiles"
+#pragma region BotFiles
+
+#pragma region include "BotMovementFiles"
+#include "BotMainMovementClass.hpp"
+#include "BotShootMovement.hpp"
+#pragma endregion
+
+#pragma region include BotReceiveShoot
+#include "BotReceiveShoot.hpp"
+#pragma endregion
+
+#pragma region include "BotFiles"
 #include "GenerateNavigationsDots.hpp"
 #include "PathFinding_SuccessorThree.hpp"
 #include "PathFinding_SuccessorTwo.hpp"
@@ -37,6 +57,8 @@ bool is1BlockShipsPresent = false;
 #include "Generate1BlockShip.hpp"
 #include "ShipGenerateClass.hpp"
 #include "MainBotFunction.hpp"
+#pragma endregion
+
 #pragma endregion
 
 
@@ -64,19 +86,40 @@ bool is1BlockShipsPresent = false;
 
 int main()
 {
+	string testPlayerInput = "";
 	Bot Bot;
-	
+		char Litera[2] = { 'a','j' };
+		char Cyfra[2] = { '0','9' };
+	while (!(BotHaveRemainingShips && PlayerHaveRemainingShips))
+	{
 
+		if (PlayerMovement)
+		{
+
+		}
+		if (BotMovement)
+		{
+
+		}
+
+	}
+	cin >> testPlayerInput;
+	ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);
 	return 0;
 }
 
 
 
 /*
+ 
+A - 65 J-74
+a - 97 j-106
+0 - 48 9-57
 Genertowanie statku:
 Dodaæ tablicê tymczasow¹ (jakby bot chcia³ generowaæ w rogu i szuka³ kolejnej lokacji, sam siê blokuje) (niech szuka maksylanie 4 razy nowej pozycji)
 ewentualnie zamiast tablicy stringa z pozycjami zajêtymi przez generowany statek, aby móg³ generowaæ w innym kierunku (mo¿e powstaæ pêtla jeœli bêdzie generowaæ w wolnej przestrzeni 2
 (a chce statek 3)
+
 
 pathfinding algorytm dla 3 statków (max 2 kroki do przodu)
 
