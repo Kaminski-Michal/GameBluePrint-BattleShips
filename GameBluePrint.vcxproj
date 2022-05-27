@@ -142,19 +142,21 @@
     <ClCompile Include="GameBluePrint.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Enums.h" />
-    <ClInclude Include="Gemerate4BlockShip.h" />
-    <ClInclude Include="Generate1BlockShip.h" />
-    <ClInclude Include="Generate2BlockShip.h" />
-    <ClInclude Include="Generate3BlockShip.h" />
-    <ClInclude Include="GenerateNavigationsDots.h" />
-    <ClInclude Include="NextShipSegmentGenerator.h" />
-    <ClInclude Include="PathFinding.h" />
-    <ClInclude Include="PathFinding_SuccessorThree.h" />
-    <ClInclude Include="PathFinding_SuccessorTwo.h" />
-    <ClInclude Include="Printing_Board.h" />
-    <ClInclude Include="SettingEmptyArray.h" />
-    <ClInclude Include="ValideteShipPosition.h" />
+    <ClInclude Include="Enums.hpp" />
+    <ClInclude Include="Gemerate4BlockShip.hpp" />
+    <ClInclude Include="Generate1BlockShip.hpp" />
+    <ClInclude Include="Generate2BlockShip.hpp" />
+    <ClInclude Include="Generate3BlockShip.hpp" />
+    <ClInclude Include="GenerateNavigationsDots.hpp" />
+    <ClInclude Include="MainBotFunction.hpp" />
+    <ClInclude Include="NextShipSegmentGenerator.hpp" />
+    <ClInclude Include="PathFinding.hpp" />
+    <ClInclude Include="PathFinding_SuccessorThree.hpp" />
+    <ClInclude Include="PathFinding_SuccessorTwo.hpp" />
+    <ClInclude Include="Printing_Board.hpp" />
+    <ClInclude Include="SettingEmptyArray.hpp" />
+    <ClInclude Include="ShipGenerateClass.hpp" />
+    <ClInclude Include="ValideteShipPosition.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

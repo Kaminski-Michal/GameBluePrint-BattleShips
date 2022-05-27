@@ -10,7 +10,7 @@
 using namespace std;
 #pragma endregion
 
-#pragma region GlobalVariables
+#pragma region ShipPresentVariables
 bool is4BlockShipPresent = false;
 bool is3BlockShipsPresent = false;
 bool is2BlockShipsPresent = false;
@@ -19,22 +19,24 @@ bool is1BlockShipsPresent = false;
 
 
 #pragma region include Common_.h_Files
-#include "Enums.h"
-#include "Printing_Board.h"
-#include "SettingEmptyArray.h"
+#include "Enums.hpp"
+#include "Printing_Board.hpp"
+#include "SettingEmptyArray.hpp"
 #pragma endregion
 
 #pragma region include"BotFiles"
-#include "GenerateNavigationsDots.h"
-#include "PathFinding_SuccessorThree.h"
-#include"PathFinding_SuccessorTwo.h"
-#include "PathFinding.h"
-#include "ValideteShipPosition.h"
-#include "NextShipSegmentGenerator.h"
-#include "Gemerate4BlockShip.h"
-#include "Generate3BlockShip.h"
-#include "Generate2BlockShip.h"
-#include "Generate1BlockShip.h"
+#include "GenerateNavigationsDots.hpp"
+#include "PathFinding_SuccessorThree.hpp"
+#include "PathFinding_SuccessorTwo.hpp"
+#include "PathFinding.hpp"
+#include "ValideteShipPosition.hpp"
+#include "NextShipSegmentGenerator.hpp"
+#include "Gemerate4BlockShip.hpp"
+#include "Generate3BlockShip.hpp"
+#include "Generate2BlockShip.hpp"
+#include "Generate1BlockShip.hpp"
+#include "ShipGenerateClass.hpp"
+#include "MainBotFunction.hpp"
 #pragma endregion
 
 
@@ -62,44 +64,9 @@ bool is1BlockShipsPresent = false;
 
 int main()
 {
-	array<array<char, 10>, 10>BotGeneratedArray;
-	FourBlockShip fourBlockShipGenerator;
-	ThreeBlockShipGenerator threeBlockShipGenerator;
-	TwoBlockShipGenerator twoBlockShipGenerator;
-	OneBlockShipGenerator oneBlockShipGenerator;
-	GenerateNavigationDots generateNavigationDots;
+	Bot Bot;
+	
 
-	GenerateEmptyArray(BotGeneratedArray);
-
-	while (!is4BlockShipPresent || !is3BlockShipsPresent || !is2BlockShipsPresent || !is1BlockShipsPresent)
-	{
-		if (!is4BlockShipPresent)
-		{
-			fourBlockShipGenerator.Generate4BlockShip(BotGeneratedArray);
-			generateNavigationDots.GenerateDots(BotGeneratedArray);
-		}
-		if (!is3BlockShipsPresent)
-		{
-			threeBlockShipGenerator.Generate3BlockShip(BotGeneratedArray);
-			generateNavigationDots.GenerateDots(BotGeneratedArray);
-		}
-		if (!is2BlockShipsPresent)
-		{
-			twoBlockShipGenerator.Generate2BlockShip(BotGeneratedArray);
-			generateNavigationDots.GenerateDots(BotGeneratedArray);
-
-		}
-		if (!is1BlockShipsPresent)
-		{
-			oneBlockShipGenerator.Generate1BlockShip(BotGeneratedArray);
-			generateNavigationDots.GenerateDots(BotGeneratedArray);
-
-		}
-		PrintBoard(BotGeneratedArray);
-		//Sleep(10000);
-		cout << "\n\n\n" << endl;
-		//system("CLS");
-		}
 	return 0;
 }
 

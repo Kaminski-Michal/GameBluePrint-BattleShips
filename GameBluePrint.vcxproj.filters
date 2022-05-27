@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Bot\PathFinding">
       <UniqueIdentifier>{0462eb6e-c1ce-48b9-9b83-698de2e12c60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Bot\MainBotFunction">
+      <UniqueIdentifier>{7eaa33ea-6c81-47e7-a269-c20a3aba8276}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -38,44 +41,50 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Printing_Board.h">
+    <ClInclude Include="Printing_Board.hpp">
       <Filter>Source Files\Printing</Filter>
     </ClInclude>
-    <ClInclude Include="Gemerate4BlockShip.h">
+    <ClInclude Include="Gemerate4BlockShip.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
-    <ClInclude Include="ValideteShipPosition.h">
+    <ClInclude Include="ValideteShipPosition.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
-    <ClInclude Include="Enums.h">
+    <ClInclude Include="Enums.hpp">
       <Filter>Header Files\Common_.h</Filter>
     </ClInclude>
-    <ClInclude Include="SettingEmptyArray.h">
+    <ClInclude Include="SettingEmptyArray.hpp">
       <Filter>Header Files\Common_.h</Filter>
     </ClInclude>
-    <ClInclude Include="NextShipSegmentGenerator.h">
+    <ClInclude Include="NextShipSegmentGenerator.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
-    <ClInclude Include="GenerateNavigationsDots.h">
+    <ClInclude Include="GenerateNavigationsDots.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
-    <ClInclude Include="PathFinding.h">
+    <ClInclude Include="PathFinding.hpp">
       <Filter>Source Files\Bot\PathFinding</Filter>
     </ClInclude>
-    <ClInclude Include="PathFinding_SuccessorTwo.h">
+    <ClInclude Include="PathFinding_SuccessorTwo.hpp">
       <Filter>Source Files\Bot\PathFinding</Filter>
     </ClInclude>
-    <ClInclude Include="PathFinding_SuccessorThree.h">
+    <ClInclude Include="PathFinding_SuccessorThree.hpp">
       <Filter>Source Files\Bot\PathFinding</Filter>
     </ClInclude>
-    <ClInclude Include="Generate3BlockShip.h">
+    <ClInclude Include="Generate3BlockShip.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
-    <ClInclude Include="Generate2BlockShip.h">
+    <ClInclude Include="Generate2BlockShip.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
-    <ClInclude Include="Generate1BlockShip.h">
+    <ClInclude Include="Generate1BlockShip.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="ShipGenerateClass.hpp">
+      <Filter>Source Files\Bot\GeneratingShips</Filter>
+    </ClInclude>
+    <ClInclude Include="MainBotFunction.hpp">
+      <Filter>Source Files\Bot\MainBotFunction</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
