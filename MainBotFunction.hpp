@@ -1,6 +1,6 @@
-class Bot
+class Bot :Shooting
 {
-	array<array<char, 10>, 10>BotGeneratedArray;
+	
 
 
 
@@ -10,7 +10,6 @@ public:
 	{
 		GenerateBotShips GenerateBotShips(BotGeneratedArray);
 		Printing Printing(BotGeneratedArray);
-		BotMainMovementClass BotMainMovement;
 		//system("CLS");
 	}
 

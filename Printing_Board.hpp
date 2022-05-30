@@ -33,6 +33,7 @@ public:
 	{
 		PrintMainRow();
 		PrintRow(playerBoard);
+		cout << "\n\n\n";
 	}
 	
 };

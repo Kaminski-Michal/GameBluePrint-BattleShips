@@ -37,6 +37,9 @@
     <Filter Include="Header Files\Common_.hpp">
       <UniqueIdentifier>{bb42055a-f5bf-40eb-acf2-c0c28dc1d690}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Shooting">
+      <UniqueIdentifier>{a178007d-3cf7-44e5-8ddb-53e42389a052}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -103,6 +106,9 @@
     </ClInclude>
     <ClInclude Include="ValidatePlayerInPutLocation.hpp">
       <Filter>Header Files\Common_.hpp</Filter>
+    </ClInclude>
+    <ClInclude Include="Shooting.hpp">
+      <Filter>Source Files\Shooting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

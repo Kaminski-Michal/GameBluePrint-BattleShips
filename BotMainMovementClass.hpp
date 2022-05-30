@@ -3,26 +3,22 @@ class BotMainMovementClass :public BotMovementShoot
 {
 protected:
 
-	bool _BotTurn = true;
+	
 
 
 
 public:
+BotMovementShoot BotMovementShoot;
 	
 
 
 	BotMainMovementClass()
 	{
-		GenerateEmptyArray(BotShootingAray);
+		GenerateEmptyShootingArray();
 	}
 	void BotShootingTurn()
 	{
-		while (_BotTurn)
-		{
-			BotMovementShoot BotMovementShoot;
-
-		}
-
+		BotMovementShoot.BotMovement();
 	}
 
 	

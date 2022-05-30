@@ -160,6 +160,7 @@
     <ClInclude Include="Printing_Board.hpp" />
     <ClInclude Include="SettingEmptyArray.hpp" />
     <ClInclude Include="ShipGenerateClass.hpp" />
+    <ClInclude Include="Shooting.hpp" />
     <ClInclude Include="ValidatePlayerInPutLocation.hpp" />
     <ClInclude Include="ValideteShipPosition.hpp" />
   </ItemGroup>

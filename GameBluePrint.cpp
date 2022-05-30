@@ -18,7 +18,7 @@ bool is1BlockShipsPresent = false;
 #pragma endregion
 
 #pragma region BoolMovementVarables
-bool BotMovement = true;
+bool isBotMovement = true;
 bool PlayerMovement = true;
 bool PlayerHaveRemainingShips = true;
 bool BotHaveRemainingShips = true;
@@ -31,6 +31,7 @@ bool BotHaveRemainingShips = true;
 #include "SettingEmptyArray.hpp"
 #include "ConvertPlayerInPutLocation.hpp"
 #include "ValidatePlayerInPutLocation.hpp"
+#include "Shooting.hpp"
 #pragma endregion
 
 #pragma region BotFiles
@@ -97,10 +98,12 @@ int main()
 		{
 
 		}
-		if (BotMovement)
+		if (isBotMovement)
 		{
 			BotMainMovementClass.BotShootingTurn();
 		}
+		Printing Printing(BotShootingAray);
+		Sleep(100);
 	}
 	cin >> testPlayerInput;
 	ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);

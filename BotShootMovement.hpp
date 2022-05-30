@@ -1,30 +1,34 @@
-
-class BotMovementShoot //: public BotMainMovementClass
-{
 	
+
+class BotMovementShoot : public Shooting
+{
 	int _rowTarget = 0;
 	int _columnTarget = 0;
 	bool PositionPossible = false;
+	
 
 
 	void GenerateRandomRowTarget()
 	{
 		_rowTarget = (rand() % 10);
-		_columnTarget = (rand() % 10);
-
 	}
 	void GenerateRandomColumnTarget()
 	{
-
+		_columnTarget = (rand() % 10);
 	}
-protected:
-	array<array<char, 10>, 10> BotShootingAray;
+	
 
 
 public:
-
-	BotMovementShoot()
+	void GenerateEmptyShootingArray()
 	{
+		GenerateEmptyArray(BotShootingAray);
+	}
+
+
+	void BotMovement()
+	{
+		PositionPossible = false;
 		while (!PositionPossible)
 		{
 			GenerateRandomRowTarget();
@@ -38,7 +42,12 @@ public:
 			}
 
 		}
+		if (true)
+		{
 
+		}
+		
+		isBotMovement = BotShootingAtCoordinates(_rowTarget,_columnTarget);
 	}
 
 
