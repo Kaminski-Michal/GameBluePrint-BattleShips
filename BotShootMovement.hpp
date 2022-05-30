@@ -6,8 +6,6 @@ class BotMovementShoot : public Shooting
 	int _columnTarget = 0;
 	bool PositionPossible = false;
 	
-
-
 	void GenerateRandomRowTarget()
 	{
 		_rowTarget = (rand() % 10);
@@ -17,7 +15,14 @@ class BotMovementShoot : public Shooting
 		_columnTarget = (rand() % 10);
 	}
 	
-
+protected:
+	int oneBlockShipDrowned = 0;
+	int TwoblockShopDrowned = 0;
+	int threeBlockShipDrowned = 0;
+	bool areAllOneBlockShopDrowned = false;
+	bool areAllTwoBlockShopDrowned = false;
+	bool areAllThreeBlockShopDrowned = false;
+	bool isFourBlockShopDrowned = false;
 
 public:
 	void GenerateEmptyShootingArray()
@@ -29,25 +34,29 @@ public:
 	void BotMovement()
 	{
 		PositionPossible = false;
-		while (!PositionPossible)
+		
+		if (BotProgression)
 		{
-			GenerateRandomRowTarget();
-			GenerateRandomColumnTarget();
-
-
-
-			if (BotShootingAray[_rowTarget][_columnTarget] == '.')
-			{
-				PositionPossible = true;
-			}
 
 		}
-		if (true)
+		else
 		{
 
+			while (!PositionPossible)
+			{
+				GenerateRandomRowTarget();
+				GenerateRandomColumnTarget();
+
+				if (BotShootingAray[_rowTarget][_columnTarget] == '.')
+				{
+					PositionPossible = true;
+				}
+
+			}
 		}
 		
 		isBotMovement = BotShootingAtCoordinates(_rowTarget,_columnTarget);
+		PlayerMovement = !isBotMovement;
 	}
 
 

@@ -10,6 +10,8 @@
 using namespace std;
 #pragma endregion
 
+#pragma region VariablesDeclaration
+
 #pragma region ShipPresentVariables
 bool is4BlockShipPresent = false;
 bool is3BlockShipsPresent = false;
@@ -23,6 +25,7 @@ bool PlayerMovement = true;
 bool PlayerHaveRemainingShips = true;
 bool BotHaveRemainingShips = true;
 
+#pragma endregion
 #pragma endregion
 
 #pragma region include Common_.h_Files
@@ -62,6 +65,12 @@ bool BotHaveRemainingShips = true;
 
 #pragma endregion
 
+#pragma region PlayerFiles
+#include "PlayerShooting.hpp"
+
+
+#pragma endregion
+
 
 
 
@@ -90,21 +99,24 @@ int main()
 	BotMainMovementClass BotMainMovementClass;
 	string testPlayerInput = "";
 	Bot Bot;
+	PlayerShooting PlayerShooting;
+	GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerate.hpp)
 
 		while (BotHaveRemainingShips && PlayerHaveRemainingShips)
-	{
-
-		if (PlayerMovement)
 		{
 
+			if (PlayerMovement)
+			{
+				PlayerShooting.PlayerIsShooting();
+			}
+			if (isBotMovement)
+			{
+				BotMainMovementClass.BotShootingTurn();
+				Printing Printing(BotShootingAray);
+			}
+			
+			Sleep(100);
 		}
-		if (isBotMovement)
-		{
-			BotMainMovementClass.BotShootingTurn();
-		}
-		Printing Printing(BotShootingAray);
-		Sleep(100);
-	}
 	cin >> testPlayerInput;
 	ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);
 	return 0;

@@ -40,6 +40,12 @@
     <Filter Include="Source Files\Shooting">
       <UniqueIdentifier>{a178007d-3cf7-44e5-8ddb-53e42389a052}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Player">
+      <UniqueIdentifier>{ce1f9102-0280-4a56-9289-081d29c5c821}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\PlayerMovement">
+      <UniqueIdentifier>{53d0c93a-9b85-4f28-9cd0-4c34c5b209af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -109,6 +115,9 @@
     </ClInclude>
     <ClInclude Include="Shooting.hpp">
       <Filter>Source Files\Shooting</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerShooting.hpp">
+      <Filter>Source Files\Player\PlayerMovement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -22,8 +22,6 @@ class GenerateNavigationDots
 				_putDotInThisColumn = columnToDotsAround + threeColumnPositionsAbove;
 				if ((_putDotInThisRow >= 0 && _putDotInThisRow <= 9) && (_putDotInThisColumn >= 0 && _putDotInThisColumn <= 9))
 				{
-					
-
 				generateDotHere(generateDotsOnThisBoard);
 				}
 			}

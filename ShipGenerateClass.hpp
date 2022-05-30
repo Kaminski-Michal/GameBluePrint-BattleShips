@@ -11,6 +11,10 @@ public:
 		OneBlockShipGenerator oneBlockShipGenerator;
 		GenerateNavigationDots generateNavigationDots;
 		GenerateEmptyArray(BotGeneratedArray);
+		is4BlockShipPresent = false;//Also remove this when PlayerArray added
+		is3BlockShipsPresent = false;//Also remove this when PlayerArray added
+		is2BlockShipsPresent = false;//Also remove this when PlayerArray added
+		is1BlockShipsPresent = false;//Also remove this when PlayerArray added
 
 		while (!is4BlockShipPresent || !is3BlockShipsPresent || !is2BlockShipsPresent || !is1BlockShipsPresent)
 		{
