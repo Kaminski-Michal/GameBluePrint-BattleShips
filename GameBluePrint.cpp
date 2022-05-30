@@ -36,8 +36,8 @@ bool BotHaveRemainingShips = true;
 #pragma region BotFiles
 
 #pragma region include "BotMovementFiles"
-#include "BotMainMovementClass.hpp"
 #include "BotShootMovement.hpp"
+#include "BotMainMovementClass.hpp"
 #pragma endregion
 
 #pragma region include BotReceiveShoot
@@ -86,11 +86,11 @@ bool BotHaveRemainingShips = true;
 
 int main()
 {
+	BotMainMovementClass BotMainMovementClass;
 	string testPlayerInput = "";
 	Bot Bot;
-		char Litera[2] = { 'a','j' };
-		char Cyfra[2] = { '0','9' };
-	while (!(BotHaveRemainingShips && PlayerHaveRemainingShips))
+
+		while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
 
 		if (PlayerMovement)
@@ -99,9 +99,8 @@ int main()
 		}
 		if (BotMovement)
 		{
-
+			BotMainMovementClass.BotShootingTurn();
 		}
-
 	}
 	cin >> testPlayerInput;
 	ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);

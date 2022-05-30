@@ -22,9 +22,6 @@
     <Filter Include="Source Files\Bot\Movement">
       <UniqueIdentifier>{11f88b8b-4600-4187-ba1d-0cfecc048352}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Common_.h">
-      <UniqueIdentifier>{bb42055a-f5bf-40eb-acf2-c0c28dc1d690}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Bot\PathFinding">
       <UniqueIdentifier>{0462eb6e-c1ce-48b9-9b83-698de2e12c60}</UniqueIdentifier>
     </Filter>
@@ -36,6 +33,9 @@
     </Filter>
     <Filter Include="Source Files\Bot\ShootingAtBot">
       <UniqueIdentifier>{f1f60099-cb97-41d9-9a8e-7cf0c4daf601}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common_.hpp">
+      <UniqueIdentifier>{bb42055a-f5bf-40eb-acf2-c0c28dc1d690}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -54,10 +54,10 @@
       <Filter>Source Files\Bot\GeneratingShips</Filter>
     </ClInclude>
     <ClInclude Include="Enums.hpp">
-      <Filter>Header Files\Common_.h</Filter>
+      <Filter>Header Files\Common_.hpp</Filter>
     </ClInclude>
     <ClInclude Include="SettingEmptyArray.hpp">
-      <Filter>Header Files\Common_.h</Filter>
+      <Filter>Header Files\Common_.hpp</Filter>
     </ClInclude>
     <ClInclude Include="NextShipSegmentGenerator.hpp">
       <Filter>Source Files\Bot\GeneratingShips</Filter>
@@ -99,10 +99,10 @@
       <Filter>Source Files\Bot\ShootingAtBot</Filter>
     </ClInclude>
     <ClInclude Include="ConvertPlayerInPutLocation.hpp">
-      <Filter>Header Files\Common_.h</Filter>
+      <Filter>Header Files\Common_.hpp</Filter>
     </ClInclude>
     <ClInclude Include="ValidatePlayerInPutLocation.hpp">
-      <Filter>Header Files\Common_.h</Filter>
+      <Filter>Header Files\Common_.hpp</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

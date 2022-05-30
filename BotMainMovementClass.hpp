@@ -1,17 +1,28 @@
-class BotMainMovementClass
+
+class BotMainMovementClass :public BotMovementShoot
 {
-private:
+protected:
 
 	bool _BotTurn = true;
-	array<array<char, 10>, 10> BotShootingAray;
 
 
 
 public:
+	
+
 
 	BotMainMovementClass()
 	{
 		GenerateEmptyArray(BotShootingAray);
+	}
+	void BotShootingTurn()
+	{
+		while (_BotTurn)
+		{
+			BotMovementShoot BotMovementShoot;
+
+		}
+
 	}
 
 	
