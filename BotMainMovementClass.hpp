@@ -1,4 +1,3 @@
-
 class BotMainMovementClass :public BotMovementShoot
 {
 protected:
@@ -9,7 +8,7 @@ protected:
 
 public:
 BotMovementShoot BotMovementShoot;
-	
+GenerateNavigationDots generateNavigationDots;
 
 
 	BotMainMovementClass()
@@ -20,6 +19,7 @@ BotMovementShoot BotMovementShoot;
 	{
 		BotMovementShoot.BotMovement();
 
+	#pragma region Verify if ships remain
 		if (oneBlockShipDrowned == 4)
 		{
 			areAllOneBlockShopDrowned = true;
@@ -36,9 +36,10 @@ BotMovementShoot BotMovementShoot;
 		{
 			PlayerHaveRemainingShips = false;
 		}
+	#pragma endregion
 
 	}
-
+	
 	
 
 

@@ -9,9 +9,6 @@ class GenerateNavigationDots
 		generateDotsOnThisBoard[_putDotInThisRow][_putDotInThisColumn] = '*';
 		}
 	}
-
-
-
 	void GenerateDotsAround(array<array<char, 10>, 10>& generateDotsOnThisBoard, int rowToDotsAround, int columnToDotsAround)
 	{
 		for (int threeRowPositionsAbove = -1; threeRowPositionsAbove < 2; threeRowPositionsAbove++)
@@ -28,6 +25,16 @@ class GenerateNavigationDots
 		}
 
 	}
+	void CheckEachColumn(array<array<char, 10>, 10>&lookForShipsOnThisBoard, int dotingRow)
+	{
+		for (int dotingColumn = 0; dotingColumn < 10; dotingColumn++)
+		{
+			if (lookForShipsOnThisBoard[dotingRow][dotingColumn] == '1'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == '2'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == '3'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == '4'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == 'X')
+			{
+				GenerateDotsAround(lookForShipsOnThisBoard, dotingRow, dotingColumn);
+			}
+		}
+	}
 	void CheckEachRow(array<array<char, 10>, 10>&lookForShipsOnThisBoard)
 	{
 		for (int dotingRow = 0; dotingRow < 10; dotingRow++)
@@ -35,31 +42,9 @@ class GenerateNavigationDots
 			CheckEachColumn(lookForShipsOnThisBoard, dotingRow);
 		}
 	}
-	void CheckEachColumn(array<array<char, 10>, 10>&lookForShipsOnThisBoard, int dotingRow)
-	{
-		for (int dotingColumn = 0; dotingColumn < 10; dotingColumn++)
-		{
-			if (lookForShipsOnThisBoard[dotingRow][dotingColumn] == '1'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == '2'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == '3'|| lookForShipsOnThisBoard[dotingRow][dotingColumn] == '4')
-			{
-				GenerateDotsAround(lookForShipsOnThisBoard, dotingRow, dotingColumn);
-			}
-
-
-		}
-	}
-
-
-
 public:
 	void GenerateDots(array<array<char, 10>, 10>&generateDotsOnThisBoard)
 	{
 		CheckEachRow(generateDotsOnThisBoard);
-
-
-
 	}
-
-
-
-
 };

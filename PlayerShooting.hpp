@@ -4,8 +4,8 @@ public:
 
 	void PlayerIsShooting ()
 	{
-		isBotMovement = true;
-		PlayerMovement = false;
+		isPlayerMovement = false;
+		isBotMovement = !isPlayerMovement;
 		return;
 	}
 

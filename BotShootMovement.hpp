@@ -1,6 +1,10 @@
-	
 
-class BotMovementShoot : public Shooting
+GenerateNavigationDots generateNavigationDots;
+int _progressionRowStart = 0;
+int _progressionColumnStart = 0;
+
+
+class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 {
 	int _rowTarget = 0;
 	int _columnTarget = 0;
@@ -14,7 +18,48 @@ class BotMovementShoot : public Shooting
 	{
 		_columnTarget = (rand() % 10);
 	}
+	void changePlusForX()
+	{
+		for (int Row = 0; Row < 10; Row++)
+		{
+			for (int Column = 0; Column < 10; Column++)
+			{
+				if (BotShootingAray[Row][Column] == '+')
+				{
+					BotShootingAray[Row][Column] = 'X';
+				}
+			}
+		}
+	}
 	
+
+
+
+	void shootWithProgression()
+	{
+
+		SecondBlockProgression(_progressionRowStart, _progressionColumnStart, _sizeOfShipInProgression);
+		_rowTarget = _SecondProgressionPositionRow;
+		_columnTarget = _SecondProgressionPositionColumn;
+		PositionPossible = true;
+		isBotMovement = BotShootingUsingProgression(_rowTarget, _columnTarget);
+		isPlayerMovement != isBotMovement;
+
+		if (!BotProgression)
+		{
+			changePlusForX();
+			generateNavigationDots.GenerateDots(BotShootingAray);
+			_goUpSecondBlockProgression = true;
+			_goDownSecondBlockProgression = true;
+			_goLeftSecondBlockProgression = true;;
+			_goRightSecondBlockProgression = true;
+
+		}
+
+	}
+
+
+
 protected:
 	int oneBlockShipDrowned = 0;
 	int TwoblockShopDrowned = 0;
@@ -35,14 +80,15 @@ public:
 	{
 		PositionPossible = false;
 		
-		if (BotProgression)
+		while (!PositionPossible)
 		{
 
-		}
-		else
-		{
+			if (BotProgression)
+			{
+				shootWithProgression();
 
-			while (!PositionPossible)
+			}
+			else 
 			{
 				GenerateRandomRowTarget();
 				GenerateRandomColumnTarget();
@@ -50,15 +96,23 @@ public:
 				if (BotShootingAray[_rowTarget][_columnTarget] == '.')
 				{
 					PositionPossible = true;
+					isBotMovement = BotShootingAtCoordinates(_rowTarget,_columnTarget);
 				}
-
 			}
-		}
-		
-		isBotMovement = BotShootingAtCoordinates(_rowTarget,_columnTarget);
-		PlayerMovement = !isBotMovement;
-	}
 
+		}
+		if (BotStartProgression)
+		{
+			_progressionRowStart = _rowTarget;
+			_progressionColumnStart = _columnTarget;
+			BotProgression = true;
+			BotStartProgression = false;
+		}
+
+		isPlayerMovement = !isBotMovement;
+		
+	}
+	
 
 
 };

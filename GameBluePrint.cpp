@@ -21,7 +21,7 @@ bool is1BlockShipsPresent = false;
 
 #pragma region BoolMovementVarables
 bool isBotMovement = true;
-bool PlayerMovement = true;
+bool isPlayerMovement = true;
 bool PlayerHaveRemainingShips = true;
 bool BotHaveRemainingShips = true;
 
@@ -30,6 +30,7 @@ bool BotHaveRemainingShips = true;
 
 #pragma region include Common_.h_Files
 #include "Enums.hpp"
+#include "GenerateNavigationsDots.hpp"
 #include "Printing_Board.hpp"
 #include "SettingEmptyArray.hpp"
 #include "ConvertPlayerInPutLocation.hpp"
@@ -40,6 +41,9 @@ bool BotHaveRemainingShips = true;
 #pragma region BotFiles
 
 #pragma region include "BotMovementFiles"
+
+
+#include "UpdatedPathFindingProgressionStart.hpp"
 #include "BotShootMovement.hpp"
 #include "BotMainMovementClass.hpp"
 #pragma endregion
@@ -48,8 +52,7 @@ bool BotHaveRemainingShips = true;
 #include "BotReceiveShoot.hpp"
 #pragma endregion
 
-#pragma region include "BotFiles"
-#include "GenerateNavigationsDots.hpp"
+#pragma region include "BotShipsFiles"
 #include "PathFinding_SuccessorThree.hpp"
 #include "PathFinding_SuccessorTwo.hpp"
 #include "PathFinding.hpp"
@@ -100,12 +103,12 @@ int main()
 	string testPlayerInput = "";
 	Bot Bot;
 	PlayerShooting PlayerShooting;
-	GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerate.hpp)
+	GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
 
 		while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 		{
 
-			if (PlayerMovement)
+			if (isPlayerMovement)
 			{
 				PlayerShooting.PlayerIsShooting();
 			}

@@ -46,6 +46,9 @@
     <Filter Include="Source Files\Player\PlayerMovement">
       <UniqueIdentifier>{53d0c93a-9b85-4f28-9cd0-4c34c5b209af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Bot\Movement\PathFindingProgression">
+      <UniqueIdentifier>{4da3134e-b422-4b03-baf9-09d39e53a3ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -118,6 +121,9 @@
     </ClInclude>
     <ClInclude Include="PlayerShooting.hpp">
       <Filter>Source Files\Player\PlayerMovement</Filter>
+    </ClInclude>
+    <ClInclude Include="UpdatedPathFindingProgressionStart.hpp">
+      <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

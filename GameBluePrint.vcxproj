@@ -162,6 +162,7 @@
     <ClInclude Include="SettingEmptyArray.hpp" />
     <ClInclude Include="ShipGenerateClass.hpp" />
     <ClInclude Include="Shooting.hpp" />
+    <ClInclude Include="UpdatedPathFindingProgressionStart.hpp" />
     <ClInclude Include="ValidatePlayerInPutLocation.hpp" />
     <ClInclude Include="ValideteShipPosition.hpp" />
   </ItemGroup>
