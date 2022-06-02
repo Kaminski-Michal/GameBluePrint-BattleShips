@@ -37,6 +37,7 @@ GenerateNavigationDots generateNavigationDots;
 			PlayerHaveRemainingShips = false;
 		}
 	#pragma endregion
+		Printing Printing(PlayerArray);
 
 	}
 	

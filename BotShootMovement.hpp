@@ -18,6 +18,7 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 	{
 		_columnTarget = (rand() % 10);
 	}
+
 	void changePlusForX()
 	{
 		for (int Row = 0; Row < 10; Row++)
@@ -39,23 +40,39 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 	{
 
 		SecondBlockProgression(_progressionRowStart, _progressionColumnStart, _sizeOfShipInProgression);
-		_rowTarget = _SecondProgressionPositionRow;
-		_columnTarget = _SecondProgressionPositionColumn;
-		PositionPossible = true;
-		isBotMovement = BotShootingUsingProgression(_rowTarget, _columnTarget);
-		isPlayerMovement != isBotMovement;
 
-		if (!BotProgression)
+		_rowTarget = _nextShootingRow;
+		_columnTarget = _nextShootingColumn;
+		
+		isBotMovement = BotShootingUsingProgression(_rowTarget, _columnTarget);
+		isPlayerMovement = !isBotMovement;
+
+
+
+		if (!BotProgression || _sizeOfShipInProgression == 0)
 		{
 			changePlusForX();
 			generateNavigationDots.GenerateDots(BotShootingAray);
+			BotProgressionHitThree = false;
+			BotProgression = false;
+
 			_goUpSecondBlockProgression = true;
+			_goUpThirdBlockProgression = true;
+			_goUpFourBlockProgression = true;
+
 			_goDownSecondBlockProgression = true;
-			_goLeftSecondBlockProgression = true;;
+			_goDownThirdBlockProgression = true;
+			_goDownFourBlockProgression = true;
+
+			_goLeftSecondBlockProgression = true;
+			_goLeftThirdBlockProgression = true;
+			_goLeftFourBlockProgression = true;
+
 			_goRightSecondBlockProgression = true;
+			_goRightThirdBlockProgression = true;
+			_goRightFourBlockProgression = true;
 
 		}
-
 	}
 
 
@@ -82,11 +99,10 @@ public:
 		
 		while (!PositionPossible)
 		{
-
 			if (BotProgression)
 			{
 				shootWithProgression();
-
+				PositionPossible = true;
 			}
 			else 
 			{

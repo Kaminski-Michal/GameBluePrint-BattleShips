@@ -125,5 +125,8 @@
     <ClInclude Include="UpdatedPathFindingProgressionStart.hpp">
       <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
     </ClInclude>
+    <ClInclude Include="UpdatedPathFindingProgressionShootThree.hpp">
+      <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
