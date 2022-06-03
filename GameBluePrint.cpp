@@ -10,13 +10,16 @@
 using namespace std;
 #pragma endregion
 
+int BotTurnsToWin = 0;
+
+
 #pragma region VariablesDeclaration
 
 #pragma region ShipPresentVariables
-bool is4BlockShipPresent = false;
-bool is3BlockShipsPresent = false;
-bool is2BlockShipsPresent = false;
-bool is1BlockShipsPresent = false;
+bool is4BlockShipPresent = false;//1x
+bool is3BlockShipsPresent = false;//2x
+bool is2BlockShipsPresent = false;//3x
+bool is1BlockShipsPresent = false;//4x
 #pragma endregion
 
 #pragma region BoolMovementVarables
@@ -41,7 +44,7 @@ bool BotHaveRemainingShips = true;
 #pragma region BotFiles
 
 #pragma region include "BotMovementFiles"
-
+#include "UpdatedPathFindingProgressionShootFour.hpp"
 #include "UpdatedPathFindingProgressionShootThree.hpp"
 #include "UpdatedPathFindingProgressionStart.hpp"
 #include "BotShootMovement.hpp"
@@ -70,9 +73,10 @@ bool BotHaveRemainingShips = true;
 
 #pragma region PlayerFiles
 #include "PlayerShooting.hpp"
-
+#include "PlayerGeneratedArray.hpp"
 
 #pragma endregion
+
 
 
 
@@ -118,10 +122,10 @@ int main()
 				Printing Printing(BotShootingAray);
 			}
 			
-			Sleep(100);
 		}
-	cin >> testPlayerInput;
-	ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);
+		cout << "Bot Needed: " << BotTurnsToWin << " turns to win\n";
+		cin >> testPlayerInput;
+		ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);
 	return 0;
 }
 
@@ -129,6 +133,9 @@ int main()
 
 /*
  
+
+
+
 A - 65 J-74
 a - 97 j-106
 0 - 48 9-57

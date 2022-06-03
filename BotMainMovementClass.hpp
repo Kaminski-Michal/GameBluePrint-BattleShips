@@ -20,19 +20,23 @@ GenerateNavigationDots generateNavigationDots;
 		BotMovementShoot.BotMovement();
 
 	#pragma region Verify if ships remain
-		if (oneBlockShipDrowned == 4)
+		if (_oneBlockRemaining == 0)
 		{
 			areAllOneBlockShopDrowned = true;
 		}
-		if (TwoblockShopDrowned == 3)
+		if (_twoBlockRemaining == 0)
 		{
 			areAllTwoBlockShopDrowned = true;
 		}
-		if (threeBlockShipDrowned == 2)
+		if (_threeBlockRemaining == 0)
 		{
 			areAllThreeBlockShopDrowned = true;
 		}
-		if (areAllOneBlockShopDrowned || areAllTwoBlockShopDrowned || areAllThreeBlockShopDrowned || isFourBlockShopDrowned)
+		if (_fourBlockRemaining ==0)
+		{
+			isFourBlockShopDrowned = true;
+		}
+		if (areAllOneBlockShopDrowned && areAllTwoBlockShopDrowned && areAllThreeBlockShopDrowned && isFourBlockShopDrowned)
 		{
 			PlayerHaveRemainingShips = false;
 		}

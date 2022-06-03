@@ -1,0 +1,25 @@
+class PlayerIsGeneratingArray
+{
+
+
+
+
+
+
+public:
+	
+	PlayerIsGeneratingArray()
+	{
+
+
+
+
+	}
+
+
+
+
+
+
+};
+

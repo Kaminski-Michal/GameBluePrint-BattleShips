@@ -3,13 +3,9 @@
 	bool _goLeftSecondBlockProgression = true;;
 	bool _goRightSecondBlockProgression = true;
 
-	bool _goUpFourBlockProgression = true;
-	bool _goDownFourBlockProgression = true;
-	bool _goLeftFourBlockProgression = true;;
-	bool _goRightFourBlockProgression = true;
+	
 
-	int _nextShootingRow = 0;
-	int _nextShootingColumn = 0;
+	
 
 class UpdatedShootPathfinding : public ShootPathfindingProgressionThree
 {
@@ -19,29 +15,21 @@ class UpdatedShootPathfinding : public ShootPathfindingProgressionThree
 		if (startingRow == 0)
 		{
 			_goUpSecondBlockProgression = false;
-			_goUpThirdBlockProgression = false;
-			_goUpFourBlockProgression = false;
 
 		}
 		if (startingRow == 9)
 		{
 			_goDownSecondBlockProgression = false;
-			_goDownThirdBlockProgression = false;
-			_goDownFourBlockProgression = false;
 
 		}
 		if (startingColumn == 0)
 		{
 			_goLeftSecondBlockProgression = false;
-			_goLeftThirdBlockProgression = false;
-			_goLeftFourBlockProgression = false;
 			
 		}
 		if (startingColumn == 9)
 		{
 			_goRightSecondBlockProgression = false;
-			_goRightThirdBlockProgression = false;
-			_goRightFourBlockProgression = false;
 		}
 	}
 
@@ -97,24 +85,28 @@ public:
 	void SecondBlockProgression(int startingRow, int startingColumn, int progressionSize)
 	{
 		ShootPathfindingProgressionThree shootProgressionThree;
-		ValidateEdges(startingRow, startingColumn);
 
 		if (BotProgressionHitThree)
 		{
 			shootProgressionThree.ThirdBlockProgression(_SecondProgressionPositionRow, _SecondProgressionPositionColumn, progressionSize);
+			if (BotProgressionHitFour)
+			{
+				return;
+			}
 			if (!doesPathfinderProgressionThreeHaveWay)
 			{
 				BotProgressionHitThree = false;
 			}
 			else
 			{
+
 				_nextShootingRow = _thirdProgressionPositionRow ;
 				_nextShootingColumn =  _thirdProgressionPositionColumn ;
 				return;
 			}
-
 		}
 		
+		ValidateEdges(startingRow, startingColumn);
 		ValidateRemainingPaths(startingRow, startingColumn);
 
 		if (_goUpSecondBlockProgression)

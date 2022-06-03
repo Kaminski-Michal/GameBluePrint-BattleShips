@@ -157,11 +157,13 @@
     <ClInclude Include="PathFinding.hpp" />
     <ClInclude Include="PathFinding_SuccessorThree.hpp" />
     <ClInclude Include="PathFinding_SuccessorTwo.hpp" />
+    <ClInclude Include="PlayerGeneratedArray.hpp" />
     <ClInclude Include="PlayerShooting.hpp" />
     <ClInclude Include="Printing_Board.hpp" />
     <ClInclude Include="SettingEmptyArray.hpp" />
     <ClInclude Include="ShipGenerateClass.hpp" />
     <ClInclude Include="Shooting.hpp" />
+    <ClInclude Include="UpdatedPathFindingProgressionShootFour.hpp" />
     <ClInclude Include="UpdatedPathFindingProgressionShootThree.hpp" />
     <ClInclude Include="UpdatedPathFindingProgressionStart.hpp" />
     <ClInclude Include="ValidatePlayerInPutLocation.hpp" />

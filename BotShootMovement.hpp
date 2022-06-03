@@ -28,6 +28,7 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 				if (BotShootingAray[Row][Column] == '+')
 				{
 					BotShootingAray[Row][Column] = 'X';
+					//PlayerArray[Row][Column] = 'X';
 				}
 			}
 		}
@@ -44,17 +45,21 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 		_rowTarget = _nextShootingRow;
 		_columnTarget = _nextShootingColumn;
 		
+
 		isBotMovement = BotShootingUsingProgression(_rowTarget, _columnTarget);
 		isPlayerMovement = !isBotMovement;
 
 
 
-		if (!BotProgression || _sizeOfShipInProgression == 0)
+		if (_sizeOfShipInProgression == 0)
 		{
 			changePlusForX();
 			generateNavigationDots.GenerateDots(BotShootingAray);
+			BotProgressionHitFour = false;
 			BotProgressionHitThree = false;
 			BotProgression = false;
+
+			
 
 			_goUpSecondBlockProgression = true;
 			_goUpThirdBlockProgression = true;
@@ -112,6 +117,7 @@ public:
 				if (BotShootingAray[_rowTarget][_columnTarget] == '.')
 				{
 					PositionPossible = true;
+					cout << "Bot is shooting at row: " << _rowTarget << "\nand column: " << _columnTarget << endl;
 					isBotMovement = BotShootingAtCoordinates(_rowTarget,_columnTarget);
 				}
 			}
