@@ -33,7 +33,7 @@ public:
 		if (PlayerArray[row][column] == '2')
 		{
 			BotShootingAray[row][column] = '+';
-			//PlayerArray[row][column] = '+';
+			PlayerArray[row][column] = '+';
 			_sizeOfShipInProgression--;
 			_twoBlockRemaining--;
 			BotProgression = false;
@@ -42,7 +42,7 @@ public:
 		if (PlayerArray[row][column] == '3')
 		{
 			BotShootingAray[row][column] = '+';
-			//PlayerArray[row][column] = '+';
+			PlayerArray[row][column] = '+';
 			_sizeOfShipInProgression--;
 			if (_sizeOfShipInProgression == 0)
 			{
@@ -54,7 +54,7 @@ public:
 		if (PlayerArray[row][column] == '4')
 		{
 			BotShootingAray[row][column] = '+';
-			//PlayerArray[row][column] = '+';
+			PlayerArray[row][column] = '+';
 			if (_sizeOfShipInProgression == 2)
 			{
 				BotProgressionHitFour = true;
@@ -85,14 +85,14 @@ public:
 		{
 			_oneBlockRemaining--;
 			BotShootingAray[row][column] = 'X';
-			//PlayerArray[row][column] = 'X';
+			PlayerArray[row][column] = 'X';
 			Generate.GenerateDots(BotShootingAray);
 			return true;
 		}
 		if (PlayerArray[row][column] == '2')
 		{
 			BotShootingAray[row][column] = '+';
-			//PlayerArray[row][column] = '+';
+			PlayerArray[row][column] = '+';
 			BotStartProgression = true;
 			_sizeOfShipInProgression = 1;
 			return true;
@@ -100,7 +100,7 @@ public:
 		if (PlayerArray[row][column] == '3')
 		{
 			BotShootingAray[row][column] = '+';
-			//PlayerArray[row][column] = '+';
+			PlayerArray[row][column] = '+';
 			BotStartProgression = true;
 			_sizeOfShipInProgression = 2;
 			return true;
@@ -108,7 +108,7 @@ public:
 		if (PlayerArray[row][column] == '4')
 		{
 			BotShootingAray[row][column] = '+';
-			//PlayerArray[row][column] = '+';
+			PlayerArray[row][column] = '+';
 			BotStartProgression = true;
 			_sizeOfShipInProgression = 3;
 			return true;

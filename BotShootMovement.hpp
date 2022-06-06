@@ -28,7 +28,7 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 				if (BotShootingAray[Row][Column] == '+')
 				{
 					BotShootingAray[Row][Column] = 'X';
-					//PlayerArray[Row][Column] = 'X';
+					PlayerArray[Row][Column] = 'X';
 				}
 			}
 		}
@@ -117,7 +117,6 @@ public:
 				if (BotShootingAray[_rowTarget][_columnTarget] == '.')
 				{
 					PositionPossible = true;
-					cout << "Bot is shooting at row: " << _rowTarget << "\nand column: " << _columnTarget << endl;
 					isBotMovement = BotShootingAtCoordinates(_rowTarget,_columnTarget);
 				}
 			}
@@ -132,7 +131,8 @@ public:
 		}
 
 		isPlayerMovement = !isBotMovement;
-		
+		cout << "Bot is shooting at row: " << _rowTarget << "\nand column: " << _columnTarget << endl;
+		cout << "Hit: " << std::boolalpha<<isBotMovement << endl;
 	}
 	
 
