@@ -13,6 +13,7 @@
 #include <stdbool.h>
 #include <math.h>
 #include <cstdlib>
+#include <WinUser.h>
 #pragma endregion
 
 int BotTurnsToWin = 0;
@@ -91,7 +92,7 @@ bool BotHaveRemainingShips = true;
 int main()
 {
 	Board board_1;
-
+	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
 	sf::RenderWindow window;
 	window.create(sf::VideoMode{ 1024, 610 }, "Boards");
 	//window.setFramerateLimit(0);
