@@ -10,9 +10,9 @@ class OneBlockShipGenerator :public NextShipSegmentGenerator
 	int _shipSize = 1;
 	
 	public:
-	array<array<char, 10>, 10> CopyOfBotBoard;
+	std::array<std::array<char, 10>, 10> CopyOfBotBoard;
 
-	void  Generate1BlockShip(array<array<char, 10>, 10>& BotBoard)
+	void  Generate1BlockShip(std::array<std::array<char, 10>, 10>& BotBoard)
 	{
 		_isShipPlaceable = false;
 		

@@ -10,7 +10,7 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 	int _shipSize = 3;
 	int _remainingSegmentsToPathFind = 3;
 	int _presentShips = 0;
-	array<array<int, 2>, 3>temporartyShipPositon;
+	std::array<std::array<int, 2>, 3>temporartyShipPositon;
 
 	void saveInTemporaryArray(int shipRowForTemporaryArray, int shipColumnForTemporaryArray)
 	{
@@ -18,9 +18,9 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 		temporartyShipPositon[3 - _remainingShipSegmentsPlaced][1] = shipColumnForTemporaryArray;
 	}
 
-	void GenerateRest3BlockShip(array<array<char, 10>, 10> BotBoard, int StartRow, int StartColumn)
+	void GenerateRest3BlockShip(std::array<std::array<char, 10>, 10> BotBoard, int StartRow, int StartColumn)
 	{
-		string newPositionValues;
+		std::string newPositionValues;
 
 		while (!(_remainingShipSegmentsPlaced == 0))
 		{
@@ -30,7 +30,7 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 			int shipRow = StartRow + _nextRowPosition;
 			int shipColumn = StartColumn + _nextColumnPosition;
 			_remainingSegmentsToPathFind = _shipSize - _remainingShipSegmentsPlaced;
-			_isShipPlaceable = pathFinding.VerifyPossiblePatch(BotBoard, shipRow, shipColumn, _remainingSegmentsToPathFind);
+			_isShipPlaceable = true; //pathFinding.VerifyPossiblePatch(BotBoard, shipRow, shipColumn, _remainingSegmentsToPathFind);
 			if (!_isShipPlaceable)
 			{
 				return;
@@ -52,7 +52,7 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 			char shipInColumn = temporartyShipPositon[i][1];
 		}
 	}
-	void PlaceShipFromTemporaryArray(array<array<char, 10>, 10>& BotBoard)
+	void PlaceShipFromTemporaryArray(std::array<std::array<char, 10>, 10>& BotBoard)
 	{
 		for (int i = 0; i < 3; i++)
 		{
@@ -63,9 +63,9 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 	}
 
 public:
-	array<array<char, 10>, 10> CopyOfBotBoard;
+	std::array<std::array<char, 10>, 10> CopyOfBotBoard;
 
-	void  Generate3BlockShip(array<array<char, 10>, 10>& BotBoard)
+	void  Generate3BlockShip(std::array<std::array<char, 10>, 10>& BotBoard)
 	{
 		_isShipPlaceable = false;
 
@@ -74,7 +74,7 @@ public:
 		again:
 			if (_lookingForNewShipTrials > 20)
 			{
-				cout << "No more free space for 3-size ship\n";
+				std::cout << "No more free space for 3-size ship\n";
 				is4BlockShipPresent = true;
 				return;
 			}
@@ -85,7 +85,7 @@ public:
 				goto again;
 			}
 
-			_isShipPlaceable = pathFinding.VerifyPossiblePatch(BotBoard, randomRowStartPositon, randomColumnStartPosition, _shipSize);
+			_isShipPlaceable = true;//pathFinding.VerifyPossiblePatch(BotBoard, randomRowStartPositon, randomColumnStartPosition, _shipSize);
 			if (!_isShipPlaceable)
 			{
 				_lookingForNewShipTrials++;

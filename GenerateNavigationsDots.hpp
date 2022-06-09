@@ -2,14 +2,14 @@ class GenerateNavigationDots
 {
 	int _putDotInThisRow = 0;
 	int _putDotInThisColumn = 0;
-	void generateDotHere(array<array<char, 10>, 10>& generateDotsOnThisBoard)
+	void generateDotHere(std::array<std::array<char, 10>, 10>& generateDotsOnThisBoard)
 	{
 		if (generateDotsOnThisBoard[_putDotInThisRow][_putDotInThisColumn] == '.')
 		{
 		generateDotsOnThisBoard[_putDotInThisRow][_putDotInThisColumn] = '*';
 		}
 	}
-	void GenerateDotsAround(array<array<char, 10>, 10>& generateDotsOnThisBoard, int rowToDotsAround, int columnToDotsAround)
+	void GenerateDotsAround(std::array<std::array<char, 10>, 10>& generateDotsOnThisBoard, int rowToDotsAround, int columnToDotsAround)
 	{
 		for (int threeRowPositionsAbove = -1; threeRowPositionsAbove < 2; threeRowPositionsAbove++)
 		{
@@ -25,7 +25,7 @@ class GenerateNavigationDots
 		}
 
 	}
-	void CheckEachColumn(array<array<char, 10>, 10>&lookForShipsOnThisBoard, int dotingRow)
+	void CheckEachColumn(std::array<std::array<char, 10>, 10>&lookForShipsOnThisBoard, int dotingRow)
 	{
 		for (int dotingColumn = 0; dotingColumn < 10; dotingColumn++)
 		{
@@ -35,7 +35,7 @@ class GenerateNavigationDots
 			}
 		}
 	}
-	void CheckEachRow(array<array<char, 10>, 10>&lookForShipsOnThisBoard)
+	void CheckEachRow(std::array<std::array<char, 10>, 10>&lookForShipsOnThisBoard)
 	{
 		for (int dotingRow = 0; dotingRow < 10; dotingRow++)
 		{
@@ -43,7 +43,7 @@ class GenerateNavigationDots
 		}
 	}
 public:
-	void GenerateDots(array<array<char, 10>, 10>&generateDotsOnThisBoard)
+	void GenerateDots(std::array<std::array<char, 10>, 10>&generateDotsOnThisBoard)
 	{
 		CheckEachRow(generateDotsOnThisBoard);
 	}

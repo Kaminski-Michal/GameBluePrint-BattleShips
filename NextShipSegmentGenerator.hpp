@@ -5,9 +5,9 @@ protected:
 	int _pushColumnLocation = 0;
 	int _nextRowLocation = 0;
 	int _nextColumnLocation = 0;
-	string _returningString = "";
+	std::string _returningString = "";
 	
-	array<array<char, 10>, 10> *PointerBotArray;
+	std::array<std::array<char, 10>, 10> *PointerBotArray;
 
 
 
@@ -19,7 +19,7 @@ protected:
 
 public:
 
-	string GenerateNextPositon(array<array<char, 10>, 10> &BotArray, int previousRow, int previousColumn)
+	std::string GenerateNextPositon(std::array<std::array<char, 10>, 10> &BotArray, int previousRow, int previousColumn)
 	{
 		do
 		{

@@ -26,7 +26,7 @@ protected:
 	
 public:
 	
-	bool VerifyPossiblePatch(array<array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize)
+	bool VerifyPossiblePatch(std::array<std::array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize)
 	{
 		_pathFindingTries = 0;
 
@@ -41,7 +41,7 @@ public:
 
 			if (_pathFindingTries > 100)
 			{
-				cout << "Path notFound" << endl;
+				std::cout << "Path notFound" << std::endl;
 				return false;
 				
 			}

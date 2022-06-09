@@ -21,7 +21,7 @@ protected:
 public:
 
 
-	bool VerifyPossbilePatchs_SuccessorThree(array<array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize,int previousHorizontalVector,int previousVerticalVector)
+	bool VerifyPossbilePatchs_SuccessorThree(std::array<std::array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize,int previousHorizontalVector,int previousVerticalVector)
 	{
 		_pathFindingTries = 0;
 

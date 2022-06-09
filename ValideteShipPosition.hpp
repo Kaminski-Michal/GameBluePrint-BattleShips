@@ -26,7 +26,7 @@ public:
 
 
 
-	void ValidateCurrentRow(array<array<char, 10>, 10> &BotArray,int row, int column)
+	void ValidateCurrentRow(std::array<std::array<char, 10>, 10> &BotArray,int row, int column)
 	{
 		if (row > 9 || column > 9 || row < 0 || column < 0)
 		{

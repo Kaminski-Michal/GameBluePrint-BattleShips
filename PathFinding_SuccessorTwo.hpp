@@ -22,7 +22,7 @@ protected:
 public:
 
 
-	bool VerifyPossbilePatchs_SuccessorTwo(array<array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize,int previousHorizontalVector,int previousVerticalVector)
+	bool VerifyPossbilePatchs_SuccessorTwo(std::array<std::array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize,int previousHorizontalVector,int previousVerticalVector)
 	{
 		_pathFindingTries = 0;
 

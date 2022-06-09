@@ -131,8 +131,8 @@ public:
 		}
 
 		isPlayerMovement = !isBotMovement;
-		cout << "Bot is shooting at row: " << _rowTarget << "\nand column: " << _columnTarget << endl;
-		cout << "Hit: " << std::boolalpha<<isBotMovement << endl;
+		std::cout << "Bot is shooting at row: " << _rowTarget << "\nand column: " << _columnTarget << std::endl;
+		std::cout << "Hit: " << std::boolalpha<<isBotMovement << std::endl;
 	}
 	
 

@@ -1,21 +1,21 @@
 class ValidatePlayerInPutLocation
 {
-	string _playerInPutString = "";
-	string _validateThatString = "";
+	std::string _playerInPutString = "";
+	std::string _validateThatString = "";
 	
 	bool _stringTooLong = true;
 	bool _stringWithNoLetter = true;
 	bool _stringWithNoNumbers = true;
-	string InPutStringTooLong(string stringTooLong)
+	std::string InPutStringTooLong(std::string stringTooLong)
 	{
-		cout << "Somethings wrong with this position(too long i guess) try again\n";
-		cin >> stringTooLong;
+		std::cout << "Somethings wrong with this position(too long i guess) try again\n";
+		std::cin >> stringTooLong;
 		return stringTooLong;
 	}
-	string MissingLetterInInPutString(string stringWithMissingLetter)
+	std::string MissingLetterInInPutString(std::string stringWithMissingLetter)
 	{
-		cout << "Wrong input, try again (format: A4||4A)\n ";
-		cin >> stringWithMissingLetter;
+		std::cout << "Wrong input, try again (format: A4||4A)\n ";
+		std::cin >> stringWithMissingLetter;
 		return stringWithMissingLetter;
 	}
 	void Validate()
@@ -44,14 +44,14 @@ class ValidatePlayerInPutLocation
 
 
 public:
-	ValidatePlayerInPutLocation(string playerInPutString)
+	ValidatePlayerInPutLocation(std::string playerInPutString)
 	{
 		_validateThatString = playerInPutString;
 		Validate();
 		SortLetterAndNumberOrder();
 		_playerInPutString = _validateThatString;
 	}
-	string GetPropperPlayerString()
+	std::string GetPropperPlayerString()
 	{
 		return _playerInPutString;
 	}

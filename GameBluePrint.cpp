@@ -1,5 +1,10 @@
 
+
 #pragma region include <Library>
+#pragma region SFML_Library
+#include <SFML/Window.hpp>
+#include <SFML/Graphics.hpp>
+#pragma endregion
 #include <iostream>
 #include <Windows.h>
 #include <array>
@@ -7,7 +12,6 @@
 #include <stdbool.h>
 #include <math.h>
 #include <cstdlib>
-using namespace std;
 #pragma endregion
 
 int BotTurnsToWin = 0;
@@ -79,10 +83,15 @@ bool BotHaveRemainingShips = true;
 
 
 
+
+
+
+
+
 int main()
 {
 	BotMainMovementClass BotMainMovementClass;
-	string testPlayerInput = "";
+	std::string testPlayerInput = "";
 	Bot Bot;
 	PlayerShooting PlayerShooting;
 	GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
@@ -94,7 +103,7 @@ int main()
 			{
 				PlayerShooting.PlayerIsShooting();
 			}
-			if (isBotMovement)
+			else
 			{
 				BotMainMovementClass.BotShootingTurn();
 				Printing Printing(BotShootingAray);
@@ -102,8 +111,8 @@ int main()
 			
 		}
 		//edit
-		cout << "Bot Needed: " << BotTurnsToWin << " turns to win\n";
-		cin >> testPlayerInput;
+		std::cout << "Bot Needed: " << BotTurnsToWin << " turns to win\n";
+		std::cin >> testPlayerInput;
 		ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);
 	return 0;
 }

@@ -2,38 +2,38 @@ class Printing
 {
 	void PrintMainRow()
 	{
-		cout << "     ";
+		std::cout << "     ";
 		for (int i: RowOfLetter)
 		{
-			cout << (char)i << " ";
+			std::cout << (char)i << " ";
 		}
-		cout << "\n\n";
+		std::cout << "\n\n";
 	}
 
-	void PrintColumn(array<array<char, 10>, 10>playerBoard, int Row)
+	void PrintColumn(std::array<std::array<char, 10>, 10>playerBoard, int Row)
 	{
 		for (int Column = 0; Column < 10; Column++)
 		{
-			cout << playerBoard[Row][Column] << " ";
+			std::cout << playerBoard[Row][Column] << " ";
 		}
 	}
 
-	void PrintRow(array<array<char, 10>, 10>playerBoard)
+	void PrintRow(std::array<std::array<char, 10>, 10>playerBoard)
 	{
 		for (int Row = 0; Row < 10; Row++)
 		{
-			cout << Row << "    ";
+			std::cout << Row << "    ";
 			PrintColumn(playerBoard, Row);
-			cout << endl;
+			std::cout << std::endl;
 		}
 	}
 
 public:
-	Printing(array<array<char, 10>, 10>playerBoard)
+	Printing(std::array<std::array<char, 10>, 10>playerBoard)
 	{
 		PrintMainRow();
 		PrintRow(playerBoard);
-		cout << "\n\n\n";
+		std::cout << "\n\n\n";
 	}
 	
 };

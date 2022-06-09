@@ -1,7 +1,7 @@
-array<array<char, 10>, 10> BotGeneratedArray;
-array<array<char, 10>, 10> BotShootingAray;
-array<array<char, 10>, 10> PlayerArray;
-array<array<char, 10>, 10> PlayerShootingArray;
+std::array<std::array<char, 10>, 10> BotGeneratedArray;
+std::array<std::array<char, 10>, 10> BotShootingAray;
+std::array<std::array<char, 10>, 10> PlayerArray;
+std::array<std::array<char, 10>, 10> PlayerShootingArray;
 
 
 

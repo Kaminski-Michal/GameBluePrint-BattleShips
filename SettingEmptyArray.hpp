@@ -1,4 +1,4 @@
-void GenerateEmptyArray(array<array<char, 10>, 10>& ArrayToEmpty)
+void GenerateEmptyArray(std::array<std::array<char, 10>, 10>& ArrayToEmpty)
 {
 	for (int row = 0; row < ArrayToEmpty.size(); row++)
 	{

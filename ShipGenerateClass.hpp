@@ -3,7 +3,7 @@
 class GenerateBotShips
 {
 public:
-	GenerateBotShips(array<array<char, 10>, 10>&BotGeneratedArray)
+	GenerateBotShips(std::array<std::array<char, 10>, 10>&BotGeneratedArray)
 	{
 		FourBlockShip fourBlockShipGenerator;
 		ThreeBlockShipGenerator threeBlockShipGenerator;

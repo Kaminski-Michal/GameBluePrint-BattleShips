@@ -9,7 +9,7 @@ class FourBlockShip : public NextShipSegmentGenerator
 		int _remainingShipSegmentsPlaced = 3;
 		int _shipSize = 4;
 		int _remainingSegmentsToPathFind = 4;
-		array<array<int,2>,4>temporartyShipPositon;
+		std::array<std::array<int,2>,4>temporartyShipPositon;
 
 	void saveInTemporaryArray(int shipRowForTemporaryArray, int shipColumnForTemporaryArray)
 	{
@@ -20,9 +20,9 @@ class FourBlockShip : public NextShipSegmentGenerator
 
 
 
-	void GenerateRest4BlockShip(array<array<char, 10>, 10> BotBoard, int StartRow, int StartColumn)
+	void GenerateRest4BlockShip(std::array<std::array<char, 10>, 10> BotBoard, int StartRow, int StartColumn)
 	{
-		string newPositionValues;
+		std::string newPositionValues;
 		
 		while (!(_remainingShipSegmentsPlaced == 0))
 		{
@@ -32,7 +32,7 @@ class FourBlockShip : public NextShipSegmentGenerator
 			int shipRow = StartRow + _nextRowPosition;
 			int shipColumn = StartColumn + _nextColumnPosition;
 			_remainingSegmentsToPathFind = _shipSize - _remainingShipSegmentsPlaced;
-			_isShipPlaceable = pathFinding.VerifyPossiblePatch(BotBoard, shipRow, shipColumn, _remainingSegmentsToPathFind);
+			_isShipPlaceable = true;//pathFinding.VerifyPossiblePatch(BotBoard, shipRow, shipColumn, _remainingSegmentsToPathFind);
 			if (!_isShipPlaceable)
 			{
 				return;
@@ -57,7 +57,7 @@ class FourBlockShip : public NextShipSegmentGenerator
 
 		}
 	}
-	void PlaceShipFromTemporaryArray(array<array<char, 10>, 10>& BotBoard)
+	void PlaceShipFromTemporaryArray(std::array<std::array<char, 10>, 10>& BotBoard)
 	{
 		for (int i = 0; i < 4; i++)
 		{
@@ -74,12 +74,12 @@ class FourBlockShip : public NextShipSegmentGenerator
 
 
 public:
-	array<array<char, 10>, 10> CopyOfBotBoard;
+	std::array<std::array<char, 10>, 10> CopyOfBotBoard;
 
 
 
 
-	void  Generate4BlockShip(array<array<char, 10>, 10> &BotBoard)
+	void  Generate4BlockShip(std::array<std::array<char, 10>, 10> &BotBoard)
 	{
 		_isShipPlaceable = false;
 
@@ -88,7 +88,7 @@ public:
 		again:
 			if (_lookingForNewShipTrials > 20)
 			{
-				cout << "No more free space for 4-size ship\n";
+				std::cout << "No more free space for 4-size ship\n";
 				is4BlockShipPresent = true;
 				return;
 			}
@@ -99,7 +99,7 @@ public:
 				goto again;
 			}
 			
-			_isShipPlaceable = pathFinding.VerifyPossiblePatch(BotBoard, randomRowStartPositon, randomColumnStartPosition, _shipSize);
+			_isShipPlaceable = true;//pathFinding.VerifyPossiblePatch(BotBoard, randomRowStartPositon, randomColumnStartPosition, _shipSize);
 			if (!_isShipPlaceable)
 			{
 				_lookingForNewShipTrials++;
