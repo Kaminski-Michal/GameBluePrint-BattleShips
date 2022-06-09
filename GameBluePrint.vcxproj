@@ -151,9 +151,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Board.cpp" />
+    <ClCompile Include="Boat.cpp" />
     <ClCompile Include="GameBluePrint.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Board.h" />
+    <ClInclude Include="Boat.h" />
     <ClInclude Include="BotMainMovementClass.hpp" />
     <ClInclude Include="BotReceiveShoot.hpp" />
     <ClInclude Include="BotShootMovement.hpp" />
@@ -169,7 +173,6 @@
     <ClInclude Include="PathFinding.hpp" />
     <ClInclude Include="PathFinding_SuccessorThree.hpp" />
     <ClInclude Include="PathFinding_SuccessorTwo.hpp" />
-    <ClInclude Include="PlayerGeneratedArray.hpp" />
     <ClInclude Include="PlayerShooting.hpp" />
     <ClInclude Include="Printing_Board.hpp" />
     <ClInclude Include="SettingEmptyArray.hpp" />

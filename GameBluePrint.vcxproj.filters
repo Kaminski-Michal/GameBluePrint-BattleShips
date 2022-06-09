@@ -57,6 +57,12 @@
     <ClCompile Include="GameBluePrint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Board.cpp">
+      <Filter>Source Files\Player\PlayerGenerating</Filter>
+    </ClCompile>
+    <ClCompile Include="Boat.cpp">
+      <Filter>Source Files\Player\PlayerGenerating</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Printing_Board.hpp">
@@ -131,11 +137,14 @@
     <ClInclude Include="UpdatedPathFindingProgressionShootThree.hpp">
       <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerGeneratedArray.hpp">
-      <Filter>Source Files\Player\PlayerGenerating</Filter>
-    </ClInclude>
     <ClInclude Include="UpdatedPathFindingProgressionShootFour.hpp">
       <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
+    </ClInclude>
+    <ClInclude Include="Board.h">
+      <Filter>Source Files\Player\PlayerGenerating</Filter>
+    </ClInclude>
+    <ClInclude Include="Boat.h">
+      <Filter>Source Files\Player\PlayerGenerating</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
