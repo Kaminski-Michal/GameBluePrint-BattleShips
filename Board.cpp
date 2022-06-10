@@ -4,6 +4,8 @@
 #include <iostream>
 #include <array>
 #include "Board.h"
+#include <Windows.h>
+#include "ValidatePlayerInPutPosition.hpp"
 //#include "Boat.h"
 
 Board::Board()
@@ -101,12 +103,31 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
         window.draw(computerColoredBox[i]);
     }
 }
-void walidacja(int location)
+
+void ValidatePlayerInPut(int location)
 {
-    std::cout << location;
+    static int RowZero = 0;
+   ValidatePlayerInPutPosition ValidateInPut;
+    if (location <=9)
+    {
+        std::cout << "it's Row:" << RowZero << "\nand column:" << location << std::endl;
+        ValidateInPut.ValidatePlayerInPut(RowZero, location);
+    }
+    else
+    {
+        int Row = location / 10;
+        int Column = location - (Row * 10);
+
+        std::cout << "it's Row:" << Row << "\nand column:" << Column << std::endl;
+        ValidateInPut.ValidatePlayerInPut(Row, Column);
+    }
+
+
 }
 bool Board::gridEvent(sf::RenderWindow& win)
 {
+   
+
     for (int i = 0; i < square_grid.size(); i++)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
@@ -114,17 +135,19 @@ bool Board::gridEvent(sf::RenderWindow& win)
             if (square_grid[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
             {
                 isPressed = true;
-                walidacja(i);
-                //std::cout << "bumm\n";
-
+                ValidatePlayerInPut(i);
+                
+                
                 return true;
             }
         }
-        else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        else //if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
+            Sleep(100);//remove if return to else if (used to reduce Spam in console)
             isPressed = false;
         }
 
+    
     }
 
     return false;

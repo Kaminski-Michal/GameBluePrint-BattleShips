@@ -20,14 +20,18 @@ int BotTurnsToWin = 0;
 
 
 #pragma region VariablesDeclaration
-
-#pragma region ShipPresentVariables
+#pragma region PlayerShipPresentVariables
+bool isPlayer4BlockShipPresent = false;//1x
+bool isPlayer3BlockShipsPresent = false;//2x
+bool isPlayer2BlockShipsPresent = false;//3x
+bool isPlayer1BlockShipsPresent = false;//4x
+#pragma endregion
+#pragma region BotShipPresentVariables
 bool is4BlockShipPresent = false;//1x
 bool is3BlockShipsPresent = false;//2x
 bool is2BlockShipsPresent = false;//3x
 bool is1BlockShipsPresent = false;//4x
 #pragma endregion
-
 #pragma region BoolMovementVarables
 bool isBotMovement = true;
 bool isPlayerMovement = true;
@@ -42,8 +46,7 @@ bool BotHaveRemainingShips = true;
 #include "GenerateNavigationsDots.hpp"
 #include "Printing_Board.hpp"
 #include "SettingEmptyArray.hpp"
-#include "ConvertPlayerInPutLocation.hpp"
-#include "ValidatePlayerInPutLocation.hpp"
+//#include "ConvertPlayerInPutLocation.hpp"
 #include "Shooting.hpp"
 #pragma endregion
 
@@ -79,6 +82,7 @@ bool BotHaveRemainingShips = true;
 
 #pragma region PlayerFiles
 #include "Board.h"
+#include "ValidatePlayerInPutPosition.hpp"
 #include "PlayerShooting.hpp"
 
 
@@ -115,7 +119,7 @@ int main()
 
 
 
-	while (true)
+	while (!isPlayer4BlockShipPresent && !isPlayer3BlockShipsPresent && !isPlayer2BlockShipsPresent && !isPlayer1BlockShipsPresent)
 	{
 
 
@@ -134,8 +138,8 @@ int main()
 		board_1.readUserGridInfo(window);
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);
-		board_1.gridEvent(window);
 		window.display();
+		board_1.gridEvent(window);
 		/*void readUserGridInfo(sf::RenderWindow&);
 	void setUserGrid();
 	void addSensorsToGrid();
@@ -143,6 +147,8 @@ int main()
 	void setBoatOnGrid(int&, const int&);
 	bool gridEvent(sf::RenderWindow&);*/
 	}
+
+
 	return 0;
 }
 
@@ -191,6 +197,5 @@ int XDmain()
 		//edit
 		std::cout << "Bot Needed: " << BotTurnsToWin << " turns to win\n";
 		std::cin >> testPlayerInput;
-		ValidatePlayerInPutLocation ValidatePlayerInputLocation(testPlayerInput);
 	return 0;
 }

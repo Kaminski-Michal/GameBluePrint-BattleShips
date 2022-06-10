@@ -3,6 +3,7 @@
 #include <SFML/Window.hpp>
 #include <iostream>
 #include <array>
+
 //#include "Boat.h"
 class Board
 {
@@ -16,8 +17,9 @@ public:
 	bool gridEvent(sf::RenderWindow&);
 	//bool setBoat(int&,const char&);
 	void addBoxToSquare(sf::RenderWindow&);
-private:
+protected:
 	std::array<std::array <char, 10>, 10> userGridArray;
+private:
 	int p_x; //positionX
 	int p_y; //positionY
 	const int size_tile = 32; //TILESIZE

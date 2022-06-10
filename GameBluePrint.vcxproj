@@ -181,7 +181,7 @@
     <ClInclude Include="UpdatedPathFindingProgressionShootFour.hpp" />
     <ClInclude Include="UpdatedPathFindingProgressionShootThree.hpp" />
     <ClInclude Include="UpdatedPathFindingProgressionStart.hpp" />
-    <ClInclude Include="ValidatePlayerInPutLocation.hpp" />
+    <ClInclude Include="ValidatePlayerInPutPosition.hpp" />
     <ClInclude Include="ValideteShipPosition.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
