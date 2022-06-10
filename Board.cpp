@@ -5,8 +5,11 @@
 #include <array>
 #include <Windows.h>
 #include "Board.h"
-#include "PlayerPlacingShips.h"
 //#include "Boat.h"
+
+static int _3BlockShipInGame = 2;
+static int _2BlockShipInGame = 3;
+
 
 bool Board::GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck)
 {
@@ -23,43 +26,147 @@ std::array<std::array <char, 10>, 10> Board::GetCompletetPlayerArray()
 
 
 
-
-
-
-void Board::PlaceWithProgression(int row, int column)
+void Board::EndProgresssion()
 {
+    if (_shipTypeInProgression == '4')
+    {
+        _isPlayer4BlockShipPresent = true;
+    }
+    else if (_shipTypeInProgression == '3')
+    {
+        _Player3BlockShipsRemaining++;
+        if (_Player3BlockShipsRemaining == _3BlockShipInGame)
+        {
+            _isPlayer3BlockShipsPresent = true;
+        }
+    }
 
-
-
-
+    else if (_shipTypeInProgression == '2')
+    {
+        _Player2BlockShipsRemaining++;
+            if (_Player2BlockShipsRemaining == _2BlockShipInGame)
+            {
+                _isPlayer2BlockShipsPresent = true;
+            }
+    }
+    _previousRow = 0;
+    _previousColumn = 0;
+    _shipTypeInProgression = 0;
+    _isPlacingProgression = false;
 
 }
-void Board::PlaceShipHere(int row, int column)
-{
-    if (_isPlacingProgression)
-    {
 
+
+bool Board::PlaceWithProgression(int row, int column)
+{
+    
+    if ((_previousRow == (row -1) && _previousColumn == column))
+    {
+        std::cout << "Down" << std::endl;
+        return true;
+    }
+    else if ((_previousRow == (row + 1)) && (_previousColumn == column))
+    {
+        std::cout << "Up" << std::endl;
+        return true;
+    }
+    else if ((_previousRow == row)&& (_previousColumn == (column -1)))
+    {
+        std::cout << "Right" << std::endl;
+        return true;
+    }
+    else if ((_previousRow == row)&&(_previousColumn == (column +1)))
+    {
+        std::cout << "Left" << std::endl;
+        return true;
     }
     else
     {
-        userGridArray[row][column] = '4';
+        std::cout << "Damn, where is it bro?" << std::endl;
+        return false;
     }
-    
-    
+}
+
+void Board::StartProgressionFunction(int previousRow, int previousColumn, int size)
+{
+    _previousRow = previousRow;
+    _previousColumn = previousColumn;
+    _progressionRemaining = size - 1;
+    std::cout << "Progression is:" << _progressionRemaining << std::endl;
+    _isPlacingProgression = true;
+
+}
+
+void Board::PlaceShipHere(int row, int column, int size)
+{
+
+
+    _shipTypeInProgression = size + 48;
+    userGridArray[row][column] = _shipTypeInProgression;
+    std::cout << userGridArray[row][column] << std::endl;
+    if (size>1)
+    {
+        StartProgressionFunction(row, column,size);
+    }
 }
 
 void Board::ValidateInPut(int row, int column)
 {
-   
+    std::cout << "4:" << _isPlayer4BlockShipPresent << std::endl;
+    std::cout << "3:" << _isPlayer3BlockShipsPresent << std::endl;
+    std::cout << "2:" << _isPlayer2BlockShipsPresent << std::endl;
+    std::cout << "1:" << _isPlayer1BlockShipsPresent << std::endl;
+    
+
+
+
+
+
     if (_isPlacingProgression && userGridArray[row][column] == '.')
     {
-
+        bool isPlaceble = false;
+        isPlaceble = PlaceWithProgression(row, column);
+        if (isPlaceble)
+        {
+            userGridArray[row][column] = _shipTypeInProgression;
+            _previousRow = row;
+            _previousColumn = column;
+            _progressionRemaining--;
+        }
+        if (_progressionRemaining = 0)
+        {
+            EndProgresssion();
+        }
     }
     else if (userGridArray[row][column] == '.')
     {
         std::cout << "great spot\n\n\n\n";
+        if (!_isPlayer4BlockShipPresent)
+        {
+        PlaceShipHere(row, column, 4);
+        }
+        else if (!_isPlayer3BlockShipsPresent)
+        {
+            PlaceShipHere(row, column, 3);
+        }
+        else if (!_isPlayer2BlockShipsPresent)
+        {
+            PlaceShipHere(row, column, 2);
+        }
+        else if (!_isPlayer1BlockShipsPresent)
+        {
+            PlaceShipHere(row, column, 1);
+        }
+        else
+        {
+            return;
+        }
 
-        PlaceShipHere(row, column);
+
+
+
+
+
     }
     else
     {

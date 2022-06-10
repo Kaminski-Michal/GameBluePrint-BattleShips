@@ -9,14 +9,15 @@ static enum Direction
 	Down,
 };
 
-static enum PlayersPlacedShips
+
+enum class PlayersPlacedShips
 {
 	OneBlockShips =1,
 	TwoBlockShips,
 	ThreeBlockShips,
 	FourBlockShips,
-};
 
+};
 
 
 

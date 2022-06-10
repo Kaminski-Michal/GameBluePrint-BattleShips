@@ -93,19 +93,19 @@ void GlobalConfirmIfShipsArePresent()
 	Board board;
 	if (!isPlayer1BlockShipsPresent)
 	{
-	is1BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::OneBlockShips);
+	is1BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::OneBlockShips));
 	}
 	else if (!isPlayer2BlockShipsPresent)
 	{
-		is2BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::TwoBlockShips);
+		is2BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::TwoBlockShips));
 	}
 	else if (!isPlayer3BlockShipsPresent)
 	{
-		is3BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::ThreeBlockShips);
+		is3BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::ThreeBlockShips));
 	}
 	else if (isPlayer4BlockShipPresent)
 	{
-		is4BlockShipPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::FourBlockShips);
+		is4BlockShipPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::FourBlockShips));
 	}
 }
 
@@ -165,17 +165,17 @@ int main()
 		}
 		else if (!isPlayer3BlockShipsPresent)
 		{
-			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			instruction.loadFromFile("InstructionPlace3BlockShipNow.png");
 			currentInstriction.setTexture(instruction);
 		}
 		else if (!isPlayer2BlockShipsPresent)
 		{
-			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			instruction.loadFromFile("InstructionPlace2BlockShipNow.png");
 			currentInstriction.setTexture(instruction);
 		}
 		else if (!isPlayer1BlockShipsPresent)
 		{
-			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			instruction.loadFromFile("InstructionPlace1BlockShipNow.png");
 			currentInstriction.setTexture(instruction);
 		}
 		window.draw(currentInstriction);
