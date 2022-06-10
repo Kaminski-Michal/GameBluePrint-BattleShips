@@ -82,13 +82,19 @@ bool BotHaveRemainingShips = true;
 
 #pragma region PlayerFiles
 #include "Board.h"
-#include "ValidatePlayerInPutPosition.hpp"
 #include "PlayerShooting.hpp"
 
 
 #pragma endregion
 
+void GlobalConfirmIfShipsArePresent(bool is1block, bool are2blocks, bool are3blocks, bool are4blocks)
+{
+	if (is1block)
+	{
+		isPlayer1BlockShipsPresent = is1block;
+	}
 
+}
 
 
 
@@ -96,6 +102,7 @@ bool BotHaveRemainingShips = true;
 int main()
 {
 	Board board_1;
+	bool TypesOfShipsPresent = false;
 	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
 	sf::RenderWindow window;
 	window.create(sf::VideoMode{ 1024, 610 }, "Boards");
@@ -105,12 +112,19 @@ int main()
 	sf::Texture GridTexture;
 	sf::Sprite board;
 	sf::Sprite botgrid;
+	sf::Texture instruction;
+	sf::Sprite currentInstriction;
 	sf::Sprite usergrid;
 
 	boardTexture.loadFromFile("Plansze.png");
 	window.display();
 	board.setTexture(boardTexture);
 	GridTexture.loadFromFile("net.png");
+
+	instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+	currentInstriction.setTexture(instruction);
+	currentInstriction.setPosition(190,520);
+	window.display();
 
 	usergrid.setTexture(GridTexture);
 	botgrid.setTexture(GridTexture);
@@ -119,7 +133,7 @@ int main()
 
 
 
-	while (!isPlayer4BlockShipPresent && !isPlayer3BlockShipsPresent && !isPlayer2BlockShipsPresent && !isPlayer1BlockShipsPresent)
+	do
 	{
 
 
@@ -134,19 +148,22 @@ int main()
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
+		window.draw(currentInstriction);
 		board_1.readUserGridInfo(window);
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);
 		window.display();
 		board_1.gridEvent(window);
+
+		TypesOfShipsPresent = board_1.GetConfirmationIfAllShipsArePresent();
 		/*void readUserGridInfo(sf::RenderWindow&);
 	void setUserGrid();
 	void addSensorsToGrid();
 	//void detectBoatOnGrid(Boat&);
 	void setBoatOnGrid(int&, const int&);
 	bool gridEvent(sf::RenderWindow&);*/
-	}
-
+	} while (TypesOfShipsPresent != 4);
+	PlayerArray = board_1.GetCompletetPlayerArray();
 
 	return 0;
 }

@@ -4,6 +4,8 @@
 #include <iostream>
 #include <array>
 
+
+
 //#include "Boat.h"
 class Board
 {
@@ -17,6 +19,9 @@ public:
 	bool gridEvent(sf::RenderWindow&);
 	//bool setBoat(int&,const char&);
 	void addBoxToSquare(sf::RenderWindow&);
+	std::array<std::array <char, 10>, 10> GetCompletetPlayerArray();
+	bool GetConfirmationIfAllShipsArePresent();
+	
 private:
 
 	std::array<std::array <char, 10>, 10> userGridArray;
@@ -33,8 +38,15 @@ private:
 	int y;
 	bool isPressed;
 	char filled = '@';
+	bool _isPlacingProgression = false;
+	bool _isPlayer4BlockShipPresent = false;//1x
+	bool _isPlayer3BlockShipsPresent = false;//2x
+	bool _isPlayer2BlockShipsPresent = false;//3x
+	bool _isPlayer1BlockShipsPresent = false;//4x
+	int _typesOfShipsPresent = 0;
 	void ValidateInPut(int row, int column);
 	void ValidatePlayerInPut(int location);
-	
+	void PlaceShipHere(int row, int column);
+	void PlaceWithProgression(int row, int column);
 };
 

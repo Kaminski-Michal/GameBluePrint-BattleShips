@@ -1,7 +1,0 @@
-class ConvertPlayerInPutLocation
-{
-public:
-	
-private:
-
-};

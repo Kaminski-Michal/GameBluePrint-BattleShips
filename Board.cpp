@@ -3,30 +3,57 @@
 #include <SFML/Window.hpp>
 #include <iostream>
 #include <array>
-#include "Board.h"
 #include <Windows.h>
-#include "ValidatePlayerInPutPosition.hpp"
+#include "Board.h"
 //#include "Boat.h"
 
+bool Board::GetConfirmationIfAllShipsArePresent()
+{
+    if (_isPlayer1BlockShipsPresent && _isPlayer2BlockShipsPresent && _isPlayer3BlockShipsPresent && _isPlayer4BlockShipPresent)
+        return true;
+    else
+        return false;
+}
 
-void Board::ValidateInPut(int row, int column)
+std::array<std::array <char, 10>, 10> Board::GetCompletetPlayerArray()
+{
+    return userGridArray;
+}
+
+
+
+void Board::PlaceWithProgression(int row, int column)
 {
 
-
-
-
-
-
-
-    if (userGridArray[row][column] == '.')
+}
+void Board::PlaceShipHere(int row, int column)
+{
+    if (_isPlacingProgression)
     {
-        std::cout << "great spot\n\n\n\n";
-        userGridArray[row][column] = '4';
+
     }
     else
     {
-        std::cout << "i'm gonna stop you right there\n";
+        userGridArray[row][column] = '4';
+    }
+    
+    
+}
 
+void Board::ValidateInPut(int row, int column)
+{
+    if (_isPlacingProgression && userGridArray[row][column] == '.')
+    {
+
+    }
+    else if (userGridArray[row][column] == '.')
+    {
+        std::cout << "great spot\n\n\n\n";
+        PlaceShipHere(row, column);
+    }
+    else
+    {
+        std::cout << "I'm gonna stop you right there\n\n\n";
     }
 }
 

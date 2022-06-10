@@ -52,10 +52,10 @@
     <Filter Include="Source Files\Player\PlayerGenerating">
       <UniqueIdentifier>{2074a0d0-7ecc-4969-8586-c2fc2e8c74dd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Player\PlayerGenerating\Classes">
+    <Filter Include="Source Files\Player\PlayerGenerating\cpp_For_Classes">
       <UniqueIdentifier>{2d20eebd-1968-42ec-954e-d0275d40f6cc}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Player\PlayerGenerating\.h_files">
+    <Filter Include="Source Files\Player\PlayerGenerating\Classes">
       <UniqueIdentifier>{cf352fe7-006d-4766-9d33-f0f0f7fdfce3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -64,10 +64,10 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Board.cpp">
-      <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
+      <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
     </ClCompile>
     <ClCompile Include="Boat.cpp">
-      <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
+      <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -125,9 +125,6 @@
     <ClInclude Include="BotReceiveShoot.hpp">
       <Filter>Source Files\Bot\ShootingAtBot</Filter>
     </ClInclude>
-    <ClInclude Include="ConvertPlayerInPutLocation.hpp">
-      <Filter>Header Files\Common_.hpp</Filter>
-    </ClInclude>
     <ClInclude Include="Shooting.hpp">
       <Filter>Source Files\Shooting</Filter>
     </ClInclude>
@@ -144,12 +141,9 @@
       <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Source Files\Player\PlayerGenerating\.h_files</Filter>
+      <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
     </ClInclude>
     <ClInclude Include="Boat.h">
-      <Filter>Source Files\Player\PlayerGenerating\.h_files</Filter>
-    </ClInclude>
-    <ClInclude Include="ValidatePlayerInPutPosition.hpp">
       <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
     </ClInclude>
   </ItemGroup>
