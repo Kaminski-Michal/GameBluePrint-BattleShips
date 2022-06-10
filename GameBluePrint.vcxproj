@@ -154,6 +154,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="Boat.cpp" />
     <ClCompile Include="GameBluePrint.cpp" />
+    <ClCompile Include="InstructionPrintingClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
@@ -167,6 +168,7 @@
     <ClInclude Include="Generate2BlockShip.hpp" />
     <ClInclude Include="Generate3BlockShip.hpp" />
     <ClInclude Include="GenerateNavigationsDots.hpp" />
+    <ClInclude Include="InstructionPrintingClass.h" />
     <ClInclude Include="MainBotFunction.hpp" />
     <ClInclude Include="NextShipSegmentGenerator.hpp" />
     <ClInclude Include="PathFinding.hpp" />

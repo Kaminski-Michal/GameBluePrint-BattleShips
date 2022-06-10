@@ -58,6 +58,12 @@
     <Filter Include="Source Files\Player\PlayerGenerating\Classes">
       <UniqueIdentifier>{cf352fe7-006d-4766-9d33-f0f0f7fdfce3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Common_.hpp\cpp_For_Printing">
+      <UniqueIdentifier>{774613f6-7769-41d1-a3e5-eba2e842443c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Common_.hpp\Classes_ForPrinting">
+      <UniqueIdentifier>{0b9a594c-f7de-4b7c-a6b8-6da2210340a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -68,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="Boat.cpp">
       <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="InstructionPrintingClass.cpp">
+      <Filter>Header Files\Common_.hpp\cpp_For_Printing</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -145,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Boat.h">
       <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="InstructionPrintingClass.h">
+      <Filter>Header Files\Common_.hpp\Classes_ForPrinting</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

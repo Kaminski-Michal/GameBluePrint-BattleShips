@@ -20,7 +20,7 @@ public:
 	//bool setBoat(int&,const char&);
 	void addBoxToSquare(sf::RenderWindow&);
 	std::array<std::array <char, 10>, 10> GetCompletetPlayerArray();
-	bool GetConfirmationIfAllShipsArePresent();
+	bool GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck);
 	
 private:
 
@@ -44,6 +44,8 @@ private:
 	bool _isPlayer2BlockShipsPresent = false;//3x
 	bool _isPlayer1BlockShipsPresent = false;//4x
 	int _typesOfShipsPresent = 0;
+	int _previousRow = 0;
+	int _previousColumn = 0;
 	void ValidateInPut(int row, int column);
 	void ValidatePlayerInPut(int location);
 	void PlaceShipHere(int row, int column);

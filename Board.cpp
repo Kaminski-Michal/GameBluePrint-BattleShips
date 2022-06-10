@@ -5,9 +5,10 @@
 #include <array>
 #include <Windows.h>
 #include "Board.h"
+#include "PlayerPlacingShips.h"
 //#include "Boat.h"
 
-bool Board::GetConfirmationIfAllShipsArePresent()
+bool Board::GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck)
 {
     if (_isPlayer1BlockShipsPresent && _isPlayer2BlockShipsPresent && _isPlayer3BlockShipsPresent && _isPlayer4BlockShipPresent)
         return true;
@@ -22,8 +23,15 @@ std::array<std::array <char, 10>, 10> Board::GetCompletetPlayerArray()
 
 
 
+
+
+
 void Board::PlaceWithProgression(int row, int column)
 {
+
+
+
+
 
 }
 void Board::PlaceShipHere(int row, int column)
@@ -42,6 +50,7 @@ void Board::PlaceShipHere(int row, int column)
 
 void Board::ValidateInPut(int row, int column)
 {
+   
     if (_isPlacingProgression && userGridArray[row][column] == '.')
     {
 
@@ -49,6 +58,7 @@ void Board::ValidateInPut(int row, int column)
     else if (userGridArray[row][column] == '.')
     {
         std::cout << "great spot\n\n\n\n";
+
         PlaceShipHere(row, column);
     }
     else
@@ -71,6 +81,7 @@ void Board::ValidatePlayerInPut(int location)
         int Column = location - (Row * 10);
         std::cout << "it's row:" << Row << "\nand column:" << Column << std::endl;
         ValidateInPut(Row, Column);
+
     }
 }
 
@@ -84,7 +95,6 @@ Board::Board()
 {
     location_square_X = location_userGrid_X;
     location_square_Y = location_userGrid_Y;
-    setUserGrid();
 }
 
 void Board::setUserGrid() //tworzy tablice
@@ -199,7 +209,7 @@ bool Board::gridEvent(sf::RenderWindow& win)
         }
         else //if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
-            Sleep(100);//remove if return to else if (used to reduce Spam in console)
+            Sleep(100);//remove if, return to else if (used to reduce Spam in console)
             isPressed = false;
         }
 

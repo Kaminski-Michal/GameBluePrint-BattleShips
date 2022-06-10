@@ -44,6 +44,7 @@ bool BotHaveRemainingShips = true;
 #pragma region include Common_.h_Files
 #include "Enums.hpp"
 #include "GenerateNavigationsDots.hpp"
+#include "InstructionPrintingClass.h"
 #include "Printing_Board.hpp"
 //#include "ConvertPlayerInPutLocation.hpp"
 #include "Shooting.hpp"
@@ -87,13 +88,25 @@ bool BotHaveRemainingShips = true;
 
 #pragma endregion
 
-void GlobalConfirmIfShipsArePresent(bool is1block, bool are2blocks, bool are3blocks, bool are4blocks)
+void GlobalConfirmIfShipsArePresent()
 {
-	if (is1block)
+	Board board;
+	if (!isPlayer1BlockShipsPresent)
 	{
-		isPlayer1BlockShipsPresent = is1block;
+	is1BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::OneBlockShips);
 	}
-
+	else if (!isPlayer2BlockShipsPresent)
+	{
+		is2BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::TwoBlockShips);
+	}
+	else if (!isPlayer3BlockShipsPresent)
+	{
+		is3BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::ThreeBlockShips);
+	}
+	else if (isPlayer4BlockShipPresent)
+	{
+		is4BlockShipPresent = board.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::FourBlockShips);
+	}
 }
 
 
@@ -102,7 +115,9 @@ void GlobalConfirmIfShipsArePresent(bool is1block, bool are2blocks, bool are3blo
 int main()
 {
 	Board board_1;
+	board_1.setUserGrid();
 	bool TypesOfShipsPresent = false;
+	InstructionPrintingClass Print();
 	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
 	sf::RenderWindow window;
 	window.create(sf::VideoMode{ 1024, 610 }, "Boards");
@@ -130,13 +145,8 @@ int main()
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
-
-
-
 	do
 	{
-
-
 		window.pollEvent(event);
 		if (event.type == sf::Event::Closed)
 		{
@@ -148,21 +158,43 @@ int main()
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
+		if (!isPlayer4BlockShipPresent)
+		{
+			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			currentInstriction.setTexture(instruction);
+		}
+		else if (!isPlayer3BlockShipsPresent)
+		{
+			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			currentInstriction.setTexture(instruction);
+		}
+		else if (!isPlayer2BlockShipsPresent)
+		{
+			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			currentInstriction.setTexture(instruction);
+		}
+		else if (!isPlayer1BlockShipsPresent)
+		{
+			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
+			currentInstriction.setTexture(instruction);
+		}
 		window.draw(currentInstriction);
 		board_1.readUserGridInfo(window);
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);
 		window.display();
 		board_1.gridEvent(window);
+		
+		GlobalConfirmIfShipsArePresent();
 
-		TypesOfShipsPresent = board_1.GetConfirmationIfAllShipsArePresent();
+
 		/*void readUserGridInfo(sf::RenderWindow&);
 	void setUserGrid();
 	void addSensorsToGrid();
 	//void detectBoatOnGrid(Boat&);
 	void setBoatOnGrid(int&, const int&);
 	bool gridEvent(sf::RenderWindow&);*/
-	} while (TypesOfShipsPresent != 4);
+	} while (!is1BlockShipsPresent && !is2BlockShipsPresent && !is3BlockShipsPresent && !is4BlockShipPresent);
 	PlayerArray = board_1.GetCompletetPlayerArray();
 
 	return 0;
@@ -191,7 +223,6 @@ int main()
 int XDmain()
 {
 	BotMainMovementClass BotMainMovementClass;
-	std::string testPlayerInput = "";
 	Bot Bot;
 	PlayerShooting PlayerShooting;
 	GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
@@ -210,8 +241,6 @@ int XDmain()
 			}
 			
 		}
-		//edit
 		std::cout << "Bot Needed: " << BotTurnsToWin << " turns to win\n";
-		std::cin >> testPlayerInput;
 	return 0;
 }
