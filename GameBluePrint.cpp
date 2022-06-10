@@ -45,9 +45,9 @@ bool BotHaveRemainingShips = true;
 #include "Enums.hpp"
 #include "GenerateNavigationsDots.hpp"
 #include "Printing_Board.hpp"
-#include "SettingEmptyArray.hpp"
 //#include "ConvertPlayerInPutLocation.hpp"
 #include "Shooting.hpp"
+#include "SettingEmptyArray.hpp"
 #pragma endregion
 
 #pragma region BotFiles
@@ -134,7 +134,6 @@ int main()
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
-		board_1.setUserGrid();
 		board_1.readUserGridInfo(window);
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);

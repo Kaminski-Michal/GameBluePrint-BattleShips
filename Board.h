@@ -17,9 +17,9 @@ public:
 	bool gridEvent(sf::RenderWindow&);
 	//bool setBoat(int&,const char&);
 	void addBoxToSquare(sf::RenderWindow&);
-protected:
-	std::array<std::array <char, 10>, 10> userGridArray;
 private:
+
+	std::array<std::array <char, 10>, 10> userGridArray;
 	int p_x; //positionX
 	int p_y; //positionY
 	const int size_tile = 32; //TILESIZE
@@ -33,5 +33,8 @@ private:
 	int y;
 	bool isPressed;
 	char filled = '@';
+	void ValidateInPut(int row, int column);
+	void ValidatePlayerInPut(int location);
+	
 };
 

@@ -1,4 +1,3 @@
-
 GenerateNavigationDots generateNavigationDots;
 int _progressionRowStart = 0;
 int _progressionColumnStart = 0;

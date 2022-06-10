@@ -8,11 +8,58 @@
 #include "ValidatePlayerInPutPosition.hpp"
 //#include "Boat.h"
 
+
+void Board::ValidateInPut(int row, int column)
+{
+
+
+
+
+
+
+
+    if (userGridArray[row][column] == '.')
+    {
+        std::cout << "great spot\n\n\n\n";
+        userGridArray[row][column] = '4';
+    }
+    else
+    {
+        std::cout << "i'm gonna stop you right there\n";
+
+    }
+}
+
+void Board::ValidatePlayerInPut(int location)
+{
+    static int RowZero = 0;
+    if (location <= 9)
+    {
+        std::cout << "it's row:" << RowZero << "\nand column:" << location << std::endl;
+        ValidateInPut(RowZero, location);
+    }
+    else
+    {
+        int Row = location / 10;
+        int Column = location - (Row * 10);
+        std::cout << "it's row:" << Row << "\nand column:" << Column << std::endl;
+        ValidateInPut(Row, Column);
+    }
+}
+
+
+
+
+
+
+
 Board::Board()
 {
     location_square_X = location_userGrid_X;
     location_square_Y = location_userGrid_Y;
+    setUserGrid();
 }
+
 void Board::setUserGrid() //tworzy tablice
 {
     for (int line = 0; line < userGridArray.size(); line++)
@@ -104,26 +151,8 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
     }
 }
 
-void ValidatePlayerInPut(int location)
-{
-    static int RowZero = 0;
-   ValidatePlayerInPutPosition ValidateInPut;
-    if (location <=9)
-    {
-        std::cout << "it's Row:" << RowZero << "\nand column:" << location << std::endl;
-        ValidateInPut.ValidatePlayerInPut(RowZero, location);
-    }
-    else
-    {
-        int Row = location / 10;
-        int Column = location - (Row * 10);
-
-        std::cout << "it's Row:" << Row << "\nand column:" << Column << std::endl;
-        ValidateInPut.ValidatePlayerInPut(Row, Column);
-    }
 
 
-}
 bool Board::gridEvent(sf::RenderWindow& win)
 {
    
