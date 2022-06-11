@@ -84,30 +84,12 @@ bool BotHaveRemainingShips = true;
 #pragma region PlayerFiles
 #include "Board.h"
 #include "PlayerShooting.hpp"
+#include "Player_Check_all_ships.hpp"
 
 
 #pragma endregion
 
-void GlobalConfirmIfShipsArePresent()
-{
-	Board board;
-	if (!isPlayer1BlockShipsPresent)
-	{
-	is1BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::OneBlockShips));
-	}
-	else if (!isPlayer2BlockShipsPresent)
-	{
-		is2BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::TwoBlockShips));
-	}
-	else if (!isPlayer3BlockShipsPresent)
-	{
-		is3BlockShipsPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::ThreeBlockShips));
-	}
-	else if (isPlayer4BlockShipPresent)
-	{
-		is4BlockShipPresent = board.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::FourBlockShips));
-	}
-}
+
 
 
 
@@ -115,6 +97,7 @@ void GlobalConfirmIfShipsArePresent()
 int main()
 {
 	Board board_1;
+	board_1.SetUp();
 	board_1.setUserGrid();
 	bool TypesOfShipsPresent = false;
 	InstructionPrintingClass Print();
@@ -127,7 +110,9 @@ int main()
 	sf::Texture GridTexture;
 	sf::Sprite board;
 	sf::Sprite botgrid;
-	sf::Texture instruction;
+	sf::Texture instructionPlaceHolder;
+	sf::Texture instruction1;
+	sf::Image instruction2;
 	sf::Sprite currentInstriction;
 	sf::Sprite usergrid;
 
@@ -136,17 +121,38 @@ int main()
 	board.setTexture(boardTexture);
 	GridTexture.loadFromFile("net.png");
 
-	instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
-	currentInstriction.setTexture(instruction);
-	currentInstriction.setPosition(190,520);
-	window.display();
-
 	usergrid.setTexture(GridTexture);
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
-	do
+	window.display();
+	while (!is1BlockShipsPresent && !is2BlockShipsPresent && !is3BlockShipsPresent && !is4BlockShipPresent)
 	{
+		if (isPlayer4BlockShipPresent)
+		{
+			instruction1.loadFromFile("InstructionPlace4BlockShipNow.png");
+			currentInstriction.setTexture(instruction1);
+			currentInstriction.setPosition(190, 520);
+		}
+		else if (isPlayer3BlockShipsPresent)
+		{
+			instruction1.loadFromFile("InstructionPlace3BlockShipNow.png");
+			currentInstriction.setTexture(instruction1);
+			currentInstriction.setPosition(190, 520);
+		}
+		else if (isPlayer2BlockShipsPresent)
+		{
+			instruction1.loadFromFile("InstructionPlace2BlockShipNow.png");
+			currentInstriction.setTexture(instruction1);
+			currentInstriction.setPosition(190, 520);
+		}
+		else if (isPlayer1BlockShipsPresent)
+		{
+			instruction1.loadFromFile("InstructionPlace1BlockShipNow.png");
+			currentInstriction.setTexture(instruction1);
+			currentInstriction.setPosition(190,520);
+		}
+
 		window.pollEvent(event);
 		if (event.type == sf::Event::Closed)
 		{
@@ -154,30 +160,11 @@ int main()
 			break;
 		}
 
+
 		window.clear();
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
-		if (!isPlayer4BlockShipPresent)
-		{
-			instruction.loadFromFile("InstructionPlace4BlockShipNow.png");
-			currentInstriction.setTexture(instruction);
-		}
-		else if (!isPlayer3BlockShipsPresent)
-		{
-			instruction.loadFromFile("InstructionPlace3BlockShipNow.png");
-			currentInstriction.setTexture(instruction);
-		}
-		else if (!isPlayer2BlockShipsPresent)
-		{
-			instruction.loadFromFile("InstructionPlace2BlockShipNow.png");
-			currentInstriction.setTexture(instruction);
-		}
-		else if (!isPlayer1BlockShipsPresent)
-		{
-			instruction.loadFromFile("InstructionPlace1BlockShipNow.png");
-			currentInstriction.setTexture(instruction);
-		}
 		window.draw(currentInstriction);
 		board_1.readUserGridInfo(window);
 		board_1.addSensorsToGrid();
@@ -185,7 +172,25 @@ int main()
 		window.display();
 		board_1.gridEvent(window);
 		
-		GlobalConfirmIfShipsArePresent();
+		if (!isPlayer4BlockShipPresent)
+		{
+			is4BlockShipPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::FourBlockShips));
+		}
+		else if (!isPlayer3BlockShipsPresent)
+		{
+			is3BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::ThreeBlockShips));
+		}
+		else if (!isPlayer2BlockShipsPresent)
+		{
+			is2BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::TwoBlockShips));
+		}
+		else if (!isPlayer1BlockShipsPresent)
+		{
+			is1BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::OneBlockShips));
+		}
+
+
+		//GlobalConfirmIfShipsArePresent();
 
 
 		/*void readUserGridInfo(sf::RenderWindow&);
@@ -194,9 +199,11 @@ int main()
 	//void detectBoatOnGrid(Boat&);
 	void setBoatOnGrid(int&, const int&);
 	bool gridEvent(sf::RenderWindow&);*/
-	} while (!is1BlockShipsPresent && !is2BlockShipsPresent && !is3BlockShipsPresent && !is4BlockShipPresent);
+	} 
 	PlayerArray = board_1.GetCompletetPlayerArray();
-
+	Printing print(PlayerArray);
+	int x;
+	std::cin >> x;
 	return 0;
 }
 

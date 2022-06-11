@@ -5,13 +5,15 @@
 #include <array>
 #include <Windows.h>
 #include "Board.h"
+#include "GenerateNavigationsDots.hpp"
 //#include "Boat.h"
 
 static int _3BlockShipInGame = 2;
 static int _2BlockShipInGame = 3;
+static int _1BlockShipInGame = 4;
 
 
-bool Board::GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck)
+ bool Board::GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck)
 {
     if (_isPlayer1BlockShipsPresent && _isPlayer2BlockShipsPresent && _isPlayer3BlockShipsPresent && _isPlayer4BlockShipPresent)
         return true;
@@ -28,9 +30,11 @@ std::array<std::array <char, 10>, 10> Board::GetCompletetPlayerArray()
 
 void Board::EndProgresssion()
 {
+    GenerateNavigationDots GenerateDotsForBot;
     if (_shipTypeInProgression == '4')
     {
         _isPlayer4BlockShipPresent = true;
+        GenerateDotsForBot.GenerateDots(userGridArray);
     }
     else if (_shipTypeInProgression == '3')
     {
@@ -38,6 +42,7 @@ void Board::EndProgresssion()
         if (_Player3BlockShipsRemaining == _3BlockShipInGame)
         {
             _isPlayer3BlockShipsPresent = true;
+            
         }
     }
 
@@ -47,19 +52,21 @@ void Board::EndProgresssion()
             if (_Player2BlockShipsRemaining == _2BlockShipInGame)
             {
                 _isPlayer2BlockShipsPresent = true;
+                
             }
     }
     _previousRow = 0;
     _previousColumn = 0;
     _shipTypeInProgression = 0;
     _isPlacingProgression = false;
-
+    GenerateDotsForBot.GenerateDots(userGridArray);
 }
 
 
 bool Board::PlaceWithProgression(int row, int column)
 {
-    
+   
+
     if ((_previousRow == (row -1) && _previousColumn == column))
     {
         std::cout << "Down" << std::endl;
@@ -82,6 +89,8 @@ bool Board::PlaceWithProgression(int row, int column)
     }
     else
     {
+         std::cout << "Last Row was:" << _previousRow << std::endl;
+        std::cout << "Last Column was:" << _previousColumn << std::endl;
         std::cout << "Damn, where is it bro?" << std::endl;
         return false;
     }
@@ -91,15 +100,15 @@ void Board::StartProgressionFunction(int previousRow, int previousColumn, int si
 {
     _previousRow = previousRow;
     _previousColumn = previousColumn;
-    _progressionRemaining = size - 1;
-    std::cout << "Progression is:" << _progressionRemaining << std::endl;
+    _PlayerprogressionRemaining = size - 1;
+    std::cout << "Progression is:" << _PlayerprogressionRemaining << std::endl;
     _isPlacingProgression = true;
 
 }
 
 void Board::PlaceShipHere(int row, int column, int size)
 {
-
+    GenerateNavigationDots GenerateDotsForBot;
 
     _shipTypeInProgression = size + 48;
     userGridArray[row][column] = _shipTypeInProgression;
@@ -107,6 +116,11 @@ void Board::PlaceShipHere(int row, int column, int size)
     if (size>1)
     {
         StartProgressionFunction(row, column,size);
+    }
+    else
+    {
+        _Player1BlockShipsRemaining++;
+        GenerateDotsForBot.GenerateDots(userGridArray);
     }
 }
 
@@ -121,6 +135,11 @@ void Board::ValidateInPut(int row, int column)
 
 
 
+    if (_Player1BlockShipsRemaining == _1BlockShipInGame)
+    {
+        _isPlayer1BlockShipsPresent = true;
+        return;
+    }
 
     if (_isPlacingProgression && userGridArray[row][column] == '.')
     {
@@ -131,9 +150,9 @@ void Board::ValidateInPut(int row, int column)
             userGridArray[row][column] = _shipTypeInProgression;
             _previousRow = row;
             _previousColumn = column;
-            _progressionRemaining--;
+            _PlayerprogressionRemaining--;
         }
-        if (_progressionRemaining = 0)
+        if (_PlayerprogressionRemaining == 0)
         {
             EndProgresssion();
         }
@@ -170,6 +189,7 @@ void Board::ValidateInPut(int row, int column)
     }
     else
     {
+       
         std::cout << "I'm gonna stop you right there\n\n\n";
     }
 }
@@ -199,6 +219,8 @@ void Board::ValidatePlayerInPut(int location)
 
 
 Board::Board()
+{}
+void Board::SetUp()
 {
     location_square_X = location_userGrid_X;
     location_square_Y = location_userGrid_Y;

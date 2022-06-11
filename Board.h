@@ -11,6 +11,7 @@ class Board
 {
 public:
 	Board();
+	void SetUp();
 	void readUserGridInfo(sf::RenderWindow&);
 	void setUserGrid();
 	void addSensorsToGrid();
@@ -53,7 +54,7 @@ private:
 	int _typesOfShipsPresent = 0;
 	int _previousRow = 0;
 	int _previousColumn = 0;
-	int _progressionRemaining = 0;
+	int _PlayerprogressionRemaining = 0;
 	char _shipTypeInProgression = 0;
 	void ValidateInPut(int row, int column);
 	void ValidatePlayerInPut(int location);

@@ -158,5 +158,8 @@
     <ClInclude Include="InstructionPrintingClass.h">
       <Filter>Header Files\Common_.hpp\Classes_ForPrinting</Filter>
     </ClInclude>
+    <ClInclude Include="Player_Check_all_ships.hpp">
+      <Filter>Source Files\Player\PlayerGenerating</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
