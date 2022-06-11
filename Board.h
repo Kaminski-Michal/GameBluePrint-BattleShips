@@ -22,7 +22,8 @@ public:
 	void addBoxToSquare(sf::RenderWindow&);
 	std::array<std::array <char, 10>, 10> GetCompletetPlayerArray();
 	bool GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck);
-	
+
+
 private:
 	
 	std::array<std::array <char, 10>, 10> userGridArray;
@@ -63,4 +64,3 @@ private:
 	bool PlaceWithProgression(int row, int column);
 	void EndProgresssion();
 };
-

@@ -121,12 +121,16 @@ int main()
 	board.setTexture(boardTexture);
 	GridTexture.loadFromFile("net.png");
 
+	
+
+
+
 	usergrid.setTexture(GridTexture);
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
 	window.display();
-	while (!is1BlockShipsPresent && !is2BlockShipsPresent && !is3BlockShipsPresent && !is4BlockShipPresent)
+	do
 	{
 		if (isPlayer4BlockShipPresent)
 		{
@@ -160,13 +164,12 @@ int main()
 			break;
 		}
 
-
 		window.clear();
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
 		window.draw(currentInstriction);
-		board_1.readUserGridInfo(window);
+		//board_1.readUserGridInfo(window);
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);
 		window.display();
@@ -199,12 +202,46 @@ int main()
 	//void detectBoatOnGrid(Boat&);
 	void setBoatOnGrid(int&, const int&);
 	bool gridEvent(sf::RenderWindow&);*/
-	} 
+	} while (!is1BlockShipsPresent && !is2BlockShipsPresent && !is3BlockShipsPresent && !is4BlockShipPresent);
 	PlayerArray = board_1.GetCompletetPlayerArray();
 	Printing print(PlayerArray);
 	int x;
 	std::cin >> x;
+
+
+
+
+
+
+
+
+	//Wyœwietla now¹ tablicê (teraz pod strzelanie)
+	//aktualizacja tablicy po strzale bota 
+
+	
+	BotMainMovementClass BotMainMovementClass;
+	Bot Bot;
+	PlayerShooting PlayerShooting;
+	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
+
+	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
+	{
+
+		if (isPlayerMovement)
+		{
+			PlayerShooting.PlayerIsShooting();
+		}
+		else
+		{
+			BotMainMovementClass.BotShootingTurn();
+			Printing Printing(BotShootingAray);
+			
+		}
+
+	}
+
 	return 0;
+
 }
 
 

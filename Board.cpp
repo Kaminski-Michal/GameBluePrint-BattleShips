@@ -35,6 +35,8 @@ void Board::EndProgresssion()
     {
         _isPlayer4BlockShipPresent = true;
         GenerateDotsForBot.GenerateDots(userGridArray);
+   
+
     }
     else if (_shipTypeInProgression == '3')
     {
@@ -42,6 +44,7 @@ void Board::EndProgresssion()
         if (_Player3BlockShipsRemaining == _3BlockShipInGame)
         {
             _isPlayer3BlockShipsPresent = true;
+            
             
         }
     }
@@ -60,6 +63,11 @@ void Board::EndProgresssion()
     _shipTypeInProgression = 0;
     _isPlacingProgression = false;
     GenerateDotsForBot.GenerateDots(userGridArray);
+
+   
+
+    //Czerone pola ogwiazdkowane
+    //^
 }
 
 
@@ -110,8 +118,13 @@ void Board::PlaceShipHere(int row, int column, int size)
 {
     GenerateNavigationDots GenerateDotsForBot;
 
-    _shipTypeInProgression = size + 48;
+    _shipTypeInProgression = size + 48;//na char wiêc rozmiar statku +48 
+
     userGridArray[row][column] = _shipTypeInProgression;
+
+    //Postaw stetek na tablicy symbol statku (to size)
+
+
     std::cout << userGridArray[row][column] << std::endl;
     if (size>1)
     {
@@ -121,6 +134,7 @@ void Board::PlaceShipHere(int row, int column, int size)
     {
         _Player1BlockShipsRemaining++;
         GenerateDotsForBot.GenerateDots(userGridArray);
+        //Postaw statek graficznie tutaj (statek 1blok) (gwiazdki zamieñ na czerwone pole)
     }
 }
 
@@ -148,6 +162,8 @@ void Board::ValidateInPut(int row, int column)
         if (isPlaceble)
         {
             userGridArray[row][column] = _shipTypeInProgression;
+            //tutaj stawia statek
+
             _previousRow = row;
             _previousColumn = column;
             _PlayerprogressionRemaining--;
@@ -162,7 +178,7 @@ void Board::ValidateInPut(int row, int column)
         std::cout << "great spot\n\n\n\n";
         if (!_isPlayer4BlockShipPresent)
         {
-        PlaceShipHere(row, column, 4);
+          PlaceShipHere(row, column, 4);
         }
         else if (!_isPlayer3BlockShipsPresent)
         {
@@ -236,6 +252,8 @@ void Board::setUserGrid() //tworzy tablice
         }
     }
 }
+
+
 void Board::readUserGridInfo(sf::RenderWindow& window)
 {
     for (int line = 0; line < userGridArray.size(); line++)
@@ -254,7 +272,7 @@ void Board::readUserGridInfo(sf::RenderWindow& window)
                 p_y = line * size_tile + location_userGrid_Y;
                 //  -> odwo³anie do klas ³ódki
             }
-            else if (userGridArray[line][row] == 'x')//zagrane -> trafione
+            else if (userGridArray[line][row] == '+')//zagrane -> trafione
             {
                 p_x = row * size_tile + location_userGrid_X;
                 p_y = line * size_tile + location_userGrid_Y;
@@ -262,7 +280,10 @@ void Board::readUserGridInfo(sf::RenderWindow& window)
             }
         }
     }
+    
 }
+
+
 void Board::addSensorsToGrid()
 {
     for (int i = 0; i < 10 * 10; i++) // po ka¿dym elemencie tablicy
@@ -315,14 +336,12 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
     {
         window.draw(computerColoredBox[i]);
     }
-}
+}    
 
 
 
 bool Board::gridEvent(sf::RenderWindow& win)
 {
-   
-
     for (int i = 0; i < square_grid.size(); i++)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
@@ -336,9 +355,9 @@ bool Board::gridEvent(sf::RenderWindow& win)
                 return true;
             }
         }
-        else //if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        else if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
-            Sleep(100);//remove if, return to else if (used to reduce Spam in console)
+            Sleep(10);//remove if, return to else if (used to reduce Spam in console)
             isPressed = false;
         }
 
