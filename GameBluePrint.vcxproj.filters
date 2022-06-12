@@ -72,11 +72,11 @@
     <ClCompile Include="Board.cpp">
       <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Boat.cpp">
-      <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
-    </ClCompile>
     <ClCompile Include="InstructionPrintingClass.cpp">
       <Filter>Header Files\Common_.hpp\cpp_For_Printing</Filter>
+    </ClCompile>
+    <ClCompile Include="BoardShooting.cpp">
+      <Filter>Source Files\Player\PlayerMovement</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,14 +152,14 @@
     <ClInclude Include="Board.h">
       <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="Boat.h">
-      <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
-    </ClInclude>
     <ClInclude Include="InstructionPrintingClass.h">
       <Filter>Header Files\Common_.hpp\Classes_ForPrinting</Filter>
     </ClInclude>
     <ClInclude Include="Player_Check_all_ships.hpp">
       <Filter>Source Files\Player\PlayerGenerating</Filter>
+    </ClInclude>
+    <ClInclude Include="BoardShooting.h">
+      <Filter>Source Files\Player\PlayerMovement</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

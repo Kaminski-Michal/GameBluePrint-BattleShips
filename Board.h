@@ -27,8 +27,8 @@ public:
 private:
 	
 	std::array<std::array <char, 10>, 10> userGridArray;
-	int p_x; //positionX
-	int p_y; //positionY
+	int p_x; 
+	int p_y; 
 	const int size_tile = 32; //TILESIZE
 	const int location_userGrid_X = 50;//USERGRID_OFFSET_X
 	const int location_userGrid_Y = 155;

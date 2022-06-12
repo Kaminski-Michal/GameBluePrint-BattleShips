@@ -83,6 +83,7 @@ bool BotHaveRemainingShips = true;
 
 #pragma region PlayerFiles
 #include "Board.h"
+#include "BoardShooting.h"
 #include "PlayerShooting.hpp"
 #include "Player_Check_all_ships.hpp"
 
@@ -98,8 +99,11 @@ int main()
 {
 	Bot1BlockShipsInNavigationArray;
 	Board board_1;
+	BoardShooting board_shooting;
 	board_1.SetUp();
 	board_1.setUserGrid();
+	board_shooting.SetUp();
+	board_shooting.setUserGrid();
 	bool TypesOfShipsPresent = false;
 	InstructionPrintingClass Print();
 	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
@@ -191,6 +195,7 @@ int main()
 
 		//board_1.readUserGridInfo(window);
 		board_1.gridEvent(window);
+		
 		window.display();
 		
 
@@ -213,21 +218,22 @@ int main()
 		
 
 
-		/*void readUserGridInfo(sf::RenderWindow&);
-	void setUserGrid();
-	void addSensorsToGrid();
-	//void detectBoatOnGrid(Boat&);
-	void setBoatOnGrid(int&, const int&);
-	bool gridEvent(sf::RenderWindow&);*/
+		
 	} 
 	PlayerArray = board_1.GetCompletetPlayerArray();
 	Printing print(PlayerArray);
+	board_shooting.addSensorsToGrid();
+	board_shooting.addBoxToSquare(window);
+	board_shooting.gridEvent(window);
+	window.display();
+	window.clear(sf::Color::Black);
 	int x;
 	std::cin >> x;
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
 	PlayerShooting PlayerShooting;
 	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
+	
 	
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
