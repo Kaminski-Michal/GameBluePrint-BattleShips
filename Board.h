@@ -52,7 +52,10 @@ private:
 	int _Player1BlockShipsRemaining = 0;
 
 	std::array<bool, 100> _playerPlacedShipHere = { false };
-	
+	std::array<bool, 100> _playerCanNotPlaceShipHere = { false };
+
+	void CheckEachRowAndColumnsForNavigationDots();
+
 	bool canChangeColour = false;
 	int _typesOfShipsPresent = 0;
 	int _previousRow = 0;

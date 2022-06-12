@@ -379,6 +379,10 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
         {
             computerColoredBox.back().setFillColor(sf::Color::Green);
         }
+        else if (_playerCanNotPlaceShipHere[i])
+        {
+            computerColoredBox.back().setFillColor(sf::Color::Red);
+        }
         else
         {
         computerColoredBox.back().setFillColor(sf::Color::Blue);
@@ -390,7 +394,21 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
         window.draw(computerColoredBox[i]);
     }
 }    
+void Board::CheckEachRowAndColumnsForNavigationDots()
+{
+    for (int row = 0; row < 10; row++)
+    {
+        for (int column = 0; column < 10; column++)
+        {
+            if (userGridArray[row][column] == '*')
+            {
+                int location = (row * 10) + column;
+                _playerCanNotPlaceShipHere[location] = true;
+            }
+        }
+    }
 
+}
 
 
 
@@ -410,6 +428,7 @@ bool Board::gridEvent(sf::RenderWindow& win)
                 {
                     _playerPlacedShipHere[i] = true;
                 }
+                CheckEachRowAndColumnsForNavigationDots();
                 return true;
             }
         }
