@@ -75,7 +75,7 @@
     <ClCompile Include="InstructionPrintingClass.cpp">
       <Filter>Header Files\Common_.hpp\cpp_For_Printing</Filter>
     </ClCompile>
-    <ClCompile Include="BoardShooting.cpp">
+    <ClCompile Include="PlayerIsShooting.cpp">
       <Filter>Source Files\Player\PlayerMovement</Filter>
     </ClCompile>
   </ItemGroup>
@@ -155,10 +155,7 @@
     <ClInclude Include="InstructionPrintingClass.h">
       <Filter>Header Files\Common_.hpp\Classes_ForPrinting</Filter>
     </ClInclude>
-    <ClInclude Include="Player_Check_all_ships.hpp">
-      <Filter>Source Files\Player\PlayerGenerating</Filter>
-    </ClInclude>
-    <ClInclude Include="BoardShooting.h">
+    <ClInclude Include="PlayerIsShooting.h">
       <Filter>Source Files\Player\PlayerMovement</Filter>
     </ClInclude>
   </ItemGroup>

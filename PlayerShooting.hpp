@@ -1,8 +1,9 @@
+
 class PlayerShooting
 {
 public:
 
-	void PlayerIsShooting ()
+	void PlayerShoot ()
 	{
 		isPlayerMovement = false;
 		isBotMovement = !isPlayerMovement;
@@ -13,8 +14,4 @@ public:
 
 	 
 private:
-
-
-
-
 };

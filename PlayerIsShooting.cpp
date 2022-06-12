@@ -2,7 +2,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 
-#include "BoardShooting.h"
+#include "PlayerIsShooting.h"
 
 void BoardShooting::SetUp()
 {
@@ -21,7 +21,7 @@ void BoardShooting::setUserGrid()
 }
 void BoardShooting::addSensorsToGrid()
 {
-    for (int i = 0; i < 10 * 10; i++) 
+    for (int i = 0; i < 10 * 10; i++)
     {
         if (i % 10 == 0 && i > 0 && i <= 10 * 10) {
             location_square_bot_Y += size_tile;
@@ -40,11 +40,15 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
         {
-            
+            isPressed = true;
+            return true;
+
         }
         else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
-            
+            isPressed = false;
+
+
         }
 
 
@@ -52,6 +56,11 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win)
 
     return false;
 }
+
+
+
+
+
 std::vector<sf::RectangleShape> playerShootingTabBox;
 void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
 {

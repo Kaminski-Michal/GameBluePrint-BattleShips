@@ -83,9 +83,9 @@ bool BotHaveRemainingShips = true;
 
 #pragma region PlayerFiles
 #include "Board.h"
-#include "BoardShooting.h"
+#include "PlayerIsShooting.h"
 #include "PlayerShooting.hpp"
-#include "Player_Check_all_ships.hpp"
+
 
 
 #pragma endregion
@@ -99,9 +99,10 @@ int main()
 {
 	Bot1BlockShipsInNavigationArray;
 	Board board_1;
-	BoardShooting board_shooting;
+	
 	board_1.SetUp();
 	board_1.setUserGrid();
+	BoardShooting board_shooting;
 	board_shooting.SetUp();
 	board_shooting.setUserGrid();
 	bool TypesOfShipsPresent = false;
@@ -240,7 +241,7 @@ int main()
 
 		if (isPlayerMovement)
 		{
-			PlayerShooting.PlayerIsShooting();
+			PlayerShooting.PlayerShoot();
 		}
 		else
 		{

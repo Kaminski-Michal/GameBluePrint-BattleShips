@@ -5,7 +5,7 @@ class BoardShooting
 {
 public:
 
-	
+
 	void SetUp();
 	void setUserGrid();
 	void addSensorsToGrid();
