@@ -24,8 +24,8 @@ class OneBlockShipGenerator :public NextShipSegmentGenerator
 				goto again;
 			}
 			BotBoard[randomRowStartPositon][randomColumnStartPosition] = '1';
-		
-		_presentShips++;
+			_presentShips++;
+			Bot1BlockShipsInNavigationArray[_presentShips-1][1] = randomRowStartPositon * 10 + randomColumnStartPosition;
 		if (_presentShips == 4)
 		{
 			is1BlockShipsPresent = true;

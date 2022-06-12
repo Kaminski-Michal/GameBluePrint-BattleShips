@@ -59,6 +59,7 @@ class TwoBlockShipGenerator :public NextShipSegmentGenerator
 			int row = temporartyShipPositon[i][0];
 			int column = temporartyShipPositon[i][1];
 			BotBoard[row][column] = '2';
+			Bot2BlockShipsInNavigationArray[_presentShips - 1][i+1] = row * 10 + column;
 		}
 	}
 
@@ -98,8 +99,8 @@ public:
 			CopyOfBotBoard[randomRowStartPositon][randomColumnStartPosition] = '2';
 			GenerateRest2BlockShip(CopyOfBotBoard, randomRowStartPositon, randomColumnStartPosition);
 		}
-		PlaceShipFromTemporaryArray(BotBoard);
 		_presentShips++;
+		PlaceShipFromTemporaryArray(BotBoard);
 		if (_presentShips == 3)
 		{
 			is2BlockShipsPresent = true;

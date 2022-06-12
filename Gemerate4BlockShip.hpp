@@ -64,6 +64,7 @@ class FourBlockShip : public NextShipSegmentGenerator
 			int row = temporartyShipPositon[i][0];
 			int column = temporartyShipPositon[i][1];
 			BotBoard[row][column] = '4';
+			Bot4BlockShipInNavigationArray[0][i+1] = (row * 10 + column);
 		} 
 	}
 

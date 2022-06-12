@@ -224,23 +224,11 @@ int main()
 	Printing print(PlayerArray);
 	int x;
 	std::cin >> x;
-
-
-
-
-
-
-
-
-	//Wyœwietla now¹ tablicê (teraz pod strzelanie)
-	//aktualizacja tablicy po strzale bota 
-
-	
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
 	PlayerShooting PlayerShooting;
 	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
-
+	
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
 
@@ -252,11 +240,24 @@ int main()
 		{
 			BotMainMovementClass.BotShootingTurn();
 			Printing Printing(BotShootingAray);
-			
+
 		}
 
 	}
 	std::cout << "Bot needed: " << BotTurnsToWin << "turns to win this\n";
 	return 0;
 
+
+
+
+
+
+
+	//Wyœwietla now¹ tablicê (teraz pod strzelanie)
+	//aktualizacja tablicy po strzale bota 
+
+	
+	
+
 }
+

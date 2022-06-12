@@ -59,6 +59,7 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 			int row = temporartyShipPositon[i][0];
 			int column = temporartyShipPositon[i][1];
 			BotBoard[row][column] = '3';
+			Bot3BlockShipsInNavigationArray[_presentShips - 1][i + 1] = row * 10 + column;
 		}
 	}
 
@@ -98,8 +99,8 @@ public:
 			CopyOfBotBoard[randomRowStartPositon][randomColumnStartPosition] = '3';
 			GenerateRest3BlockShip(CopyOfBotBoard, randomRowStartPositon, randomColumnStartPosition);
 		}
-		PlaceShipFromTemporaryArray(BotBoard);
 		_presentShips++;
+		PlaceShipFromTemporaryArray(BotBoard);
 		if (_presentShips == 2)
 		{
 			is3BlockShipsPresent = true;
