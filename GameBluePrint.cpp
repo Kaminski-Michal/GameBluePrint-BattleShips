@@ -96,6 +96,7 @@ bool BotHaveRemainingShips = true;
 
 int main()
 {
+	Bot1BlockShipsInNavigationArray;
 	Board board_1;
 	board_1.SetUp();
 	board_1.setUserGrid();

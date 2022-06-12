@@ -5,6 +5,33 @@ std::array<std::array<char, 10>, 10> PlayerArray;
 std::array<std::array<char, 10>, 10> PlayerShootingArray;
 
 
+
+std::array<std::array<int, 5>, 1> Bot4BlockShipInNavigationArray = {0, 0 , 0 , 0 , 0 };// [0] - how many segments got hit  [rest] - int value of position column *10 + row 
+std::array<std::array<int, 4>, 2> Bot3BlockShipsInNavigationArray = 
+{
+	{
+	{0, 0, 0, 0},
+	{0, 0, 0, 0}
+	}
+};
+std::array<std::array<int, 3>, 3> Bot2BlockShipsInNavigationArray =
+{
+	{
+		{0, 0, 0},
+		{0, 0, 0},
+		{0, 0, 0}
+	}
+};
+std::array<std::array<int, 2>, 4> Bot1BlockShipsInNavigationArray=
+{
+	{
+		{0, 0},
+		{0, 0},
+		{0, 0},
+		{0, 0}
+	}
+};
+
 bool BotProgression = false;
 bool BotStartProgression = false;
 bool BotProgressionHitThree = false;
