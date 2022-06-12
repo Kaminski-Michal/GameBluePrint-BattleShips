@@ -21,7 +21,7 @@ void BoardShooting::setUserGrid()
 }
 void BoardShooting::addSensorsToGrid()
 {
-    for (int i = 0; i < 10 * 10; i++) // po ka¿dym elemencie tablicy
+    for (int i = 0; i < 10 * 10; i++) 
     {
         if (i % 10 == 0 && i > 0 && i <= 10 * 10) {
             location_square_bot_Y += size_tile;
@@ -40,23 +40,11 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
         {
-            /* if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
-             {
-
-                 isPressed = true;
-
-                 if (canChangeColour)
-                 {
-                     _playerPlacedShipHere[i] = true;
-                 }
-                 CheckEachRowAndColumnsForNavigationDots();
-                 return true;
-             }*/
+            
         }
         else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
-            //Sleep(10);//remove if, return to else if (used to reduce Spam in console)
-            //isPressed = false;
+            
         }
 
 

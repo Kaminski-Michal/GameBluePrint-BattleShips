@@ -72,9 +72,6 @@
     <ClCompile Include="Board.cpp">
       <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
     </ClCompile>
-    <ClCompile Include="Boat.cpp">
-      <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
-    </ClCompile>
     <ClCompile Include="InstructionPrintingClass.cpp">
       <Filter>Header Files\Common_.hpp\cpp_For_Printing</Filter>
     </ClCompile>
@@ -153,9 +150,6 @@
       <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
     </ClInclude>
     <ClInclude Include="Board.h">
-      <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
-    </ClInclude>
-    <ClInclude Include="Boat.h">
       <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
     </ClInclude>
     <ClInclude Include="InstructionPrintingClass.h">

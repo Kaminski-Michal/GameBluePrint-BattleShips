@@ -153,14 +153,12 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="BoardShooting.cpp" />
-    <ClCompile Include="Boat.cpp" />
     <ClCompile Include="GameBluePrint.cpp" />
     <ClCompile Include="InstructionPrintingClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="BoardShooting.h" />
-    <ClInclude Include="Boat.h" />
     <ClInclude Include="BotMainMovementClass.hpp" />
     <ClInclude Include="BotReceiveShoot.hpp" />
     <ClInclude Include="BotShootMovement.hpp" />
