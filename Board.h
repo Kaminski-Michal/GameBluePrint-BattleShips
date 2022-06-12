@@ -22,7 +22,7 @@ public:
 	void addBoxToSquare(sf::RenderWindow&);
 	std::array<std::array <char, 10>, 10> GetCompletetPlayerArray();
 	bool GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck);
-
+	
 
 private:
 	
@@ -46,12 +46,14 @@ private:
 	bool _isPlayer2BlockShipsPresent = false;
 	bool _isPlayer1BlockShipsPresent = false;
 
+	
 	int _Player3BlockShipsRemaining = 0;
 	int _Player2BlockShipsRemaining = 0;
 	int _Player1BlockShipsRemaining = 0;
 
+	std::array<bool, 100> _playerPlacedShipHere = { false };
 	
-
+	bool canChangeColour = false;
 	int _typesOfShipsPresent = 0;
 	int _previousRow = 0;
 	int _previousColumn = 0;
@@ -63,4 +65,7 @@ private:
 	void StartProgressionFunction(int previousRow, int previousColumn, int size);
 	bool PlaceWithProgression(int row, int column);
 	void EndProgresssion();
+
+
+	void ChangeColourForThisBox(sf::RenderWindow& window, int pos);
 };

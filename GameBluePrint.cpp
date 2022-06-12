@@ -124,33 +124,42 @@ int main()
 	
 
 
-
+	
 	usergrid.setTexture(GridTexture);
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
+
+
+
+	
+	
+	
+	
 	window.display();
-	do
+	while (!isPlayer1BlockShipsPresent || !isPlayer2BlockShipsPresent || !isPlayer3BlockShipsPresent || !isPlayer4BlockShipPresent)
 	{
-		if (isPlayer4BlockShipPresent)
+		
+
+		if (!isPlayer4BlockShipPresent)
 		{
 			instruction1.loadFromFile("InstructionPlace4BlockShipNow.png");
 			currentInstriction.setTexture(instruction1);
 			currentInstriction.setPosition(190, 520);
 		}
-		else if (isPlayer3BlockShipsPresent)
+		else if (!isPlayer3BlockShipsPresent)
 		{
 			instruction1.loadFromFile("InstructionPlace3BlockShipNow.png");
 			currentInstriction.setTexture(instruction1);
 			currentInstriction.setPosition(190, 520);
 		}
-		else if (isPlayer2BlockShipsPresent)
+		else if (!isPlayer2BlockShipsPresent)
 		{
 			instruction1.loadFromFile("InstructionPlace2BlockShipNow.png");
 			currentInstriction.setTexture(instruction1);
 			currentInstriction.setPosition(190, 520);
 		}
-		else if (isPlayer1BlockShipsPresent)
+		else if (!isPlayer1BlockShipsPresent)
 		{
 			instruction1.loadFromFile("InstructionPlace1BlockShipNow.png");
 			currentInstriction.setTexture(instruction1);
@@ -164,36 +173,43 @@ int main()
 			break;
 		}
 
-		window.clear();
+		//window.clear();
+		
+		
+		
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
+
+
 		window.draw(currentInstriction);
-		//board_1.readUserGridInfo(window);
+
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);
-		window.display();
+
+
+		//board_1.readUserGridInfo(window);
 		board_1.gridEvent(window);
+		window.display();
 		
+
 		if (!isPlayer4BlockShipPresent)
 		{
-			is4BlockShipPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::FourBlockShips));
+			isPlayer4BlockShipPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::FourBlockShips);
 		}
 		else if (!isPlayer3BlockShipsPresent)
 		{
-			is3BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::ThreeBlockShips));
+			isPlayer3BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::ThreeBlockShips);
 		}
 		else if (!isPlayer2BlockShipsPresent)
 		{
-			is2BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::TwoBlockShips));
+			isPlayer2BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::TwoBlockShips);
 		}
 		else if (!isPlayer1BlockShipsPresent)
 		{
-			is1BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(static_cast<int>(PlayersPlacedShips::OneBlockShips));
+			isPlayer1BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::OneBlockShips);
 		}
-
-
-		//GlobalConfirmIfShipsArePresent();
+		
 
 
 		/*void readUserGridInfo(sf::RenderWindow&);
@@ -202,7 +218,7 @@ int main()
 	//void detectBoatOnGrid(Boat&);
 	void setBoatOnGrid(int&, const int&);
 	bool gridEvent(sf::RenderWindow&);*/
-	} while (!is1BlockShipsPresent && !is2BlockShipsPresent && !is3BlockShipsPresent && !is4BlockShipPresent);
+	} 
 	PlayerArray = board_1.GetCompletetPlayerArray();
 	Printing print(PlayerArray);
 	int x;
@@ -239,52 +255,7 @@ int main()
 		}
 
 	}
-
+	std::cout << "Bot needed: " << BotTurnsToWin << "turns to win this\n";
 	return 0;
 
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-int XDmain()
-{
-	BotMainMovementClass BotMainMovementClass;
-	Bot Bot;
-	PlayerShooting PlayerShooting;
-	GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
-
-		while (BotHaveRemainingShips && PlayerHaveRemainingShips)
-		{
-
-			if (isPlayerMovement)
-			{
-				PlayerShooting.PlayerIsShooting();
-			}
-			else
-			{
-				BotMainMovementClass.BotShootingTurn();
-				Printing Printing(BotShootingAray);
-			}
-			
-		}
-		std::cout << "Bot Needed: " << BotTurnsToWin << " turns to win\n";
-	return 0;
 }

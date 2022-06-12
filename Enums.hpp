@@ -1,5 +1,5 @@
 
-std::array<char, 10>RowOfLetter{ 'A','B','C','D','E','F','G','H','I','J' };
+static std::array<char, 10>RowOfLetter{ 'A','B','C','D','E','F','G','H','I','J' };
 
 static enum Direction
 {
@@ -10,7 +10,7 @@ static enum Direction
 };
 
 
-enum class PlayersPlacedShips
+static enum PlayersPlacedShips
 {
 	OneBlockShips =1,
 	TwoBlockShips,

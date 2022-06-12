@@ -6,6 +6,8 @@
 #include <Windows.h>
 #include "Board.h"
 #include "GenerateNavigationsDots.hpp"
+#include "Enums.hpp"
+
 //#include "Boat.h"
 
 static int _3BlockShipInGame = 2;
@@ -13,8 +15,45 @@ static int _2BlockShipInGame = 3;
 static int _1BlockShipInGame = 4;
 
 
+
  bool Board::GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck)
 {
+     PlayersPlacedShips ShipToVerifyPresent = static_cast<PlayersPlacedShips>(ShipSizeToCheck);
+     switch (ShipToVerifyPresent)
+     {
+     case OneBlockShips:
+
+         if (_isPlayer1BlockShipsPresent)
+             return true;
+         else
+             return false;
+
+     case TwoBlockShips:
+
+         if (_isPlayer2BlockShipsPresent)
+             return true;
+         else
+             return false;
+
+     case ThreeBlockShips:
+
+         if (_isPlayer3BlockShipsPresent)
+             return true;
+         else
+             return false;
+
+     case FourBlockShips:
+
+         if (_isPlayer4BlockShipPresent)
+             return true;
+         else
+             return false;
+
+     default:
+         return false;
+         break;
+     }
+
     if (_isPlayer1BlockShipsPresent && _isPlayer2BlockShipsPresent && _isPlayer3BlockShipsPresent && _isPlayer4BlockShipPresent)
         return true;
     else
@@ -77,26 +116,31 @@ bool Board::PlaceWithProgression(int row, int column)
 
     if ((_previousRow == (row -1) && _previousColumn == column))
     {
+        canChangeColour = true;
         std::cout << "Down" << std::endl;
         return true;
     }
     else if ((_previousRow == (row + 1)) && (_previousColumn == column))
     {
+        canChangeColour = true;
         std::cout << "Up" << std::endl;
         return true;
     }
     else if ((_previousRow == row)&& (_previousColumn == (column -1)))
     {
+        canChangeColour = true;
         std::cout << "Right" << std::endl;
         return true;
     }
     else if ((_previousRow == row)&&(_previousColumn == (column +1)))
     {
+        canChangeColour = true;
         std::cout << "Left" << std::endl;
         return true;
     }
     else
     {
+        canChangeColour = false;
          std::cout << "Last Row was:" << _previousRow << std::endl;
         std::cout << "Last Column was:" << _previousColumn << std::endl;
         std::cout << "Damn, where is it bro?" << std::endl;
@@ -161,6 +205,7 @@ void Board::ValidateInPut(int row, int column)
         isPlaceble = PlaceWithProgression(row, column);
         if (isPlaceble)
         {
+            canChangeColour = true;
             userGridArray[row][column] = _shipTypeInProgression;
             //tutaj stawia statek
 
@@ -175,6 +220,7 @@ void Board::ValidateInPut(int row, int column)
     }
     else if (userGridArray[row][column] == '.')
     {
+        canChangeColour = true;
         std::cout << "great spot\n\n\n\n";
         if (!_isPlayer4BlockShipPresent)
         {
@@ -205,7 +251,7 @@ void Board::ValidateInPut(int row, int column)
     }
     else
     {
-       
+        canChangeColour = false;
         std::cout << "I'm gonna stop you right there\n\n\n";
     }
 }
@@ -329,7 +375,14 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
     {
         computerColoredBox.push_back(sf::RectangleShape(sf::Vector2f(25, 25)));
         computerColoredBox.back().setPosition(square_grid[i].left, square_grid[i].top);
+        if (_playerPlacedShipHere[i])
+        {
+            computerColoredBox.back().setFillColor(sf::Color::Green);
+        }
+        else
+        {
         computerColoredBox.back().setFillColor(sf::Color::Blue);
+        }
     }
 
     for (int i = 0; i < computerColoredBox.size(); i++)
@@ -337,6 +390,8 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
         window.draw(computerColoredBox[i]);
     }
 }    
+
+
 
 
 
@@ -348,10 +403,13 @@ bool Board::gridEvent(sf::RenderWindow& win)
         {
             if (square_grid[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
             {
+                
                 isPressed = true;
                 ValidatePlayerInPut(i);
-                
-                
+                if (canChangeColour)
+                {
+                    _playerPlacedShipHere[i] = true;
+                }
                 return true;
             }
         }
