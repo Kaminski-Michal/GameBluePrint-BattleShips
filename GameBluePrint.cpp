@@ -226,6 +226,7 @@ int main()
 	board_shooting.addBoxToSquare(window);
 	board_shooting.gridEvent(window);
 	window.display();
+	window.clear(sf::Color::Black);
 	int x;
 	std::cin >> x;
 	BotMainMovementClass BotMainMovementClass;
