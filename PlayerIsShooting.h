@@ -1,11 +1,11 @@
+#include <iostream>
 #include <array>
-
 
 class BoardShooting
 {
 public:
 
-
+	
 	void SetUp();
 	void setUserGrid();
 	void addSensorsToGrid();
@@ -14,6 +14,7 @@ public:
 
 
 private:
+	
 	const int location_botGrid_X = 650;
 	const int location_botGrid_Y = 155;
 	int location_square_bot_X;

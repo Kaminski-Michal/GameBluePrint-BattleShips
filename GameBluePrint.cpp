@@ -95,21 +95,21 @@ bool BotHaveRemainingShips = true;
 
 
 
+
 int main()
 {
-	Bot1BlockShipsInNavigationArray;
 	Board board_1;
-	
+	BoardShooting board_shooting;
 	board_1.SetUp();
 	board_1.setUserGrid();
-	BoardShooting board_shooting;
-	board_shooting.SetUp();
-	board_shooting.setUserGrid();
+
 	bool TypesOfShipsPresent = false;
 	InstructionPrintingClass Print();
 	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
 	sf::RenderWindow window;
 	window.create(sf::VideoMode{ 1024, 610 }, "Boards");
+	
+
 	//window.setFramerateLimit(0);
 	sf::Event event;
 	sf::Texture boardTexture;
@@ -135,7 +135,6 @@ int main()
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
-
 
 
 	
@@ -222,26 +221,43 @@ int main()
 		
 	} 
 	PlayerArray = board_1.GetCompletetPlayerArray();
-	Printing print(PlayerArray);
-	board_shooting.addSensorsToGrid();
-	board_shooting.addBoxToSquare(window);
-	board_shooting.gridEvent(window);
-	window.display();
-	window.clear(sf::Color::Black);
-	int x;
-	std::cin >> x;
+	Printing print(PlayerArray);	
+
+
+	
+	
+
+
+
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
-	PlayerShooting PlayerShooting;
+	
 	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
 	
+
+
+
+
+
+
+
+
 	
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
 
+
+
+
+
 		if (isPlayerMovement)
 		{
-			PlayerShooting.PlayerShoot();
+			board_shooting.SetUp();
+			board_shooting.addSensorsToGrid();
+			board_shooting.addBoxToSquare(window);
+			board_shooting.gridEvent(window);
+			window.display();
+
 		}
 		else
 		{

@@ -1,13 +1,29 @@
 
 class PlayerShooting
 {
+	
+
 public:
 
-	void PlayerShoot ()
+	void PlayerShoot (bool &isPlayerMovement, int ShootLocation)
 	{
-		isPlayerMovement = false;
-		isBotMovement = !isPlayerMovement;
-		BotTurnsToWin++;
+		while (isPlayerMovement)
+		{
+
+			std::cout << "you did it\n";
+			isPlayerMovement = false;
+
+			
+
+
+
+
+			
+
+
+			//isPlayerMovement = false;
+			
+		}
 		return;
 	}
 

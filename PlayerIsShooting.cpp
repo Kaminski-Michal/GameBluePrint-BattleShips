@@ -1,8 +1,10 @@
 #pragma region SFML_Library
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
-
+#include <iostream>
 #include "PlayerIsShooting.h"
+#include "PlayerShooting.hpp"
+
 
 void BoardShooting::SetUp()
 {
@@ -19,6 +21,10 @@ void BoardShooting::setUserGrid()
         }
     }
 }
+
+
+
+
 void BoardShooting::addSensorsToGrid()
 {
     for (int i = 0; i < 10 * 10; i++)
@@ -28,37 +34,11 @@ void BoardShooting::addSensorsToGrid()
             location_square_bot_X = location_botGrid_X;
         }
 
-        square_grid_bot.push_back(sf::FloatRect(sf::Vector2f(location_square_bot_X,
-            location_square_bot_Y), sf::Vector2f(size_point, size_point)));
+        square_grid_bot.push_back(sf::FloatRect(sf::Vector2f(location_square_bot_X,location_square_bot_Y), sf::Vector2f(size_point, size_point)));
 
         location_square_bot_X += size_tile;
     }
 }
-bool BoardShooting::gridEvent(sf::RenderWindow& win)
-{
-    for (int i = 0; i < square_grid_bot.size(); i++)
-    {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
-        {
-            isPressed = true;
-            return true;
-
-        }
-        else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-        {
-            isPressed = false;
-
-
-        }
-
-
-    }
-
-    return false;
-}
-
-
-
 
 
 std::vector<sf::RectangleShape> playerShootingTabBox;
@@ -75,6 +55,35 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
     {
         win.draw(playerShootingTabBox[i]);
     }
-
-
 }
+
+PlayerShooting PlayerShootHere;
+
+bool BoardShooting::gridEvent(sf::RenderWindow& win)
+{
+    for (int i = 0; i < square_grid_bot.size(); i++)
+    {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
+        {
+            if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
+            {
+                PlayerShootHere.PlayerShoot(isPlayerMovement,i);
+                return true;
+            }
+        }
+        else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        {
+            isPressed = false;
+            
+
+        }
+
+
+    }
+
+    return false;
+}
+
+
+
+

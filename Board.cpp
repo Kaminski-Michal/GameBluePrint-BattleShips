@@ -300,34 +300,34 @@ void Board::setUserGrid() //tworzy tablice
 }
 
 
-void Board::readUserGridInfo(sf::RenderWindow& window)
-{
-    for (int line = 0; line < userGridArray.size(); line++)
-    {
-        for (int row = 0; row < userGridArray.size(); row++)
-        {
-            if (userGridArray[line][row] == '@') //statek tu jest
-            {
-                p_x = row * size_tile + location_userGrid_X;
-                p_y = line * size_tile + location_userGrid_Y;
-                //  -> odwo³anie do klas ³ódki
-            }
-            else if (userGridArray[line][row] == '*') //zagrane -> nie trafione
-            {
-                p_x = row * size_tile + location_userGrid_X;
-                p_y = line * size_tile + location_userGrid_Y;
-                //  -> odwo³anie do klas ³ódki
-            }
-            else if (userGridArray[line][row] == '+')//zagrane -> trafione
-            {
-                p_x = row * size_tile + location_userGrid_X;
-                p_y = line * size_tile + location_userGrid_Y;
-                //  -> odwo³anie do klas ³ódki
-            }
-        }
-    }
-    
-}
+//void Board::readUserGridInfo(sf::RenderWindow& window)
+//{
+//    for (int line = 0; line < userGridArray.size(); line++)
+//    {
+//        for (int row = 0; row < userGridArray.size(); row++)
+//        {
+//            if (userGridArray[line][row] == '@') //statek tu jest
+//            {
+//                p_x = row * size_tile + location_userGrid_X;
+//                p_y = line * size_tile + location_userGrid_Y;
+//                //  -> odwo³anie do klas ³ódki
+//            }
+//            else if (userGridArray[line][row] == '*') //zagrane -> nie trafione
+//            {
+//                p_x = row * size_tile + location_userGrid_X;
+//                p_y = line * size_tile + location_userGrid_Y;
+//                //  -> odwo³anie do klas ³ódki
+//            }
+//            else if (userGridArray[line][row] == '+')//zagrane -> trafione
+//            {
+//                p_x = row * size_tile + location_userGrid_X;
+//                p_y = line * size_tile + location_userGrid_Y;
+//                //  -> odwo³anie do klas ³ódki
+//            }
+//        }
+//    }
+//    
+//}
 
 
 void Board::addSensorsToGrid()
