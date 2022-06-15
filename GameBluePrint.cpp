@@ -84,7 +84,7 @@ bool BotHaveRemainingShips = true;
 #pragma region PlayerFiles
 #include "Board.h"
 #include "PlayerIsShooting.h"
-#include "PlayerShooting.hpp"
+
 
 
 
@@ -99,7 +99,7 @@ bool BotHaveRemainingShips = true;
 int main()
 {
 	Board board_1;
-	BoardShooting board_shooting;
+	
 	board_1.SetUp();
 	board_1.setUserGrid();
 
@@ -231,6 +231,7 @@ int main()
 
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
+	BoardShooting board_shooting;
 	
 	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
 	
@@ -239,10 +240,9 @@ int main()
 
 
 
+	board_shooting.takeBotGeneratedArray(BotGeneratedArray);
+	board_shooting.SetUp();
 
-
-
-	
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
 
@@ -252,11 +252,18 @@ int main()
 
 		if (isPlayerMovement)
 		{
-			board_shooting.SetUp();
+
+			instruction1.loadFromFile("InstructionPlayerTurnNow.png");
+			currentInstriction.setTexture(instruction1);
+			currentInstriction.setPosition(190, 520);
+			window.draw(currentInstriction);
+
+
 			board_shooting.addSensorsToGrid();
 			board_shooting.addBoxToSquare(window);
-			board_shooting.gridEvent(window);
 			window.display();
+			board_shooting.gridEvent(window, isPlayerMovement,currentInstriction);
+			
 
 		}
 		else
@@ -267,7 +274,6 @@ int main()
 		}
 
 	}
-	std::cout << "Bot needed: " << BotTurnsToWin << "turns to win this\n";
 	return 0;
 
 

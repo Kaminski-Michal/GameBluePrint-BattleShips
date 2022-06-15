@@ -137,9 +137,6 @@
     <ClInclude Include="Shooting.hpp">
       <Filter>Source Files\Shooting</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerShooting.hpp">
-      <Filter>Source Files\Player\PlayerMovement</Filter>
-    </ClInclude>
     <ClInclude Include="UpdatedPathFindingProgressionStart.hpp">
       <Filter>Source Files\Bot\Movement\PathFindingProgression</Filter>
     </ClInclude>

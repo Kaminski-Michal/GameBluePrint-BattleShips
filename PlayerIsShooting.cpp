@@ -3,8 +3,11 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "PlayerIsShooting.h"
-#include "PlayerShooting.hpp"
 
+void BoardShooting::takeBotGeneratedArray(std::array<std::array<char, 10>, 10> TakenbotArray)
+{
+    BotArray = TakenbotArray;
+}
 
 void BoardShooting::SetUp()
 {
@@ -13,9 +16,9 @@ void BoardShooting::SetUp()
 }
 void BoardShooting::setUserGrid()
 {
-    for (int line = 0; line < botGridArray.size(); line++)
+    for (int line = 0; line < _boardSize; line++)
     {
-        for (int row = 0; row < botGridArray.size(); row++)
+        for (int row = 0; row < _boardSize; row++)
         {
             botGridArray[line][row] = '.';
         }
@@ -41,6 +44,7 @@ void BoardShooting::addSensorsToGrid()
 }
 
 
+
 std::vector<sf::RectangleShape> playerShootingTabBox;
 void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
 {
@@ -48,6 +52,15 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
     {
         playerShootingTabBox.push_back(sf::RectangleShape(sf::Vector2f(25, 25)));
         playerShootingTabBox.back().setPosition(square_grid_bot[i].left, square_grid_bot[i].top);
+        if (_shootPositon[i])
+        {
+            playerShootingTabBox.back().setFillColor(sf::Color::Black);
+        }
+        else if (_hitArray[i])
+        {
+            playerShootingTabBox.back().setFillColor(sf::Color::Magenta);
+        }
+        else
         playerShootingTabBox.back().setFillColor(sf::Color::Yellow);
     }
 
@@ -57,29 +70,65 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
     }
 }
 
-PlayerShooting PlayerShootHere;
 
-bool BoardShooting::gridEvent(sf::RenderWindow& win)
+void BoardShooting::playerShootHereAfterValidation(int position)
 {
-    for (int i = 0; i < square_grid_bot.size(); i++)
+    _shootPositon[position] = true;
+}
+
+
+void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck)
+{
+    
+
+    _column = positionToCheck % 10;
+    _row = (positionToCheck - _column)/10;
+
+    std::cout << positionToCheck << std::endl;
+    std::cout << _column << _row << std::endl;
+    
+    if (BotArray[_row][_column] == '1' || BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
     {
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
+        _hitArray[positionToCheck] = true;
+    }
+    else if (BotArray[_row][_column] == '*')
+    {
+        playerShootHereAfterValidation(positionToCheck);
+    }
+    else if (BotArray[_row][_column] != '.')
+    {
+        
+    }
+    else
+    {
+       playerShootHereAfterValidation(positionToCheck);
+    }
+
+
+
+}
+bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::Sprite &currentInstriction)
+{
+   
+    
+
+        for (int i = 0; i < square_grid_bot.size(); i++)
         {
-            if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
+            if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
             {
-                PlayerShootHere.PlayerShoot(isPlayerMovement,i);
-                return true;
+                if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
+                {
+                    ValidatePlayerInPutPosition(i);
+                    
+                    return true;
+                
+                }
+            }
+            else //if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+            {
+                isPressed = false;
             }
         }
-        else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-        {
-            isPressed = false;
-            
-
-        }
-
-
-    }
 
     return false;
 }

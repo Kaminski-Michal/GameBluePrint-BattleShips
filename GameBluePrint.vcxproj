@@ -174,7 +174,6 @@
     <ClInclude Include="PathFinding_SuccessorThree.hpp" />
     <ClInclude Include="PathFinding_SuccessorTwo.hpp" />
     <ClInclude Include="PlayerIsShooting.h" />
-    <ClInclude Include="PlayerShooting.hpp" />
     <ClInclude Include="Printing_Board.hpp" />
     <ClInclude Include="SettingEmptyArray.hpp" />
     <ClInclude Include="ShipGenerateClass.hpp" />

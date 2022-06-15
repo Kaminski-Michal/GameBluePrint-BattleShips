@@ -43,18 +43,23 @@ int _threeBlockRemaining = 2;
 int _fourBlockRemaining = 1;
 
 
+	
+
+
+
 
 class Shooting
 {
 
-	
-
-
-
 public:
-	
+
+	void jasne()
+	{
+		return;
+	}
 
 
+#pragma region BotShooting Functions
 	bool BotShootingUsingProgression(int row, int column)
 	{
 		if (PlayerArray[row][column] == '2')
@@ -98,13 +103,9 @@ public:
 		else
 		{
 			BotShootingAray[row][column] = '*';
-			//PlayerArray[row][column] = '*';
 			return false;
 		}
 	}
-
-
-
 	bool BotShootingAtCoordinates(int row, int column)
 	{
 		GenerateNavigationDots Generate;
@@ -143,9 +144,8 @@ public:
 		else
 		{
 			BotShootingAray[row][column] = '*';
-			//PlayerArray[row][column] = '*';
 			return false;
 		}
 	}
-
+#pragma endregion
 };
