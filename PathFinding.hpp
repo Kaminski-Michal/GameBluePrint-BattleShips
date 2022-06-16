@@ -11,18 +11,6 @@ private:
 	int randomHorizontalVector = 0;
 	int randomVerticalVector = 0;
 	int currentSuccessor = 1;
-
-
-protected:
-
-
-	
-
-
-	
-
-
-
 	
 public:
 	

@@ -39,6 +39,10 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 	void shootWithProgression()
 	{
 
+		if (!doesPathfinderProgressionTwoHaveWay && !doesPathfinderProgressionThreeHaveWay && _sizeOfShipInProgression != 0)
+		{
+			std::cout << "EMERGENCY FOUND\n";
+		}
 		SecondBlockProgression(_progressionRowStart, _progressionColumnStart, _sizeOfShipInProgression);
 
 		_rowTarget = _nextShootingRow;

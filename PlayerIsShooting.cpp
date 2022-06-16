@@ -3,10 +3,20 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "PlayerIsShooting.h"
+#include "NotifyObservers.h"
 
 void BoardShooting::takeBotGeneratedArray(std::array<std::array<char, 10>, 10> TakenbotArray)
 {
     BotArray = TakenbotArray;
+    for (int row = 0; row < _playerShootingArray.size(); row++)
+    {
+        for (int column = 0; column < _playerShootingArray.size(); column++)
+        {
+            _playerShootingArray[row][column] = '.';
+        }
+
+    }
+
 }
 
 void BoardShooting::SetUp()
@@ -14,16 +24,7 @@ void BoardShooting::SetUp()
     location_square_bot_X = location_botGrid_X;
     location_square_bot_Y = location_botGrid_Y;
 }
-void BoardShooting::setUserGrid()
-{
-    for (int line = 0; line < _boardSize; line++)
-    {
-        for (int row = 0; row < _boardSize; row++)
-        {
-            botGridArray[line][row] = '.';
-        }
-    }
-}
+
 
 
 
@@ -71,37 +72,42 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
 }
 
 
-void BoardShooting::playerShootHereAfterValidation(int position)
+void BoardShooting::playerShootHereAfterValidation(int position, bool& isPlayerMovement)
 {
-    _shootPositon[position] = true;
+    if (BotArray[_row][_column] == '1' || BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
+    {
+        _playerShootingArray[_row][_column] == '+';
+        _hitArray[position] = true;
+
+    }
+    else
+    {
+        _playerShootingArray[_row][_column] = '*';
+        _shootPositon[position] = true;
+        isPlayerMovement = false;
+    }
+    
 }
 
 
-void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck)
+void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck, bool &isPlayerMovement)
 {
     
-
+    _playerShootingArray;
+    BotArray;
     _column = positionToCheck % 10;
     _row = (positionToCheck - _column)/10;
 
     std::cout << positionToCheck << std::endl;
     std::cout << _column << _row << std::endl;
     
-    if (BotArray[_row][_column] == '1' || BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
+    if (_playerShootingArray[_row][_column] != '.')
     {
-        _hitArray[positionToCheck] = true;
-    }
-    else if (BotArray[_row][_column] == '*')
-    {
-        playerShootHereAfterValidation(positionToCheck);
-    }
-    else if (BotArray[_row][_column] != '.')
-    {
-        
+        return;
     }
     else
     {
-       playerShootHereAfterValidation(positionToCheck);
+        playerShootHereAfterValidation(positionToCheck, isPlayerMovement);
     }
 
 
@@ -110,7 +116,6 @@ void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck)
 bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::Sprite &currentInstriction)
 {
    
-    
 
         for (int i = 0; i < square_grid_bot.size(); i++)
         {
@@ -118,7 +123,7 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::
             {
                 if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
                 {
-                    ValidatePlayerInPutPosition(i);
+                    ValidatePlayerInPutPosition(i, isPlayerMovement);
                     
                     return true;
                 

@@ -13,12 +13,6 @@ private:
 	int randomVerticalVector = 0;
 	int currentSuccessor = 1;
 
-
-protected:
-
-
-
-
 public:
 
 

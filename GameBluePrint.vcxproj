@@ -154,6 +154,7 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="GameBluePrint.cpp" />
     <ClCompile Include="InstructionPrintingClass.cpp" />
+    <ClCompile Include="NotifyObservers.cpp" />
     <ClCompile Include="PlayerIsShooting.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +171,7 @@
     <ClInclude Include="InstructionPrintingClass.h" />
     <ClInclude Include="MainBotFunction.hpp" />
     <ClInclude Include="NextShipSegmentGenerator.hpp" />
+    <ClInclude Include="NotifyObservers.h" />
     <ClInclude Include="PathFinding.hpp" />
     <ClInclude Include="PathFinding_SuccessorThree.hpp" />
     <ClInclude Include="PathFinding_SuccessorTwo.hpp" />

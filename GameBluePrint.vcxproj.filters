@@ -64,6 +64,15 @@
     <Filter Include="Header Files\Common_.hpp\Classes_ForPrinting">
       <UniqueIdentifier>{0b9a594c-f7de-4b7c-a6b8-6da2210340a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Player\PlayerMovement\ObserverFiles">
+      <UniqueIdentifier>{2530b8ff-e4d6-47da-819f-5d2495a2372c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles">
+      <UniqueIdentifier>{391785b2-431b-4124-ac7d-c7727f13eec7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles">
+      <UniqueIdentifier>{052b6f26-0e08-4273-8df1-5d6b3e73f1f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -77,6 +86,9 @@
     </ClCompile>
     <ClCompile Include="PlayerIsShooting.cpp">
       <Filter>Source Files\Player\PlayerMovement</Filter>
+    </ClCompile>
+    <ClCompile Include="NotifyObservers.cpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +166,9 @@
     </ClInclude>
     <ClInclude Include="PlayerIsShooting.h">
       <Filter>Source Files\Player\PlayerMovement</Filter>
+    </ClInclude>
+    <ClInclude Include="NotifyObservers.h">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

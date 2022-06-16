@@ -13,6 +13,7 @@ public:
 	Board();
 	void SetUp();
 	void readUserGridInfo(sf::RenderWindow&);
+	void addBoxToSquare(sf::RenderWindow& window, bool gameInProcess, std::array<bool, 100> BotHitThatShip, std::array<bool, 100> BotShotHere);
 	void setUserGrid();
 	void addSensorsToGrid();
 	//void detectBoatOnGrid(Boat&);

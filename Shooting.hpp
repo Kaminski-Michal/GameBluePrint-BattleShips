@@ -3,6 +3,8 @@ std::array<std::array<char, 10>, 10> BotGeneratedArray;
 std::array<std::array<char, 10>, 10> BotShootingAray;
 std::array<std::array<char, 10>, 10> PlayerArray;
 std::array<std::array<char, 10>, 10> PlayerShootingArray;
+std::array<bool, 100> BotHitThatShip = { false };
+std::array<bool, 100> BotShotHere = { false };
 
 
 
@@ -50,18 +52,13 @@ int _fourBlockRemaining = 1;
 
 class Shooting
 {
-
+	int _position = 0;
 public:
-
-	void jasne()
-	{
-		return;
-	}
-
 
 #pragma region BotShooting Functions
 	bool BotShootingUsingProgression(int row, int column)
 	{
+		_position = (row * 10) + column;
 		if (PlayerArray[row][column] == '2')
 		{
 			BotShootingAray[row][column] = '+';
@@ -69,6 +66,7 @@ public:
 			_sizeOfShipInProgression--;
 			_twoBlockRemaining--;
 			BotProgression = false;
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		if (PlayerArray[row][column] == '3')
@@ -81,6 +79,7 @@ public:
 				_threeBlockRemaining--;
 			}
 			BotProgressionHitThree = true;
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		if (PlayerArray[row][column] == '4')
@@ -98,16 +97,19 @@ public:
 			{
 				_fourBlockRemaining--;
 			}
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		else
 		{
 			BotShootingAray[row][column] = '*';
+			BotShotHere[_position] = true;
 			return false;
 		}
 	}
 	bool BotShootingAtCoordinates(int row, int column)
 	{
+		_position = (row * 10) + column;
 		GenerateNavigationDots Generate;
 		if (PlayerArray[row][column] == '1')
 		{
@@ -115,6 +117,7 @@ public:
 			BotShootingAray[row][column] = 'X';
 			PlayerArray[row][column] = 'X';
 			Generate.GenerateDots(BotShootingAray);
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		if (PlayerArray[row][column] == '2')
@@ -123,6 +126,7 @@ public:
 			PlayerArray[row][column] = '+';
 			BotStartProgression = true;
 			_sizeOfShipInProgression = 1;
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		if (PlayerArray[row][column] == '3')
@@ -131,6 +135,7 @@ public:
 			PlayerArray[row][column] = '+';
 			BotStartProgression = true;
 			_sizeOfShipInProgression = 2;
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		if (PlayerArray[row][column] == '4')
@@ -139,11 +144,13 @@ public:
 			PlayerArray[row][column] = '+';
 			BotStartProgression = true;
 			_sizeOfShipInProgression = 3;
+			BotHitThatShip[_position] = true;
 			return true;
 		}
 		else
 		{
 			BotShootingAray[row][column] = '*';
+			BotShotHere[_position] = true;
 			return false;
 		}
 	}

@@ -126,22 +126,14 @@ int main()
 	window.display();
 	board.setTexture(boardTexture);
 	GridTexture.loadFromFile("net.png");
-
-	
-
-
-	
 	usergrid.setTexture(GridTexture);
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
-
-
-	
-	
-	
-	
+	Sleep(100);
 	window.display();
+	
+
 	while (!isPlayer1BlockShipsPresent || !isPlayer2BlockShipsPresent || !isPlayer3BlockShipsPresent || !isPlayer4BlockShipPresent)
 	{
 		
@@ -178,26 +170,14 @@ int main()
 			break;
 		}
 
-		//window.clear();
-		
-		
-		
 		window.draw(board);
 		window.draw(usergrid);
 		window.draw(botgrid);
-
-
 		window.draw(currentInstriction);
-
 		board_1.addSensorsToGrid();
 		board_1.addBoxToSquare(window);
-
-
-		//board_1.readUserGridInfo(window);
 		board_1.gridEvent(window);
-		
 		window.display();
-		
 
 		if (!isPlayer4BlockShipPresent)
 		{
@@ -215,53 +195,33 @@ int main()
 		{
 			isPlayer1BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::OneBlockShips);
 		}
-		
-
-
-		
 	} 
 	PlayerArray = board_1.GetCompletetPlayerArray();
 	Printing print(PlayerArray);	
-
-
-	
-	
-
-
 
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
 	BoardShooting board_shooting;
 	
 	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
-	
-
-
-
-
 
 	board_shooting.takeBotGeneratedArray(BotGeneratedArray);
 	board_shooting.SetUp();
 
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
-
-
-
-
+		board_1.addSensorsToGrid();
+		board_1.addBoxToSquare(window, GameInProgress, BotHitThatShip, BotShotHere);
+		instruction1.loadFromFile("InstructionPlayerTurnNow.png");
+		currentInstriction.setTexture(instruction1);
+		currentInstriction.setPosition(190, 520);
+		window.draw(currentInstriction);
+		board_shooting.addSensorsToGrid();
+		board_shooting.addBoxToSquare(window);
+		window.display();
 
 		if (isPlayerMovement)
 		{
-
-			instruction1.loadFromFile("InstructionPlayerTurnNow.png");
-			currentInstriction.setTexture(instruction1);
-			currentInstriction.setPosition(190, 520);
-			window.draw(currentInstriction);
-
-
-			board_shooting.addSensorsToGrid();
-			board_shooting.addBoxToSquare(window);
-			window.display();
 			board_shooting.gridEvent(window, isPlayerMovement,currentInstriction);
 			
 
@@ -270,6 +230,7 @@ int main()
 		{
 			BotMainMovementClass.BotShootingTurn();
 			Printing Printing(BotShootingAray);
+			Sleep(1000);
 
 		}
 

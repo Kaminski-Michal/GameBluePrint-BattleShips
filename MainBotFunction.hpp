@@ -10,7 +10,6 @@ public:
 	{
 		GenerateBotShips GenerateBotShips(BotGeneratedArray);
 		Printing Printing(BotGeneratedArray);
-		//system("CLS");
 	}
 
 

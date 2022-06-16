@@ -70,21 +70,15 @@ class ShootPathfindingProgressionThree : public ShootPathfindingProgressionFour
 			}
 		}
 	}
-protected:
-	
 
 public:
-
-
 	
 	void ThirdBlockProgression(int startingRow, int startingColumn, int progressionSize)
 	{
 
-		ShootPathfindingProgressionFour shootProgressionFour;
-
 		if (BotProgressionHitFour)
 		{
-			shootProgressionFour.FourthBlockProgression(_thirdProgressionPositionRow, _thirdProgressionPositionColumn, progressionSize);
+			FourthBlockProgression(_thirdProgressionPositionRow, _thirdProgressionPositionColumn, progressionSize);
 			if (!doesPathfinderProgressionFourHaveWay)
 			{
 				BotProgressionHitFour = false;
@@ -95,7 +89,6 @@ public:
 				_nextShootingColumn = _fourProgressionPositionColumn;
 				return;
 			}
-			return;
 		}
 
 		ValidateEdges(startingRow, startingColumn);

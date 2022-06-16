@@ -193,11 +193,7 @@ void Board::ValidateInPut(int row, int column)
 
 
 
-    if (_Player1BlockShipsRemaining == _1BlockShipInGame)
-    {
-        _isPlayer1BlockShipsPresent = true;
-        return;
-    }
+    
 
     if (_isPlacingProgression && userGridArray[row][column] == '.')
     {
@@ -394,6 +390,47 @@ void Board::addBoxToSquare(sf::RenderWindow& window)
         window.draw(computerColoredBox[i]);
     }
 }    
+
+void Board::addBoxToSquare(sf::RenderWindow& window,bool gameInProcess, std::array<bool, 100> BotHitThatShip, std::array<bool, 100> BotShotHere)
+{
+    for (int i = 0; i < 100; i++)
+    {
+        computerColoredBox.push_back(sf::RectangleShape(sf::Vector2f(25, 25)));
+        computerColoredBox.back().setPosition(square_grid[i].left, square_grid[i].top);
+        
+        if (BotHitThatShip[i])
+        {
+            computerColoredBox.back().setFillColor(sf::Color::Red);
+        }
+        else if (BotShotHere[i])
+        {
+            computerColoredBox.back().setFillColor(sf::Color::Black);
+        }
+        else if (_playerPlacedShipHere[i])
+        {
+            computerColoredBox.back().setFillColor(sf::Color::Green);
+        }
+        else
+        {
+            computerColoredBox.back().setFillColor(sf::Color::Blue);
+        }
+    }
+
+    for (int i = 0; i < computerColoredBox.size(); i++)
+    {
+        window.draw(computerColoredBox[i]);
+    }
+}
+
+
+
+
+
+
+
+
+
+
 void Board::CheckEachRowAndColumnsForNavigationDots()
 {
     for (int row = 0; row < 10; row++)
@@ -415,6 +452,12 @@ void Board::CheckEachRowAndColumnsForNavigationDots()
 
 bool Board::gridEvent(sf::RenderWindow& win)
 {
+    if (_Player1BlockShipsRemaining == _1BlockShipInGame)
+    {
+        _isPlayer1BlockShipsPresent = true;
+        return NULL;
+    }
+
     for (int i = 0; i < square_grid.size(); i++)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
@@ -434,7 +477,6 @@ bool Board::gridEvent(sf::RenderWindow& win)
         }
         else if(!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
         {
-            Sleep(10);//remove if, return to else if (used to reduce Spam in console)
             isPressed = false;
         }
 

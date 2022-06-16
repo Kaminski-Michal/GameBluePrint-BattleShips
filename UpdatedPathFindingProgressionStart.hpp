@@ -2,8 +2,10 @@
 	bool _goDownSecondBlockProgression = true;
 	bool _goLeftSecondBlockProgression = true;;
 	bool _goRightSecondBlockProgression = true;
+	bool doesPathfinderProgressionTwoHaveWay = true;
 
-	
+	int _SecondProgressionPositionRow = 0;
+	int _SecondProgressionPositionColumn = 0;
 
 	
 
@@ -69,28 +71,28 @@ class UpdatedShootPathfinding : public ShootPathfindingProgressionThree
 	}
 
 
-	
-
-
-protected:
-	int _SecondProgressionPositionRow = 0;
-	int _SecondProgressionPositionColumn = 0;
-
-	
-
 
 public:
 	
+	void UpdateStartingRowAndColumnForSecondProgression(int updatedStrtingRow, int updatedStaringColumn)
+	{
+
+	}
 	
 	void SecondBlockProgression(int startingRow, int startingColumn, int progressionSize)
 	{
-		ShootPathfindingProgressionThree shootProgressionThree;
+		if (!doesPathfinderProgressionFourHaveWay && !doesPathfinderProgressionThreeHaveWay && _sizeOfShipInProgression != 0)
+		{
+			std::cout << "NEXT EMERGENCY FOUND\n";
+		}
 
 		if (BotProgressionHitThree)
 		{
-			shootProgressionThree.ThirdBlockProgression(_SecondProgressionPositionRow, _SecondProgressionPositionColumn, progressionSize);
+			ThirdBlockProgression(_SecondProgressionPositionRow, _SecondProgressionPositionColumn, progressionSize);
 			if (BotProgressionHitFour)
 			{
+				_nextShootingRow = _fourProgressionPositionRow;
+				_nextShootingColumn = _fourProgressionPositionColumn;
 				return;
 			}
 			if (!doesPathfinderProgressionThreeHaveWay)
@@ -99,13 +101,12 @@ public:
 			}
 			else
 			{
-
 				_nextShootingRow = _thirdProgressionPositionRow ;
 				_nextShootingColumn =  _thirdProgressionPositionColumn ;
 				return;
 			}
 		}
-		
+
 		ValidateEdges(startingRow, startingColumn);
 		ValidateRemainingPaths(startingRow, startingColumn);
 
@@ -131,6 +132,14 @@ public:
 		{
 			_nextShootingRow = _SecondProgressionPositionRow = startingRow;
 			_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn + 1;
+			return;
+		}
+
+
+
+		if (!_goRightSecondBlockProgression && !_goLeftSecondBlockProgression && !_goUpSecondBlockProgression && !_goDownSecondBlockProgression)
+		{
+			doesPathfinderProgressionTwoHaveWay = false;
 			return;
 		}
 	}
