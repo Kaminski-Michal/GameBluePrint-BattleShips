@@ -84,7 +84,7 @@ bool BotHaveRemainingShips = true;
 #pragma region PlayerFiles
 #include "Board.h"
 #include "PlayerIsShooting.h"
-
+//#include "VirtualClassHandler.hpp"
 
 
 
@@ -130,6 +130,7 @@ int main()
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
+	//window.display();
 	Sleep(100);
 	window.display();
 	
@@ -195,15 +196,24 @@ int main()
 		{
 			isPlayer1BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::OneBlockShips);
 		}
-	} 
+	}
+
+
 	PlayerArray = board_1.GetCompletetPlayerArray();
 	Printing print(PlayerArray);	
 
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
 	BoardShooting board_shooting;
+	board_shooting.pass2BlockArray(Bot2BlockShipsInNavigationArray);
+	board_shooting.pass3BlockArray(Bot3BlockShipsInNavigationArray);
+	board_shooting.pass4BlockArray(Bot4BlockShipInNavigationArray);
 	
-	//GenerateBotShips Generate(PlayerArray); //Remove when PlayerArray added also remove isXBlockShipPresent (from file ShipGenerateClass.hpp) - made to have quick access to "Player" board and shooting at it 
+	
+
+
+	
+	
 
 	board_shooting.takeBotGeneratedArray(BotGeneratedArray);
 	board_shooting.SetUp();
@@ -223,8 +233,6 @@ int main()
 		if (isPlayerMovement)
 		{
 			board_shooting.gridEvent(window, isPlayerMovement,currentInstriction);
-			
-
 		}
 		else
 		{
@@ -235,6 +243,15 @@ int main()
 		}
 
 	}
+	if (BotHaveRemainingShips)
+	{
+		//bot wygra³
+	}
+	else
+	{
+		//Gracz wygra³
+	}
+
 	return 0;
 
 

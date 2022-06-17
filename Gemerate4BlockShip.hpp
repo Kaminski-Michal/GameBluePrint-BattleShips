@@ -38,7 +38,7 @@ class FourBlockShip : public NextShipSegmentGenerator
 				return;
 			}
 			saveInTemporaryArray(shipRow, shipColumn);
-			BotBoard[StartRow + _nextRowPosition][StartColumn + _nextColumnPosition] = '4';
+			BotBoard[(StartRow + _nextRowPosition)][(StartColumn + _nextColumnPosition)] = '4';
 			
 			StartRow = StartRow + _nextRowPosition;
 			StartColumn = StartColumn + _nextColumnPosition;
@@ -64,7 +64,7 @@ class FourBlockShip : public NextShipSegmentGenerator
 			int row = temporartyShipPositon[i][0];
 			int column = temporartyShipPositon[i][1];
 			BotBoard[row][column] = '4';
-			Bot4BlockShipInNavigationArray[0][i+1] = (row * 10 + column);
+			Bot4BlockShipInNavigationArray[i+1] = (row * 10 + column);
 		} 
 	}
 

@@ -154,7 +154,11 @@
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="GameBluePrint.cpp" />
     <ClCompile Include="InstructionPrintingClass.cpp" />
+    <ClCompile Include="NotifyFourBlockObserver.cpp" />
     <ClCompile Include="NotifyObservers.cpp" />
+    <ClCompile Include="NotifyOneBlockObserver.cpp" />
+    <ClCompile Include="NotifyThreeBlockObserver.cpp" />
+    <ClCompile Include="NotifyTwoBlockObserver.cpp" />
     <ClCompile Include="PlayerIsShooting.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +175,11 @@
     <ClInclude Include="InstructionPrintingClass.h" />
     <ClInclude Include="MainBotFunction.hpp" />
     <ClInclude Include="NextShipSegmentGenerator.hpp" />
+    <ClInclude Include="NotifyFourBlockObserver.h" />
     <ClInclude Include="NotifyObservers.h" />
+    <ClInclude Include="NotifyOneBlockObserver.h" />
+    <ClInclude Include="NotifyThreeBlockObserver.h" />
+    <ClInclude Include="NotifyTwoBlockObserver.h" />
     <ClInclude Include="PathFinding.hpp" />
     <ClInclude Include="PathFinding_SuccessorThree.hpp" />
     <ClInclude Include="PathFinding_SuccessorTwo.hpp" />
@@ -184,6 +192,7 @@
     <ClInclude Include="UpdatedPathFindingProgressionShootThree.hpp" />
     <ClInclude Include="UpdatedPathFindingProgressionStart.hpp" />
     <ClInclude Include="ValideteShipPosition.hpp" />
+    <ClInclude Include="VirtualClassHandler.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

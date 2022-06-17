@@ -73,6 +73,9 @@
     <Filter Include="Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles">
       <UniqueIdentifier>{052b6f26-0e08-4273-8df1-5d6b3e73f1f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Player\PlayerMovement\PlayerMovementFiles">
+      <UniqueIdentifier>{8a66f69b-0e7f-4205-a406-5f72ba8d7968}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameBluePrint.cpp">
@@ -84,10 +87,22 @@
     <ClCompile Include="InstructionPrintingClass.cpp">
       <Filter>Header Files\Common_.hpp\cpp_For_Printing</Filter>
     </ClCompile>
-    <ClCompile Include="PlayerIsShooting.cpp">
-      <Filter>Source Files\Player\PlayerMovement</Filter>
-    </ClCompile>
     <ClCompile Include="NotifyObservers.cpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerIsShooting.cpp">
+      <Filter>Source Files\Player\PlayerMovement\PlayerMovementFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="NotifyOneBlockObserver.cpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="NotifyTwoBlockObserver.cpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="NotifyThreeBlockObserver.cpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="NotifyFourBlockObserver.cpp">
       <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
     </ClCompile>
   </ItemGroup>
@@ -164,11 +179,26 @@
     <ClInclude Include="InstructionPrintingClass.h">
       <Filter>Header Files\Common_.hpp\Classes_ForPrinting</Filter>
     </ClInclude>
-    <ClInclude Include="PlayerIsShooting.h">
-      <Filter>Source Files\Player\PlayerMovement</Filter>
-    </ClInclude>
     <ClInclude Include="NotifyObservers.h">
       <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerIsShooting.h">
+      <Filter>Source Files\Player\PlayerMovement\PlayerMovementFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="NotifyOneBlockObserver.h">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="NotifyTwoBlockObserver.h">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="NotifyThreeBlockObserver.h">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="NotifyFourBlockObserver.h">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="VirtualClassHandler.hpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ std::array<bool, 100> BotShotHere = { false };
 
 
 
-std::array<std::array<int, 5>, 1> Bot4BlockShipInNavigationArray = {0, 0 , 0 , 0 , 0 };// [0] - how many segments got hit  [rest] - int value of position = column * 10 + row 
+std::array<int, 5> Bot4BlockShipInNavigationArray = {0, 0 , 0 , 0 , 0 };// [0] - how many segments got hit  [rest] - int value of position = column * 10 + row 
 std::array<std::array<int, 4>, 2> Bot3BlockShipsInNavigationArray = 
 {
 	{

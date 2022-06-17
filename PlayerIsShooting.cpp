@@ -2,8 +2,54 @@
 #include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include <Windows.h>
 #include "PlayerIsShooting.h"
-#include "NotifyObservers.h"
+#include "VirtualClassHandler.hpp"
+
+
+
+
+
+void BoardShooting::pass2BlockArray(std::array<std::array<int, 3>, 3> &twoBlockArray)
+{
+    PassLocationOfTwoSizedArray(twoBlockArray);
+}
+void BoardShooting::pass3BlockArray(std::array<std::array<int, 4>, 2> &threeBlockArray)
+{
+    PassLocationOfThreeSizedArray(threeBlockArray);
+}
+void BoardShooting::pass4BlockArray(std::array<int, 5> &fourBlockArray)
+{
+    PassLocationOfFourSizedArray(fourBlockArray);
+
+}
+
+
+
+void BoardShooting::GenerateArrayOfExceptionsAroundDronwedShips()
+{
+   // int SizeOfVector = NotifyObservers::getSizeOfRememberedVector();
+   int size = GetSizeOfVector();
+   int  PositionToDotAround;
+      
+
+   for (int i = 0; i < size-1; i++)
+   {
+        PositionToDotAround = GetValueOfVector(i);
+        std::cout << PositionToDotAround;
+       _drownArray[PositionToDotAround] = true;
+   }
+
+
+
+   /* int columnOfDrownedShip = PositionToMarkAround % 10;
+    int rowOfDrownedShip = (PositionToMarkAround - columnOfDrownedShip) / 10;
+    _playerShootingArray[rowOfDrownedShip][columnOfDrownedShip] = 'X';
+    _drownArray[PositionToMarkAround] = true;*/
+
+   
+}
+
 
 void BoardShooting::takeBotGeneratedArray(std::array<std::array<char, 10>, 10> TakenbotArray)
 {
@@ -18,6 +64,9 @@ void BoardShooting::takeBotGeneratedArray(std::array<std::array<char, 10>, 10> T
     }
 
 }
+
+
+
 
 void BoardShooting::SetUp()
 {
@@ -53,7 +102,11 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
     {
         playerShootingTabBox.push_back(sf::RectangleShape(sf::Vector2f(25, 25)));
         playerShootingTabBox.back().setPosition(square_grid_bot[i].left, square_grid_bot[i].top);
-        if (_shootPositon[i])
+        if (_drownArray[i])
+        {
+            playerShootingTabBox.back().setFillColor(sf::Color::Red);
+        }
+        else if (_shootPositon[i])
         {
             playerShootingTabBox.back().setFillColor(sf::Color::Black);
         }
@@ -74,11 +127,20 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
 
 void BoardShooting::playerShootHereAfterValidation(int position, bool& isPlayerMovement)
 {
-    if (BotArray[_row][_column] == '1' || BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
+    if (BotArray[_row][_column] == '1')
+    {
+        _playerShootingArray[_row][_column] == 'X';
+        _drownArray[_row * 10 + _column] = true;
+    }
+
+    else if (BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
     {
         _playerShootingArray[_row][_column] == '+';
         _hitArray[position] = true;
+        ChooseObserverToNotify(BotArray[_row][_column], position);
 
+        GenerateArrayOfExceptionsAroundDronwedShips();
+        
     }
     else
     {
@@ -92,15 +154,8 @@ void BoardShooting::playerShootHereAfterValidation(int position, bool& isPlayerM
 
 void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck, bool &isPlayerMovement)
 {
-    
-    _playerShootingArray;
-    BotArray;
     _column = positionToCheck % 10;
-    _row = (positionToCheck - _column)/10;
-
-    std::cout << positionToCheck << std::endl;
-    std::cout << _column << _row << std::endl;
-    
+    _row = (positionToCheck - _column)/10;    
     if (_playerShootingArray[_row][_column] != '.')
     {
         return;
@@ -109,9 +164,6 @@ void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck, bool &isPla
     {
         playerShootHereAfterValidation(positionToCheck, isPlayerMovement);
     }
-
-
-
 }
 bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::Sprite &currentInstriction)
 {
@@ -129,7 +181,7 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::
                 
                 }
             }
-            else //if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+            else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
             {
                 isPressed = false;
             }
@@ -137,6 +189,8 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::
 
     return false;
 }
+
+
 
 
 
