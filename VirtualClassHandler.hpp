@@ -68,7 +68,7 @@ static void PassLocationOfTwoSizedArray(std::array<std::array<int, 3>, 3> &Bot2B
 
 
 
-static void PassLocationOfThreeSizedArray(std::array<std::array<int, 4>, 2> &Bot3BlockShipsInNavigationArray)
+static void PassLocationOfThreeSizedArray(std::array<std::array<int, 4>, 2>&Bot3BlockShipsInNavigationArray)
 {
 	NotifyThreeBlockObserver threeBlock;
 	threeBlock.setArraysOfShipsPositions(Bot3BlockShipsInNavigationArray);

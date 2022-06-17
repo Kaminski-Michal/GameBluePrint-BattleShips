@@ -130,7 +130,7 @@ void BoardShooting::playerShootHereAfterValidation(int position, bool& isPlayerM
     if (BotArray[_row][_column] == '1')
     {
         _playerShootingArray[_row][_column] == 'X';
-        _drownArray[_row * 10 + _column] = true;
+        _drownArray[position] = true;
     }
 
     else if (BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
@@ -176,7 +176,6 @@ bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::
                 if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
                 {
                     ValidatePlayerInPutPosition(i, isPlayerMovement);
-                    
                     return true;
                 
                 }

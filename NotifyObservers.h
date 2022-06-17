@@ -19,6 +19,7 @@ class NotifyObservers
 
 public:
 	virtual void NotifyParticularObserver(int positionOfHit) = 0;
+
 	template<typename Type,size_t sizeOfArray>
 	void ConvertInPutArrayIntoPositionOfDrowned(std::array<Type, sizeOfArray>&TakenArray)
 	{
@@ -33,6 +34,8 @@ public:
 		RetunObserverValues ReturnValues;
 		ReturnValues.setSize(sizeOfArray);
 		ReturnValues.setArray(_temporaryArray);
+		_temporaryArray = {0,0,0,0,0};
+
 	}
 	
 };
