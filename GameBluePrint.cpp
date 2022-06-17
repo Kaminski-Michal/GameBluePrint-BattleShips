@@ -44,9 +44,7 @@ bool BotHaveRemainingShips = true;
 #pragma region include Common_.h_Files
 #include "Enums.hpp"
 #include "GenerateNavigationsDots.hpp"
-#include "InstructionPrintingClass.h"
 #include "Printing_Board.hpp"
-//#include "ConvertPlayerInPutLocation.hpp"
 #include "Shooting.hpp"
 #include "SettingEmptyArray.hpp"
 #pragma endregion
@@ -104,7 +102,7 @@ int main()
 	board_1.setUserGrid();
 
 	bool TypesOfShipsPresent = false;
-	InstructionPrintingClass Print();
+	
 	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
 	sf::RenderWindow window;
 	window.create(sf::VideoMode{ 1024, 610 }, "Boards");
@@ -130,7 +128,7 @@ int main()
 	botgrid.setTexture(GridTexture);
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
-	//window.display();
+	window.display();
 	Sleep(100);
 	window.display();
 	
@@ -205,6 +203,8 @@ int main()
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
 	BoardShooting board_shooting;
+	board_shooting.takeBotGeneratedArray(BotGeneratedArray);
+	board_shooting.SetUp();
 	board_shooting.pass2BlockArray(Bot2BlockShipsInNavigationArray);
 	board_shooting.pass3BlockArray(Bot3BlockShipsInNavigationArray);
 	board_shooting.pass4BlockArray(Bot4BlockShipInNavigationArray);
@@ -215,8 +215,6 @@ int main()
 	
 	
 
-	board_shooting.takeBotGeneratedArray(BotGeneratedArray);
-	board_shooting.SetUp();
 
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
@@ -233,6 +231,7 @@ int main()
 		if (isPlayerMovement)
 		{
 			board_shooting.gridEvent(window, isPlayerMovement,currentInstriction);
+			BotHaveRemainingShips = board_shooting.DoesBotStillHaveShips();
 		}
 		else
 		{
@@ -245,11 +244,13 @@ int main()
 	}
 	if (BotHaveRemainingShips)
 	{
-		//bot wygra³
+		
+
 	}
 	else
 	{
-		//Gracz wygra³
+		
+
 	}
 
 	return 0;

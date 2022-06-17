@@ -44,7 +44,7 @@ void NotifyThreeBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 
 
 
-	else if (SecondThreeBlockArray[1] == positionOfHit)
+	if (SecondThreeBlockArray[1] == positionOfHit)
 	{
 
 		SaveValueOfHitPositionInPrivateArray(_privateSecondThreeBlockArray, positionOfHit, 1);
@@ -56,13 +56,12 @@ void NotifyThreeBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 	}
 	else if (SecondThreeBlockArray[3] == positionOfHit)
 	{
-
 		SaveValueOfHitPositionInPrivateArray(_privateSecondThreeBlockArray, positionOfHit, 3);
 	}
 }
 
 
-void NotifyThreeBlockObserver::NotifyParticularObserver(int positionOfHit)
+bool NotifyThreeBlockObserver::NotifyParticularObserver(int positionOfHit)
 {
 
 	RememberValueOfPreviousHit(positionOfHit);
@@ -71,14 +70,16 @@ void NotifyThreeBlockObserver::NotifyParticularObserver(int positionOfHit)
 	{
 		_isFirstThreeBlockArrayDone = true;
 		NotifyObservers::ConvertInPutArrayIntoPositionOfDrowned(_privateFirstThreeBlockArray);
+		return true;
 	}
 
-	else if (!_isSecondThreeBlockArrayDone && _privateSecondThreeBlockArray[0] == 3)
+	else if (!_isSecondThreeBlockArrayDone && _privateSecondThreeBlockArray[0] >= 3)
 	{
 		_isSecondThreeBlockArrayDone = true;
 		NotifyObservers::ConvertInPutArrayIntoPositionOfDrowned(_privateSecondThreeBlockArray);
+		return true;
 	}
-	
+	return false;
 
 	
 }

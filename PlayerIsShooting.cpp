@@ -5,9 +5,39 @@
 #include <Windows.h>
 #include "PlayerIsShooting.h"
 #include "VirtualClassHandler.hpp"
+bool _botHaveRemainingShips = true;
 
-
-
+void BoardShooting::SetDrownValueManually(int positionToSet)
+{
+    bool _isNewPositionPresent = false;
+    for (int i = 0; i < 4; i++)
+    {
+        if (_temporaryArray[i] == positionToSet)
+        {
+            _isNewPositionPresent = true;
+            return;
+        }
+    }
+    if (!_isNewPositionPresent)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            if (_temporaryArray[i] == (-1))
+            {
+                _temporaryArray[i] = positionToSet;
+                break;
+            }
+        }
+        _drownArray[positionToSet] = true;
+        _botOneBlockRemaining--;
+        std::cout << "1Drowned" << std::endl;
+        std::cout << "1:" << _botOneBlockRemaining << std::endl;
+        if (_botOneBlockRemaining == 0 && _botTwoBlockRemaining == 0 && _botThreeBlockRemaining == 0 && _botFourBlockRemaining == 0)
+        {
+            _botHaveRemainingShips = false;
+        }
+    }
+}
 
 
 void BoardShooting::pass2BlockArray(std::array<std::array<int, 3>, 3> &twoBlockArray)
@@ -24,30 +54,58 @@ void BoardShooting::pass4BlockArray(std::array<int, 5> &fourBlockArray)
 
 }
 
-
+bool BoardShooting::DoesBotStillHaveShips()
+{
+    if (!_botHaveRemainingShips)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+}
 
 void BoardShooting::GenerateArrayOfExceptionsAroundDronwedShips()
 {
-   // int SizeOfVector = NotifyObservers::getSizeOfRememberedVector();
    int size = GetSizeOfVector();
-   int  PositionToDotAround;
-      
+   int  PositionToDotAround = 0;;
 
    for (int i = 0; i < size-1; i++)
    {
         PositionToDotAround = GetValueOfVector(i);
-        std::cout << PositionToDotAround;
        _drownArray[PositionToDotAround] = true;
+         std::cout << size<<"    "<<PositionToDotAround << std::endl;
    }
 
-
-
-   /* int columnOfDrownedShip = PositionToMarkAround % 10;
-    int rowOfDrownedShip = (PositionToMarkAround - columnOfDrownedShip) / 10;
-    _playerShootingArray[rowOfDrownedShip][columnOfDrownedShip] = 'X';
-    _drownArray[PositionToMarkAround] = true;*/
-
-   
+   if ((size - 1) == 4)
+   {
+       _botFourBlockRemaining--;
+       std::cout << "4Drowned" << std::endl;
+       std::cout << "4:" << _botFourBlockRemaining << std::endl;
+   }
+   else if ((size - 1) == 3)
+   {
+       _botThreeBlockRemaining--;
+       std::cout << "3Drowned" << std::endl;
+       std::cout << "3:" << _botThreeBlockRemaining << std::endl;
+   }
+   else if ((size - 1) == 2)
+   {
+       _botTwoBlockRemaining--;
+       std::cout << "2Drowned" << std::endl;
+       std::cout << "2:" << _botTwoBlockRemaining << std::endl;
+   }
+   else if ((size - 1) == 1)
+   {
+       _botOneBlockRemaining--;
+       std::cout << "1Drowned" << std::endl;
+       std::cout << "1:" << _botOneBlockRemaining << std::endl;
+   }
+   if (_botOneBlockRemaining == 0 && _botTwoBlockRemaining == 0 && _botThreeBlockRemaining == 0 && _botFourBlockRemaining == 0)
+   {
+       _botHaveRemainingShips = false;
+   }
 }
 
 
@@ -127,19 +185,24 @@ void BoardShooting::addBoxToSquare(sf::RenderWindow& win)
 
 void BoardShooting::playerShootHereAfterValidation(int position, bool& isPlayerMovement)
 {
+    _column = position % 10;
+    _row = (position - _column) / 10;
+
     if (BotArray[_row][_column] == '1')
     {
-        _playerShootingArray[_row][_column] == 'X';
-        _drownArray[position] = true;
+        SetDrownValueManually(position);
     }
 
-    else if (BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
+    if(BotArray[_row][_column] == '1' || BotArray[_row][_column] == '2' || BotArray[_row][_column] == '3' || BotArray[_row][_column] == '4')
     {
         _playerShootingArray[_row][_column] == '+';
         _hitArray[position] = true;
-        ChooseObserverToNotify(BotArray[_row][_column], position);
+        ObserverChangeStance = ChooseObserverToNotify(BotArray[_row][_column], position);
 
-        GenerateArrayOfExceptionsAroundDronwedShips();
+        if (ObserverChangeStance)
+        {
+            GenerateArrayOfExceptionsAroundDronwedShips();
+        }
         
     }
     else
@@ -167,24 +230,23 @@ void BoardShooting::ValidatePlayerInPutPosition(int positionToCheck, bool &isPla
 }
 bool BoardShooting::gridEvent(sf::RenderWindow& win, bool &isPlayerMovement,sf::Sprite &currentInstriction)
 {
-   
 
-        for (int i = 0; i < square_grid_bot.size(); i++)
+    for (int i = 0; i < square_grid_bot.size(); i++)
+    {
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
         {
-            if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
+            if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
             {
-                if (square_grid_bot[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
-                {
-                    ValidatePlayerInPutPosition(i, isPlayerMovement);
-                    return true;
+                ValidatePlayerInPutPosition(i, isPlayerMovement);
+                return true;
                 
-                }
-            }
-            else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
-            {
-                isPressed = false;
             }
         }
+        else if (!sf::Mouse::isButtonPressed(sf::Mouse::Button::Left))
+        {
+            isPressed = false;
+        }
+    }
 
     return false;
 }

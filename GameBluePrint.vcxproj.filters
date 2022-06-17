@@ -58,12 +58,6 @@
     <Filter Include="Source Files\Player\PlayerGenerating\Classes">
       <UniqueIdentifier>{cf352fe7-006d-4766-9d33-f0f0f7fdfce3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Common_.hpp\cpp_For_Printing">
-      <UniqueIdentifier>{774613f6-7769-41d1-a3e5-eba2e842443c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Common_.hpp\Classes_ForPrinting">
-      <UniqueIdentifier>{0b9a594c-f7de-4b7c-a6b8-6da2210340a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Player\PlayerMovement\ObserverFiles">
       <UniqueIdentifier>{2530b8ff-e4d6-47da-819f-5d2495a2372c}</UniqueIdentifier>
     </Filter>
@@ -83,9 +77,6 @@
     </ClCompile>
     <ClCompile Include="Board.cpp">
       <Filter>Source Files\Player\PlayerGenerating\cpp_For_Classes</Filter>
-    </ClCompile>
-    <ClCompile Include="InstructionPrintingClass.cpp">
-      <Filter>Header Files\Common_.hpp\cpp_For_Printing</Filter>
     </ClCompile>
     <ClCompile Include="NotifyObservers.cpp">
       <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
@@ -176,9 +167,6 @@
     <ClInclude Include="Board.h">
       <Filter>Source Files\Player\PlayerGenerating\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="InstructionPrintingClass.h">
-      <Filter>Header Files\Common_.hpp\Classes_ForPrinting</Filter>
-    </ClInclude>
     <ClInclude Include="NotifyObservers.h">
       <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
     </ClInclude>
@@ -198,6 +186,9 @@
       <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ClassFiles</Filter>
     </ClInclude>
     <ClInclude Include="VirtualClassHandler.hpp">
+      <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="PlaceHolder.hpp">
       <Filter>Source Files\Player\PlayerMovement\ObserverFiles\ExecutionFiles</Filter>
     </ClInclude>
   </ItemGroup>

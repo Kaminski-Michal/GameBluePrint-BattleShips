@@ -20,8 +20,7 @@ void NotifyTwoBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<int
 	if (arrayToCheck[positionInArray] == -1)
 	{
 		arrayToCheck[positionInArray] = positionOfHit;
-		arrayToCheck[0] ++;		
-		std::cout << "TAK";
+		arrayToCheck[0] ++;
 	}
 }
 
@@ -59,30 +58,32 @@ void NotifyTwoBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 	}
 }
 
-
-void NotifyTwoBlockObserver::NotifyParticularObserver(int positionOfHit)
+bool NotifyTwoBlockObserver::NotifyParticularObserver(int positionOfHit)
 {
 
 	RememberValueOfPreviousHit(positionOfHit);
 
-	if (!_isFirstTwoBlockArrayDone && _privateFirstTwoBlockArray[0] == 2)
+	if (!_isFirstTwoBlockArrayDone && _privateFirstTwoBlockArray[0] >= 2)
 	{
 		_isFirstTwoBlockArrayDone = true;
 		NotifyObservers::ConvertInPutArrayIntoPositionOfDrowned(_privateFirstTwoBlockArray);
+		return true;
 	}
 
-	else if (!_isSecondTwoBlockArrayDone && _privateSecondTwoBlockArray[0] == 2)
+	else if (!_isSecondTwoBlockArrayDone && _privateSecondTwoBlockArray[0] >= 2)
 	{
 		_isSecondTwoBlockArrayDone = true;
 		NotifyObservers::ConvertInPutArrayIntoPositionOfDrowned(_privateSecondTwoBlockArray);
-		
+		return true;
 	}
 
-	else if (!_isThirdTwoBlockArrayDone && _privateThirdTwoBlockArray[0] == 2)
+	else if (!_isThirdTwoBlockArrayDone && _privateThirdTwoBlockArray[0] >= 2)
 	{
 		_isThirdTwoBlockArrayDone = true;
 		NotifyObservers::ConvertInPutArrayIntoPositionOfDrowned(_privateThirdTwoBlockArray);
+		return true;
 	}
+	return false;
 }
 
 
@@ -109,12 +110,4 @@ void NotifyTwoBlockObserver::setArraysOfShipsPositions(std::array<std::array<int
 		}
 
 	}
-
-	std::cout << FirstTwoBlockArray[1] << std::endl;
-	std::cout << FirstTwoBlockArray[2] << std::endl;
-
-		std::cout << SecondTwoBlockArray[1] << std::endl;
-		std::cout << SecondTwoBlockArray[2] << std::endl;
-				std::cout << ThirdTwoBlockArray[1] << std::endl;
-				std::cout << ThirdTwoBlockArray[2] << std::endl;
 }

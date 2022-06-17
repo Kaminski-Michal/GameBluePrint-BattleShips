@@ -4,18 +4,22 @@
 #include "NotifyTwoBlockObserver.h"
 #include "NotifyThreeBlockObserver.h"
 #include "NotifyFourBlockObserver.h"
+#include "PlaceHolder.hpp"
 
 
 
 
 
 
-class ChooseObserverToNotify
+class ChooseVirtualObserverToNotify
 {
+	bool _observerChangeStance;
+
 public:
-	void static PassValueToChoosenObserver(NotifyObservers& thisOne, int positionOfHit)
+	bool PassValueToChoosenObserver(NotifyObservers& thisOne, int positionOfHit)
 	{
-		thisOne.NotifyParticularObserver(positionOfHit);
+	_observerChangeStance = thisOne.NotifyParticularObserver(positionOfHit);
+	return _observerChangeStance;
 		
 	}
 	int getSizeOfVector()
@@ -27,32 +31,48 @@ public:
 };
 
 
-static void ChooseObserverToNotify(char kindOfShipHit, int positionOfHit)
+bool ChooseObserverToNotify(char kindOfShipHit, int positionOfHit)
 {
 	NotifyOneBlockObserver oneBlock;
 	NotifyTwoBlockObserver twoBlock;
 	NotifyThreeBlockObserver threeBlock;
 	NotifyFourBlockObserver fourBlock;
-
+	Placeholder placeholder;
+	ChooseVirtualObserverToNotify Observer;
+	bool ObserverChangeStance;
 	switch (kindOfShipHit)
 	{
 	case '1':
 
-		ChooseObserverToNotify::PassValueToChoosenObserver(oneBlock, positionOfHit);
+	ObserverChangeStance = Observer.PassValueToChoosenObserver(oneBlock, positionOfHit);
+	return ObserverChangeStance;
+
 		break;
 	case'2':
 
-		ChooseObserverToNotify::PassValueToChoosenObserver(twoBlock, positionOfHit);
+	ObserverChangeStance = Observer.PassValueToChoosenObserver(twoBlock, positionOfHit);
+	return ObserverChangeStance;
+
 		break;
 	case '3':
 
-		ChooseObserverToNotify::PassValueToChoosenObserver(threeBlock, positionOfHit);
+	ObserverChangeStance = Observer.PassValueToChoosenObserver(threeBlock, positionOfHit);
+	return ObserverChangeStance;
 		break;
 	case '4':
 
-		ChooseObserverToNotify::PassValueToChoosenObserver(fourBlock, positionOfHit);
+		ObserverChangeStance = Observer.PassValueToChoosenObserver(fourBlock, positionOfHit);
+		return ObserverChangeStance;
 		break;
+
+	case NULL:
+		Observer.PassValueToChoosenObserver(placeholder, positionOfHit);
+		return false;
+		break;
+
 	default:
+		
+		return false;
 		break;
 	}
 

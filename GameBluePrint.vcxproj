@@ -153,7 +153,6 @@
   <ItemGroup>
     <ClCompile Include="Board.cpp" />
     <ClCompile Include="GameBluePrint.cpp" />
-    <ClCompile Include="InstructionPrintingClass.cpp" />
     <ClCompile Include="NotifyFourBlockObserver.cpp" />
     <ClCompile Include="NotifyObservers.cpp" />
     <ClCompile Include="NotifyOneBlockObserver.cpp" />
@@ -172,7 +171,6 @@
     <ClInclude Include="Generate2BlockShip.hpp" />
     <ClInclude Include="Generate3BlockShip.hpp" />
     <ClInclude Include="GenerateNavigationsDots.hpp" />
-    <ClInclude Include="InstructionPrintingClass.h" />
     <ClInclude Include="MainBotFunction.hpp" />
     <ClInclude Include="NextShipSegmentGenerator.hpp" />
     <ClInclude Include="NotifyFourBlockObserver.h" />
@@ -183,6 +181,7 @@
     <ClInclude Include="PathFinding.hpp" />
     <ClInclude Include="PathFinding_SuccessorThree.hpp" />
     <ClInclude Include="PathFinding_SuccessorTwo.hpp" />
+    <ClInclude Include="PlaceHolder.hpp" />
     <ClInclude Include="PlayerIsShooting.h" />
     <ClInclude Include="Printing_Board.hpp" />
     <ClInclude Include="SettingEmptyArray.hpp" />

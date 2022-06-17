@@ -42,23 +42,20 @@ void NotifyFourBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 	{
 		SaveValueOfHitPositionInPrivateArray(_privateFirstFourBlockArray, positionOfHit, 4);
 	}
-
-	
-
-	
 }
 
 
-void NotifyFourBlockObserver::NotifyParticularObserver(int positionOfHit)
+bool NotifyFourBlockObserver::NotifyParticularObserver(int positionOfHit)
 {
-
 	RememberValueOfPreviousHit(positionOfHit);
 
-	if (!_isFirstFourBlockArrayDone && _privateFirstFourBlockArray[0] == 4)
+	if (!_isFirstFourBlockArrayDone && _privateFirstFourBlockArray[0] >= 4)
 	{
 		_isFirstFourBlockArrayDone = true;
 		NotifyFourBlockObserver::ConvertInPutArrayIntoPositionOfDrowned(_privateFirstFourBlockArray);
+		return true;
 	}
+	return false;
 }
 
 
