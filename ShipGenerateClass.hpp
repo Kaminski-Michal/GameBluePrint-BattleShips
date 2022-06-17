@@ -1,5 +1,3 @@
-
-
 class GenerateBotShips
 {
 public:

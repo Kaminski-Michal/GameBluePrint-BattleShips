@@ -2,16 +2,10 @@
 #include "NotifyObservers.h"
 #include "NotifyFourBlockObserver.h"
 
-
-
-
 std::array<int, 5> _privateFirstFourBlockArray{ 0,-1,-1,-1,-1 };
 std::array<int, 3> FirstFourBlockArray{};
 
 bool _isFirstFourBlockArrayDone = false;
-
-
-
 
 void NotifyFourBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<int, 5>& arrayToCheck, int positionOfHit, int positionInArray)
 {
@@ -22,15 +16,13 @@ void NotifyFourBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<in
 	}
 }
 
-
-
 void NotifyFourBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 {
 	if (FirstFourBlockArray[1] == positionOfHit)
 	{
 		SaveValueOfHitPositionInPrivateArray(_privateFirstFourBlockArray, positionOfHit, 1);
 	}
-	else if(FirstFourBlockArray[2] == positionOfHit)
+	else if (FirstFourBlockArray[2] == positionOfHit)
 	{
 		SaveValueOfHitPositionInPrivateArray(_privateFirstFourBlockArray, positionOfHit, 2);
 	}
@@ -43,7 +35,6 @@ void NotifyFourBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 		SaveValueOfHitPositionInPrivateArray(_privateFirstFourBlockArray, positionOfHit, 4);
 	}
 }
-
 
 bool NotifyFourBlockObserver::NotifyParticularObserver(int positionOfHit)
 {
@@ -58,12 +49,10 @@ bool NotifyFourBlockObserver::NotifyParticularObserver(int positionOfHit)
 	return false;
 }
 
-
 void NotifyFourBlockObserver::setArraysOfShipsPositions(std::array<int, 5> Bot4BlockShipsInNavigationArray)
 {
 	for (int ParticularPositionOfShip = 0; ParticularPositionOfShip < 5; ParticularPositionOfShip++)
 	{
-			FirstFourBlockArray[(ParticularPositionOfShip + 1)] = static_cast<int>(Bot4BlockShipsInNavigationArray[ParticularPositionOfShip + 1]);
-			
+		FirstFourBlockArray[(ParticularPositionOfShip + 1)] = static_cast<int>(Bot4BlockShipsInNavigationArray[ParticularPositionOfShip + 1]);
 	}
 }

@@ -8,13 +8,9 @@
 #include "GenerateNavigationsDots.hpp"
 #include "Enums.hpp"
 
-//#include "Boat.h"
-
 static int _3BlockShipInGame = 2;
 static int _2BlockShipInGame = 3;
 static int _1BlockShipInGame = 4;
-
-
 
  bool Board::GetConfirmationIfAllShipsArePresent(int ShipSizeToCheck)
 {
@@ -65,8 +61,6 @@ std::array<std::array <char, 10>, 10> Board::GetCompletetPlayerArray()
     return userGridArray;
 }
 
-
-
 void Board::EndProgresssion()
 {
     GenerateNavigationDots GenerateDotsForBot;
@@ -74,8 +68,6 @@ void Board::EndProgresssion()
     {
         _isPlayer4BlockShipPresent = true;
         GenerateDotsForBot.GenerateDots(userGridArray);
-   
-
     }
     else if (_shipTypeInProgression == '3')
     {
@@ -83,37 +75,27 @@ void Board::EndProgresssion()
         if (_Player3BlockShipsRemaining == _3BlockShipInGame)
         {
             _isPlayer3BlockShipsPresent = true;
-            
-            
         }
     }
 
     else if (_shipTypeInProgression == '2')
     {
-        _Player2BlockShipsRemaining++;
-            if (_Player2BlockShipsRemaining == _2BlockShipInGame)
-            {
-                _isPlayer2BlockShipsPresent = true;
-                
-            }
+    _Player2BlockShipsRemaining++;
+        if (_Player2BlockShipsRemaining == _2BlockShipInGame)
+        {
+            _isPlayer2BlockShipsPresent = true;
+        }
     }
     _previousRow = 0;
     _previousColumn = 0;
     _shipTypeInProgression = 0;
     _isPlacingProgression = false;
     GenerateDotsForBot.GenerateDots(userGridArray);
-
-   
-
-    //Czerone pola ogwiazdkowane
-    //^
 }
 
 
 bool Board::PlaceWithProgression(int row, int column)
 {
-   
-
     if ((_previousRow == (row -1) && _previousColumn == column))
     {
         canChangeColour = true;
@@ -155,7 +137,6 @@ void Board::StartProgressionFunction(int previousRow, int previousColumn, int si
     _PlayerprogressionRemaining = size - 1;
     std::cout << "Progression is:" << _PlayerprogressionRemaining << std::endl;
     _isPlacingProgression = true;
-
 }
 
 void Board::PlaceShipHere(int row, int column, int size)
@@ -165,10 +146,6 @@ void Board::PlaceShipHere(int row, int column, int size)
     _shipTypeInProgression = size + 48;//na char wiêc rozmiar statku +48 
 
     userGridArray[row][column] = _shipTypeInProgression;
-
-    //Postaw stetek na tablicy symbol statku (to size)
-
-
     std::cout << userGridArray[row][column] << std::endl;
     if (size>1)
     {
@@ -178,7 +155,6 @@ void Board::PlaceShipHere(int row, int column, int size)
     {
         _Player1BlockShipsRemaining++;
         GenerateDotsForBot.GenerateDots(userGridArray);
-        //Postaw statek graficznie tutaj (statek 1blok) (gwiazdki zamieñ na czerwone pole)
     }
 }
 
@@ -188,12 +164,6 @@ void Board::ValidateInPut(int row, int column)
     std::cout << "3:" << _isPlayer3BlockShipsPresent << std::endl;
     std::cout << "2:" << _isPlayer2BlockShipsPresent << std::endl;
     std::cout << "1:" << _isPlayer1BlockShipsPresent << std::endl;
-    
-
-
-
-
-    
 
     if (_isPlacingProgression && userGridArray[row][column] == '.')
     {
@@ -238,12 +208,6 @@ void Board::ValidateInPut(int row, int column)
         {
             return;
         }
-
-
-
-
-
-
     }
     else
     {
@@ -266,15 +230,8 @@ void Board::ValidatePlayerInPut(int location)
         int Column = location - (Row * 10);
         std::cout << "it's row:" << Row << "\nand column:" << Column << std::endl;
         ValidateInPut(Row, Column);
-
     }
 }
-
-
-
-
-
-
 
 Board::Board()
 {}
@@ -295,37 +252,6 @@ void Board::setUserGrid() //tworzy tablice
     }
 }
 
-
-//void Board::readUserGridInfo(sf::RenderWindow& window)
-//{
-//    for (int line = 0; line < userGridArray.size(); line++)
-//    {
-//        for (int row = 0; row < userGridArray.size(); row++)
-//        {
-//            if (userGridArray[line][row] == '@') //statek tu jest
-//            {
-//                p_x = row * size_tile + location_userGrid_X;
-//                p_y = line * size_tile + location_userGrid_Y;
-//                //  -> odwo³anie do klas ³ódki
-//            }
-//            else if (userGridArray[line][row] == '*') //zagrane -> nie trafione
-//            {
-//                p_x = row * size_tile + location_userGrid_X;
-//                p_y = line * size_tile + location_userGrid_Y;
-//                //  -> odwo³anie do klas ³ódki
-//            }
-//            else if (userGridArray[line][row] == '+')//zagrane -> trafione
-//            {
-//                p_x = row * size_tile + location_userGrid_X;
-//                p_y = line * size_tile + location_userGrid_Y;
-//                //  -> odwo³anie do klas ³ódki
-//            }
-//        }
-//    }
-//    
-//}
-
-
 void Board::addSensorsToGrid()
 {
     for (int i = 0; i < 10 * 10; i++) // po ka¿dym elemencie tablicy
@@ -342,7 +268,6 @@ void Board::addSensorsToGrid()
     }
 }
 
-
 void Board::setBoatOnGrid(int& idx, const int& status)
 {
     x = 0;
@@ -353,7 +278,8 @@ void Board::setBoatOnGrid(int& idx, const int& status)
         x = std::abs(idx / 10);
         y = idx % 10;
     }
-    if (userGridArray[x][y] != 'x') {
+    if (userGridArray[x][y] != 'x') 
+    {
         if (status == '.' && userGridArray[x][y] == '@')
         {
             userGridArray[x][y] = status;
@@ -422,15 +348,6 @@ void Board::addBoxToSquare(sf::RenderWindow& window,bool gameInProcess, std::arr
     }
 }
 
-
-
-
-
-
-
-
-
-
 void Board::CheckEachRowAndColumnsForNavigationDots()
 {
     for (int row = 0; row < 10; row++)
@@ -447,9 +364,6 @@ void Board::CheckEachRowAndColumnsForNavigationDots()
 
 }
 
-
-
-
 bool Board::gridEvent(sf::RenderWindow& win)
 {
     if (_Player1BlockShipsRemaining == _1BlockShipInGame)
@@ -457,14 +371,12 @@ bool Board::gridEvent(sf::RenderWindow& win)
         _isPlayer1BlockShipsPresent = true;
         return NULL;
     }
-
     for (int i = 0; i < square_grid.size(); i++)
     {
         if (sf::Mouse::isButtonPressed(sf::Mouse::Button::Left) && !isPressed)
         {
             if (square_grid[i].contains(sf::Mouse::getPosition(win).x, sf::Mouse::getPosition(win).y))
             {
-                
                 isPressed = true;
                 ValidatePlayerInPut(i);
                 if (canChangeColour)
@@ -479,10 +391,6 @@ bool Board::gridEvent(sf::RenderWindow& win)
         {
             isPressed = false;
         }
-
-    
     }
-
     return false;
-
 }

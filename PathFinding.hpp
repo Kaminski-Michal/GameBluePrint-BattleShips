@@ -1,5 +1,3 @@
-
-
 class PathFinding : public PathFinding_SuccessorTwo
 {
 private:
@@ -11,7 +9,7 @@ private:
 	int randomHorizontalVector = 0;
 	int randomVerticalVector = 0;
 	int currentSuccessor = 1;
-	
+
 public:
 	
 	bool VerifyPossiblePatch(std::array<std::array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize)
@@ -59,11 +57,4 @@ public:
 			return false;
 		}
 	}
-
-
-
-
-
-
-
 };

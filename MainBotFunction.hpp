@@ -1,9 +1,5 @@
-class Bot :Shooting
+class Bot : public Shooting
 {
-	
-
-
-
 public:
 
 	Bot()
@@ -11,6 +7,4 @@ public:
 		GenerateBotShips GenerateBotShips(BotGeneratedArray);
 		Printing Printing(BotGeneratedArray);
 	}
-
-
 };

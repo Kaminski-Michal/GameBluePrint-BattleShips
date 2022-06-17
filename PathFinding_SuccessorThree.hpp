@@ -1,10 +1,8 @@
 class PathFinding_SuccessorThree
-
 {
 private:
 	bool _successorFourHavePath = true;
 	bool _successorThreeHavePath = true;
-
 	int _pathFindingTries = 0;
 	int _updatedRowPosition = 0;
 	int _updatedColumnPosition = 0;
@@ -13,7 +11,6 @@ private:
 	int currentSuccessor = 1;
 
 public:
-
 
 	bool VerifyPossbilePatchs_SuccessorThree(std::array<std::array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize,int previousHorizontalVector,int previousVerticalVector)
 	{

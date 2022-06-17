@@ -31,9 +31,6 @@
     <Filter Include="Source Files\Printing">
       <UniqueIdentifier>{c580894c-7176-4dc8-8571-b2b5e71cd75e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Bot\ShootingAtBot">
-      <UniqueIdentifier>{f1f60099-cb97-41d9-9a8e-7cf0c4daf601}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Common_.hpp">
       <UniqueIdentifier>{bb42055a-f5bf-40eb-acf2-c0c28dc1d690}</UniqueIdentifier>
     </Filter>
@@ -148,9 +145,6 @@
     </ClInclude>
     <ClInclude Include="BotMainMovementClass.hpp">
       <Filter>Source Files\Bot\Movement</Filter>
-    </ClInclude>
-    <ClInclude Include="BotReceiveShoot.hpp">
-      <Filter>Source Files\Bot\ShootingAtBot</Filter>
     </ClInclude>
     <ClInclude Include="Shooting.hpp">
       <Filter>Source Files\Shooting</Filter>

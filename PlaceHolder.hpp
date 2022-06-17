@@ -10,7 +10,6 @@ class Placeholder : public NotifyObservers
 
 	bool RememberValueOfPreviousHit(int positionOfHit)
 	{
-
 		if (!_isPlaceHolderBlockArrayDone && PlaceHolderBlockArray[0] == 1)
 		{
 			_isPlaceHolderBlockArrayDone = true;
@@ -21,8 +20,6 @@ class Placeholder : public NotifyObservers
 	}
 
 public:
-
-
 
 private:
 };

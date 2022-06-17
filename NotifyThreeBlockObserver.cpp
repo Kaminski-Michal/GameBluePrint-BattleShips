@@ -2,8 +2,6 @@
 #include "NotifyObservers.h"
 #include "NotifyThreeBlockObserver.h"
 
-
-
 std::array<int, 4> _privateFirstThreeBlockArray{ 0,(-1),(-1),(-1) };
 std::array<int, 4> _privateSecondThreeBlockArray{ 0,(-1),(-1),(-1) };
 
@@ -13,9 +11,6 @@ std::array<int, 4> SecondThreeBlockArray;
 bool _isFirstThreeBlockArrayDone = false;
 bool _isSecondThreeBlockArrayDone = false;
 
-
-
-
 void NotifyThreeBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<int, 4>& arrayToCheck, int positionOfHit, int positionInArray)
 {
 	if (arrayToCheck[positionInArray] == -1)
@@ -24,8 +19,6 @@ void NotifyThreeBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<i
 		arrayToCheck[0] ++;
 	}
 }
-
-
 
 void NotifyThreeBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 {
@@ -42,16 +35,12 @@ void NotifyThreeBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 		SaveValueOfHitPositionInPrivateArray(_privateFirstThreeBlockArray, positionOfHit, 3);
 	}
 
-
-
 	if (SecondThreeBlockArray[1] == positionOfHit)
 	{
-
 		SaveValueOfHitPositionInPrivateArray(_privateSecondThreeBlockArray, positionOfHit, 1);
 	}
 	else if (SecondThreeBlockArray[2] == positionOfHit)
 	{
-
 		SaveValueOfHitPositionInPrivateArray(_privateSecondThreeBlockArray, positionOfHit, 2);
 	}
 	else if (SecondThreeBlockArray[3] == positionOfHit)
@@ -60,10 +49,8 @@ void NotifyThreeBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 	}
 }
 
-
 bool NotifyThreeBlockObserver::NotifyParticularObserver(int positionOfHit)
 {
-
 	RememberValueOfPreviousHit(positionOfHit);
 
 	if (!_isFirstThreeBlockArrayDone && _privateFirstThreeBlockArray[0] == 3)
@@ -80,10 +67,7 @@ bool NotifyThreeBlockObserver::NotifyParticularObserver(int positionOfHit)
 		return true;
 	}
 	return false;
-
-	
 }
-
 
 void NotifyThreeBlockObserver::setArraysOfShipsPositions(std::array<std::array<int, 4>, 2> Bot3BlockShipsInNavigationArray)
 {
@@ -91,7 +75,6 @@ void NotifyThreeBlockObserver::setArraysOfShipsPositions(std::array<std::array<i
 	{
 		for (int ParticularPositionOfShip = 0; ParticularPositionOfShip < 3; ParticularPositionOfShip++)
 		{
-
 			if (ParticularShipPack == 0)
 			{
 				FirstThreeBlockArray[(ParticularPositionOfShip + 1)] = Bot3BlockShipsInNavigationArray[ParticularShipPack][ParticularPositionOfShip + 1];
@@ -100,10 +83,6 @@ void NotifyThreeBlockObserver::setArraysOfShipsPositions(std::array<std::array<i
 			{
 				SecondThreeBlockArray[ParticularPositionOfShip + 1] = Bot3BlockShipsInNavigationArray[ParticularShipPack][ParticularPositionOfShip + 1];
 			}
-
 		}
-
 	}
-
-
 }

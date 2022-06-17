@@ -1,30 +1,9 @@
 class ValideateShipPosition
 {
-private:
-	
-
-	
-	
-
-
-
-
-
-
 protected:
 	bool _newPositionsAllowed = false;
 
-
 public:
-
-
-
-
-
-	
-	
-
-
 
 	void ValidateCurrentRow(std::array<std::array<char, 10>, 10> &BotArray,int row, int column)
 	{

@@ -1,11 +1,8 @@
 class PathFinding_SuccessorTwo :public PathFinding_SuccessorThree
-
 {
 private:
 	bool _successorTwoHavePath = true;
 	bool _successorThreeHavePath = true;
-
-
 	int _pathFindingTries = 0;
 	int _updatedRowPosition = 0;
 	int _updatedColumnPosition = 0;
@@ -14,7 +11,6 @@ private:
 	int currentSuccessor = 1;
 
 public:
-
 
 	bool VerifyPossbilePatchs_SuccessorTwo(std::array<std::array<char, 10>, 10>& BotArray, int startingRow, int startingColumn, int shipSize,int previousHorizontalVector,int previousVerticalVector)
 	{
@@ -61,8 +57,6 @@ public:
 				return true;
 			}
 			return false;
-
-			
 		}
 	}
 };

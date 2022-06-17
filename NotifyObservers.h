@@ -2,8 +2,6 @@
 #include <array>
 #include <vector>
 
-
-
 class RetunObserverValues
 {
 public:
@@ -21,25 +19,19 @@ public:
 
 	virtual bool NotifyParticularObserver(int positionOfHit) = 0;
 
-	template<typename Type,size_t sizeOfArray>
-	void ConvertInPutArrayIntoPositionOfDrowned(std::array<Type, sizeOfArray>&TakenArray)
+	template<typename Type, size_t sizeOfArray>
+	void ConvertInPutArrayIntoPositionOfDrowned(std::array<Type, sizeOfArray>& TakenArray)
 	{
-		
 		std::array<Type, sizeOfArray>ArrayToPass;
-		for (int i = 0; i < 
+		for (int i = 0; i <
 			sizeOfArray; i++)
 		{
-			_temporaryArray[i] = TakenArray[i+1];
+			_temporaryArray[i] = TakenArray[i + 1];
 		}
-		
 
 		RetunObserverValues ReturnValues;
 		ReturnValues.setSize(sizeOfArray);
 		ReturnValues.setArray(_temporaryArray);
-		_temporaryArray = {0,0,0,0,0};
-
+		_temporaryArray = { 0,0,0,0,0 };
 	}
-	
 };
-
-

@@ -1,17 +1,14 @@
-	bool _goUpSecondBlockProgression = true;
-	bool _goDownSecondBlockProgression = true;
-	bool _goLeftSecondBlockProgression = true;;
-	bool _goRightSecondBlockProgression = true;
-	bool doesPathfinderProgressionTwoHaveWay = true;
+bool _goUpSecondBlockProgression = true;
+bool _goDownSecondBlockProgression = true;
+bool _goLeftSecondBlockProgression = true;;
+bool _goRightSecondBlockProgression = true;
+bool doesPathfinderProgressionTwoHaveWay = true;
 
-	int _SecondProgressionPositionRow = 0;
-	int _SecondProgressionPositionColumn = 0;
-
-	
+int _SecondProgressionPositionRow = 0;
+int _SecondProgressionPositionColumn = 0;
 
 class UpdatedShootPathfinding : public ShootPathfindingProgressionThree
 {
-
 	void ValidateEdges(int startingRow, int startingColumn)
 	{
 		if (startingRow == 0)
@@ -69,78 +66,66 @@ class UpdatedShootPathfinding : public ShootPathfindingProgressionThree
 			}
 		}
 	}
-
-
-
 public:
 	
-	void UpdateStartingRowAndColumnForSecondProgression(int updatedStrtingRow, int updatedStaringColumn)
+void SecondBlockProgression(int startingRow, int startingColumn, int progressionSize)
+{
+
+	if (BotProgressionHitThree)
 	{
-
-	}
-	
-	void SecondBlockProgression(int startingRow, int startingColumn, int progressionSize)
-	{
-		if (!doesPathfinderProgressionFourHaveWay && !doesPathfinderProgressionThreeHaveWay && _sizeOfShipInProgression != 0)
+		ThirdBlockProgression(_SecondProgressionPositionRow, _SecondProgressionPositionColumn, progressionSize);
+		if (BotProgressionHitFour)
 		{
-			std::cout << "NEXT EMERGENCY FOUND\n";
-		}
-
-		if (BotProgressionHitThree)
-		{
-			ThirdBlockProgression(_SecondProgressionPositionRow, _SecondProgressionPositionColumn, progressionSize);
-			if (BotProgressionHitFour)
-			{
-				_nextShootingRow = _fourProgressionPositionRow;
-				_nextShootingColumn = _fourProgressionPositionColumn;
-				return;
-			}
-			if (!doesPathfinderProgressionThreeHaveWay)
-			{
-				BotProgressionHitThree = false;
-			}
-			else
-			{
-				_nextShootingRow = _thirdProgressionPositionRow ;
-				_nextShootingColumn =  _thirdProgressionPositionColumn ;
-				return;
-			}
-		}
-
-		ValidateEdges(startingRow, startingColumn);
-		ValidateRemainingPaths(startingRow, startingColumn);
-
-		if (_goUpSecondBlockProgression)
-		{
-			_nextShootingRow = _SecondProgressionPositionRow = startingRow - 1;
-			_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn;
+			_nextShootingRow = _fourProgressionPositionRow;
+			_nextShootingColumn = _fourProgressionPositionColumn;
 			return;
 		}
-		if (_goDownSecondBlockProgression)
+		if (!doesPathfinderProgressionThreeHaveWay)
 		{
-			_nextShootingRow = _SecondProgressionPositionRow = startingRow + 1;
-			_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn;
-			return;
+			BotProgressionHitThree = false;
 		}
-		if (_goLeftSecondBlockProgression)
+		else
 		{
-			_nextShootingRow = _SecondProgressionPositionRow = startingRow;
-			_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn - 1;
-			return;
-		}
-		if (_goRightSecondBlockProgression)
-		{
-			_nextShootingRow = _SecondProgressionPositionRow = startingRow;
-			_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn + 1;
-			return;
-		}
-
-
-
-		if (!_goRightSecondBlockProgression && !_goLeftSecondBlockProgression && !_goUpSecondBlockProgression && !_goDownSecondBlockProgression)
-		{
-			doesPathfinderProgressionTwoHaveWay = false;
+			_nextShootingRow = _thirdProgressionPositionRow ;
+			_nextShootingColumn =  _thirdProgressionPositionColumn ;
 			return;
 		}
 	}
+	ValidateEdges(startingRow, startingColumn);
+	ValidateRemainingPaths(startingRow, startingColumn);
+
+	if (_goUpSecondBlockProgression)
+	{
+		_nextShootingRow = _SecondProgressionPositionRow = startingRow - 1;
+		_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn;
+		return;
+	}
+	if (_goDownSecondBlockProgression)
+	{
+		_nextShootingRow = _SecondProgressionPositionRow = startingRow + 1;
+		_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn;
+		return;
+	}
+	if (_goLeftSecondBlockProgression)
+	{
+		_nextShootingRow = _SecondProgressionPositionRow = startingRow;
+		_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn - 1;
+		return;
+	}
+	if (_goRightSecondBlockProgression)
+	{
+		_nextShootingRow = _SecondProgressionPositionRow = startingRow;
+		_nextShootingColumn = _SecondProgressionPositionColumn = startingColumn + 1;
+		return;
+	}
+
+
+
+	if (!_goRightSecondBlockProgression && !_goLeftSecondBlockProgression && !_goUpSecondBlockProgression && !_goDownSecondBlockProgression)
+	{
+		doesPathfinderProgressionTwoHaveWay = false;
+		return;
+	}
+
+}
 };

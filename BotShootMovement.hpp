@@ -2,7 +2,6 @@ GenerateNavigationDots generateNavigationDots;
 int _progressionRowStart = 0;
 int _progressionColumnStart = 0;
 
-
 class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 {
 	int _rowTarget = 0;
@@ -18,27 +17,22 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 		_columnTarget = (rand() % 10);
 	}
 
-	void changePlusForX()
+void changePlusForX()
+{
+	for (int Row = 0; Row < 10; Row++)
 	{
-		for (int Row = 0; Row < 10; Row++)
+		for (int Column = 0; Column < 10; Column++)
 		{
-			for (int Column = 0; Column < 10; Column++)
+			if (BotShootingAray[Row][Column] == '+')
 			{
-				if (BotShootingAray[Row][Column] == '+')
-				{
-					BotShootingAray[Row][Column] = 'X';
-					PlayerArray[Row][Column] = 'X';
-				}
+				BotShootingAray[Row][Column] = 'X';
+				PlayerArray[Row][Column] = 'X';
 			}
 		}
 	}
-	
-
-
-
+}
 	void shootWithProgression()
 	{
-
 		if (!doesPathfinderProgressionTwoHaveWay && !doesPathfinderProgressionThreeHaveWay && _sizeOfShipInProgression != 0)
 		{
 			std::cout << "EMERGENCY FOUND\n";
@@ -52,8 +46,6 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 		isBotMovement = BotShootingUsingProgression(_rowTarget, _columnTarget);
 		isPlayerMovement = !isBotMovement;
 
-
-
 		if (_sizeOfShipInProgression == 0)
 		{
 			changePlusForX();
@@ -61,8 +53,6 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 			BotProgressionHitFour = false;
 			BotProgressionHitThree = false;
 			BotProgression = false;
-
-			
 
 			_goUpSecondBlockProgression = true;
 			_goUpThirdBlockProgression = true;
@@ -79,11 +69,8 @@ class BotMovementShoot : public Shooting, UpdatedShootPathfinding
 			_goRightSecondBlockProgression = true;
 			_goRightThirdBlockProgression = true;
 			_goRightFourBlockProgression = true;
-
 		}
 	}
-
-
 
 protected:
 	int oneBlockShipDrowned = 0;
@@ -95,11 +82,11 @@ protected:
 	bool isFourBlockShopDrowned = false;
 
 public:
+
 	void GenerateEmptyShootingArray()
 	{
 		GenerateEmptyArray(BotShootingAray);
 	}
-
 
 	void BotMovement()
 	{
@@ -137,7 +124,4 @@ public:
 		std::cout << "Bot is shooting at row: " << _rowTarget << "\nand column: " << _columnTarget << std::endl;
 		std::cout << "Hit: " << std::boolalpha<<isBotMovement << std::endl;
 	}
-	
-
-
 };

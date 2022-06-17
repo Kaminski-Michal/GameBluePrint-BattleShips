@@ -37,7 +37,6 @@ class ThreeBlockShipGenerator :public NextShipSegmentGenerator
 			}
 			saveInTemporaryArray(shipRow, shipColumn);
 			BotBoard[StartRow + _nextRowPosition][StartColumn + _nextColumnPosition] = '3';
-
 			StartRow = StartRow + _nextRowPosition;
 			StartColumn = StartColumn + _nextColumnPosition;
 			_remainingShipSegmentsPlaced--;

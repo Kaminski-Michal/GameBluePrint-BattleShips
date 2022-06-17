@@ -2,12 +2,10 @@ bool _goUpFourBlockProgression = true;
 bool _goDownFourBlockProgression = true;
 bool _goLeftFourBlockProgression = true;;
 bool _goRightFourBlockProgression = true;
+bool doesPathfinderProgressionFourHaveWay = true;
 
 int _fourProgressionPositionRow = 0;
 int _fourProgressionPositionColumn = 0;
-bool doesPathfinderProgressionFourHaveWay = true;
-
-
 int _nextShootingRow = 0;
 int _nextShootingColumn = 0;
 int _nextShootingRowProgressionFour = 0;
@@ -37,9 +35,6 @@ class ShootPathfindingProgressionFour
 			_goRightFourBlockProgression = false;
 		}
 	}
-
-
-
 
 	void ValidateRemainingPathsProgressionFour(int startingRow, int startingColumn)
 	{
@@ -75,18 +70,12 @@ class ShootPathfindingProgressionFour
 			}
 		}
 	}
-
-
 public:
-
-
 
 	void FourthBlockProgression(int startingRow, int startingColumn, int progressionSize)
 	{
 		ValidateEdges(startingRow, startingColumn);
 		ValidateRemainingPathsProgressionFour(startingRow, startingColumn);
-
-
 
 		if (_goDownFourBlockProgression)
 		{
@@ -117,14 +106,5 @@ public:
 			doesPathfinderProgressionFourHaveWay = false;
 			return;
 		}
-
-
 	}
-
-
-
-
-
-
-
 };

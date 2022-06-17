@@ -13,9 +13,7 @@ bool _isFirstTwoBlockArrayDone = false;
 bool _isSecondTwoBlockArrayDone = false;
 bool _isThirdTwoBlockArrayDone = false;
 
-
-
-void NotifyTwoBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<int, 3> &arrayToCheck ,int positionOfHit, int positionInArray)
+void NotifyTwoBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<int, 3>& arrayToCheck, int positionOfHit, int positionInArray)
 {
 	if (arrayToCheck[positionInArray] == -1)
 	{
@@ -23,8 +21,6 @@ void NotifyTwoBlockObserver::SaveValueOfHitPositionInPrivateArray(std::array<int
 		arrayToCheck[0] ++;
 	}
 }
-
-
 
 void NotifyTwoBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 {
@@ -39,12 +35,10 @@ void NotifyTwoBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 
 	else if (SecondTwoBlockArray[1] == positionOfHit)
 	{
-		
 		SaveValueOfHitPositionInPrivateArray(_privateSecondTwoBlockArray, positionOfHit, 1);
 	}
 	else if (SecondTwoBlockArray[2] == positionOfHit)
 	{
-		
 		SaveValueOfHitPositionInPrivateArray(_privateSecondTwoBlockArray, positionOfHit, 2);
 	}
 
@@ -60,7 +54,6 @@ void NotifyTwoBlockObserver::RememberValueOfPreviousHit(int positionOfHit)
 
 bool NotifyTwoBlockObserver::NotifyParticularObserver(int positionOfHit)
 {
-
 	RememberValueOfPreviousHit(positionOfHit);
 
 	if (!_isFirstTwoBlockArrayDone && _privateFirstTwoBlockArray[0] >= 2)
@@ -86,14 +79,12 @@ bool NotifyTwoBlockObserver::NotifyParticularObserver(int positionOfHit)
 	return false;
 }
 
-
 void NotifyTwoBlockObserver::setArraysOfShipsPositions(std::array<std::array<int, 3>, 3> Bot2BlockShipsInNavigationArray)
 {
 	for (int ParticularShipPack = 0; ParticularShipPack < 3; ParticularShipPack++)
 	{
 		for (int ParticularPositionOfShip = 0; ParticularPositionOfShip < 2; ParticularPositionOfShip++)
 		{
-
 			if (ParticularShipPack == 0)
 			{
 				FirstTwoBlockArray[(ParticularPositionOfShip + 1)] = Bot2BlockShipsInNavigationArray[ParticularShipPack][ParticularPositionOfShip + 1];
@@ -106,8 +97,6 @@ void NotifyTwoBlockObserver::setArraysOfShipsPositions(std::array<std::array<int
 			{
 				ThirdTwoBlockArray[(ParticularPositionOfShip + 1)] = Bot2BlockShipsInNavigationArray[ParticularShipPack][ParticularPositionOfShip + 1];
 			}
-
 		}
-
 	}
 }

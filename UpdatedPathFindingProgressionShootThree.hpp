@@ -2,15 +2,13 @@ bool _goUpThirdBlockProgression = true;
 bool _goDownThirdBlockProgression = true;
 bool _goLeftThirdBlockProgression = true;
 bool _goRightThirdBlockProgression = true;
-
+bool doesPathfinderProgressionThreeHaveWay = true;
 
 int _thirdProgressionPositionRow = 0;
 int _thirdProgressionPositionColumn = 0;
-bool doesPathfinderProgressionThreeHaveWay = true;
 
 class ShootPathfindingProgressionThree : public ShootPathfindingProgressionFour
 {
-
 	void ValidateEdges(int startingRow, int startingColumn)
 	{
 		if (startingRow == 0)
@@ -33,7 +31,6 @@ class ShootPathfindingProgressionThree : public ShootPathfindingProgressionFour
 			_goRightThirdBlockProgression = false;
 		}
 	}
-
 
 	void ValidateRemainingPathsProgressionThree(int startingRow, int startingColumn)
 	{
@@ -70,7 +67,6 @@ class ShootPathfindingProgressionThree : public ShootPathfindingProgressionFour
 			}
 		}
 	}
-
 public:
 	
 	void ThirdBlockProgression(int startingRow, int startingColumn, int progressionSize)
@@ -127,11 +123,4 @@ public:
 
 
 	}
-
-
-
-
-
-
-
 };

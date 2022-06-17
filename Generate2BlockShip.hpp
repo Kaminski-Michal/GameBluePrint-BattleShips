@@ -59,7 +59,7 @@ class TwoBlockShipGenerator :public NextShipSegmentGenerator
 			int row = temporartyShipPositon[i][0];
 			int column = temporartyShipPositon[i][1];
 			BotBoard[row][column] = '2';
-			Bot2BlockShipsInNavigationArray[_presentShips - 1][i+1] = row * 10 + column;
+			Bot2BlockShipsInNavigationArray[_presentShips - 1][i + 1] = row * 10 + column;
 		}
 	}
 

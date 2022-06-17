@@ -1,9 +1,6 @@
 #include <iostream>
 #include <array>
 
-
-
-
 class BoardShooting
 {
 	const int size_point = 16;
@@ -34,20 +31,17 @@ class BoardShooting
 	void ValidatePlayerInPutPosition(int positionToCheck, bool& isPlayerMovement);
 	std::array<int, 4> _temporaryArray{ -1,-1,-1,-1 };
 
-
 public:
 	bool DoesBotStillHaveShips();
 	void GenerateArrayOfExceptionsAroundDronwedShips();
 	void takeBotGeneratedArray(std::array<std::array<char, 10>, 10> TakenbotArray);
 	void SetUp();
 	void addSensorsToGrid();
-	bool gridEvent(sf::RenderWindow&, bool &isPlayerMovement, sf::Sprite &currentInstriction);
+	bool gridEvent(sf::RenderWindow&, bool& isPlayerMovement, sf::Sprite& currentInstriction);
 	void addBoxToSquare(sf::RenderWindow&);
 	void playerShootHereAfterValidation(int position, bool& isPlayerMovement);
-	void pass2BlockArray(std::array<std::array<int, 3>, 3> &twoBlockArray);
-	void pass3BlockArray(std::array<std::array<int, 4>, 2> &threeBlockArray);
-	void pass4BlockArray(std::array<int, 5> &fourBlockArray);
+	void pass2BlockArray(std::array<std::array<int, 3>, 3>& twoBlockArray);
+	void pass3BlockArray(std::array<std::array<int, 4>, 2>& threeBlockArray);
+	void pass4BlockArray(std::array<int, 5>& fourBlockArray);
 	void SetDrownValueManually(int positionToSet);
-
 };
-

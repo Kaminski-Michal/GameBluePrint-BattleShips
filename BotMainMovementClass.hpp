@@ -1,16 +1,8 @@
 class BotMainMovementClass :public BotMovementShoot
 {
-protected:
-
-	
-
-
-
 public:
 BotMovementShoot BotMovementShoot;
 GenerateNavigationDots generateNavigationDots;
-
-
 	BotMainMovementClass()
 	{
 		GenerateEmptyShootingArray();
@@ -41,8 +33,6 @@ GenerateNavigationDots generateNavigationDots;
 			PlayerHaveRemainingShips = false;
 		}
 	#pragma endregion
-		Printing Printing(PlayerArray);
-
 	}
 	
 	

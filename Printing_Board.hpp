@@ -1,11 +1,9 @@
-
-
 class Printing
 {
 	void PrintMainRow()
 	{
 		std::cout << "     ";
-		for (int i: RowOfLetter)
+		for (int i : RowOfLetter)
 		{
 			std::cout << (char)i << " ";
 		}
@@ -37,5 +35,4 @@ public:
 		PrintRow(playerBoard);
 		std::cout << "\n\n\n";
 	}
-	
 };

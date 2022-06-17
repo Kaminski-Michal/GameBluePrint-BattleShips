@@ -2,7 +2,7 @@
 #include <array>
 #include "NotifyObservers.h"
 
-std::array<int, 5>_PrivateArray{0};
+std::array<int, 5>_PrivateArray{ 0 };
 int _privateSize = 0;
 
 void RetunObserverValues::setSize(int size)
@@ -23,5 +23,3 @@ int RetunObserverValues::GetArrayValueInThisPosition(int positionToTake)
 	int value = _PrivateArray[positionToTake];
 	return value;
 }
-
-

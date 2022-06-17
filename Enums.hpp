@@ -1,7 +1,5 @@
-
 static std::array<char, 10>RowOfLetter{ 'A','B','C','D','E','F','G','H','I','J' };
 static const bool GameInProgress = true;
-
 static enum Direction
 {
 	Up,
@@ -9,8 +7,6 @@ static enum Direction
 	Right,
 	Down,
 };
-
-
 static enum PlayersPlacedShips
 {
 	OneBlockShips =1,
@@ -19,6 +15,3 @@ static enum PlayersPlacedShips
 	FourBlockShips,
 
 };
-
-
-

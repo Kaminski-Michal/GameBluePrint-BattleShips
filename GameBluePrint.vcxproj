@@ -163,7 +163,6 @@
   <ItemGroup>
     <ClInclude Include="Board.h" />
     <ClInclude Include="BotMainMovementClass.hpp" />
-    <ClInclude Include="BotReceiveShoot.hpp" />
     <ClInclude Include="BotShootMovement.hpp" />
     <ClInclude Include="Enums.hpp" />
     <ClInclude Include="Gemerate4BlockShip.hpp" />

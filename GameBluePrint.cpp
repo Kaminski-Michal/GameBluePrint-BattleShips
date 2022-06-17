@@ -1,5 +1,3 @@
-
-
 #pragma region include <Library>
 #pragma region SFML_Library
 #include <SFML/Window.hpp>
@@ -15,16 +13,12 @@
 #include <cstdlib>
 #include <WinUser.h>
 #pragma endregion
-
-int BotTurnsToWin = 0;
-
-
 #pragma region VariablesDeclaration
 #pragma region PlayerShipPresentVariables
-bool isPlayer4BlockShipPresent = false;//1x
-bool isPlayer3BlockShipsPresent = false;//2x
-bool isPlayer2BlockShipsPresent = false;//3x
-bool isPlayer1BlockShipsPresent = false;//4x
+bool isPlayer4BlockShipPresent = false;
+bool isPlayer3BlockShipsPresent = false;
+bool isPlayer2BlockShipsPresent = false;
+bool isPlayer1BlockShipsPresent = false;
 #pragma endregion
 #pragma region BotShipPresentVariables
 bool is4BlockShipPresent = false;//1x
@@ -40,7 +34,6 @@ bool BotHaveRemainingShips = true;
 
 #pragma endregion
 #pragma endregion
-
 #pragma region include Common_.h_Files
 #include "Enums.hpp"
 #include "GenerateNavigationsDots.hpp"
@@ -48,19 +41,13 @@ bool BotHaveRemainingShips = true;
 #include "Shooting.hpp"
 #include "SettingEmptyArray.hpp"
 #pragma endregion
-
 #pragma region BotFiles
-
 #pragma region include "BotMovementFiles"
 #include "UpdatedPathFindingProgressionShootFour.hpp"
 #include "UpdatedPathFindingProgressionShootThree.hpp"
 #include "UpdatedPathFindingProgressionStart.hpp"
 #include "BotShootMovement.hpp"
 #include "BotMainMovementClass.hpp"
-#pragma endregion
-
-#pragma region include BotReceiveShoot
-#include "BotReceiveShoot.hpp"
 #pragma endregion
 
 #pragma region include "BotShipsFiles"
@@ -78,37 +65,20 @@ bool BotHaveRemainingShips = true;
 #pragma endregion
 
 #pragma endregion
-
 #pragma region PlayerFiles
 #include "Board.h"
 #include "PlayerIsShooting.h"
-//#include "VirtualClassHandler.hpp"
-
-
-
 #pragma endregion
-
-
-
-
-
-
 
 int main()
 {
 	Board board_1;
-	
+
 	board_1.SetUp();
 	board_1.setUserGrid();
-
-	bool TypesOfShipsPresent = false;
-	
-	//ShowWindow(GetConsoleWindow(), SW_HIDE); unset as comment to hide console (leaves only main game window)
+	ShowWindow(GetConsoleWindow(), SW_HIDE);
 	sf::RenderWindow window;
 	window.create(sf::VideoMode{ 1024, 610 }, "Boards");
-	
-
-	//window.setFramerateLimit(0);
 	sf::Event event;
 	sf::Texture boardTexture;
 	sf::Texture GridTexture;
@@ -129,14 +99,9 @@ int main()
 	usergrid.setPosition(50, 150);
 	botgrid.setPosition(650, 150);
 	window.display();
-	Sleep(100);
-	window.display();
-	
 
 	while (!isPlayer1BlockShipsPresent || !isPlayer2BlockShipsPresent || !isPlayer3BlockShipsPresent || !isPlayer4BlockShipPresent)
 	{
-		
-
 		if (!isPlayer4BlockShipPresent)
 		{
 			instruction1.loadFromFile("InstructionPlace4BlockShipNow.png");
@@ -159,7 +124,7 @@ int main()
 		{
 			instruction1.loadFromFile("InstructionPlace1BlockShipNow.png");
 			currentInstriction.setTexture(instruction1);
-			currentInstriction.setPosition(190,520);
+			currentInstriction.setPosition(190, 520);
 		}
 
 		window.pollEvent(event);
@@ -195,10 +160,8 @@ int main()
 			isPlayer1BlockShipsPresent = board_1.GetConfirmationIfAllShipsArePresent(PlayersPlacedShips::OneBlockShips);
 		}
 	}
-
-
 	PlayerArray = board_1.GetCompletetPlayerArray();
-	Printing print(PlayerArray);	
+	Printing print(PlayerArray);
 
 	BotMainMovementClass BotMainMovementClass;
 	Bot Bot;
@@ -208,13 +171,6 @@ int main()
 	board_shooting.pass2BlockArray(Bot2BlockShipsInNavigationArray);
 	board_shooting.pass3BlockArray(Bot3BlockShipsInNavigationArray);
 	board_shooting.pass4BlockArray(Bot4BlockShipInNavigationArray);
-	
-	
-
-
-	
-	
-
 
 	while (BotHaveRemainingShips && PlayerHaveRemainingShips)
 	{
@@ -230,7 +186,7 @@ int main()
 
 		if (isPlayerMovement)
 		{
-			board_shooting.gridEvent(window, isPlayerMovement,currentInstriction);
+			board_shooting.gridEvent(window, isPlayerMovement, currentInstriction);
 			BotHaveRemainingShips = board_shooting.DoesBotStillHaveShips();
 		}
 		else
@@ -238,34 +194,24 @@ int main()
 			BotMainMovementClass.BotShootingTurn();
 			Printing Printing(BotShootingAray);
 			Sleep(1000);
-
 		}
-
 	}
+
 	if (BotHaveRemainingShips)
 	{
-		
-
+		boardTexture.loadFromFile("BotWON.png");
+		window.display();
 	}
 	else
 	{
-		
-
+		boardTexture.loadFromFile("PlayerWON.png");
+		window.display();
 	}
 
+	board.setTexture(boardTexture);
+	window.draw(board);
+	window.display();
+
+	Sleep(4000);
 	return 0;
-
-
-
-
-
-
-
-	//Wyœwietla now¹ tablicê (teraz pod strzelanie)
-	//aktualizacja tablicy po strzale bota 
-
-	
-	
-
 }
-

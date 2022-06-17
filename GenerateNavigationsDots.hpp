@@ -43,6 +43,7 @@ class GenerateNavigationDots
 		}
 	}
 public:
+
 	void GenerateDots(std::array<std::array<char, 10>, 10>&generateDotsOnThisBoard)
 	{
 		CheckEachRow(generateDotsOnThisBoard);
