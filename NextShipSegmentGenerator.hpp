@@ -6,7 +6,6 @@ protected:
 	int _nextRowLocation = 0;
 	int _nextColumnLocation = 0;
 	std::string _returningString = "";
-	std::array<std::array<char, 10>, 10> *PointerBotArray;
 public:
 
 	std::string GenerateNextPositon(std::array<std::array<char, 10>, 10> &BotArray, int previousRow, int previousColumn)

@@ -2,8 +2,8 @@ To add SFML for game to work.
 GameBluePrint-> RMB-> properties
 
 VC++ Direcotries
-1Dodać external Include Directories (dodać folder include)
-2Dodać Library Directories (lib)
+1 add external Include Directories (add include folder)
+2 add Library Directories (lib)
 
 Linker -> input
 

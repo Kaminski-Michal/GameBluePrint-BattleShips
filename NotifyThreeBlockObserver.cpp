@@ -2,12 +2,10 @@
 #include "NotifyObservers.h"
 #include "NotifyThreeBlockObserver.h"
 
-std::array<int, 4> _privateFirstThreeBlockArray{ 0,(-1),(-1),(-1) };
-std::array<int, 4> _privateSecondThreeBlockArray{ 0,(-1),(-1),(-1) };
-
+std::array<int, 4> _privateFirstThreeBlockArray{ 0,-1,-1,-1};
+std::array<int, 4> _privateSecondThreeBlockArray{ 0,-1,-1,-1};
 std::array<int, 4> FirstThreeBlockArray;
 std::array<int, 4> SecondThreeBlockArray;
-
 bool _isFirstThreeBlockArrayDone = false;
 bool _isSecondThreeBlockArrayDone = false;
 

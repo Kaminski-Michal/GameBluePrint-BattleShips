@@ -27,8 +27,8 @@ class Printing
 			std::cout << std::endl;
 		}
 	}
-
 public:
+
 	Printing(std::array<std::array<char, 10>, 10>playerBoard)
 	{
 		PrintMainRow();

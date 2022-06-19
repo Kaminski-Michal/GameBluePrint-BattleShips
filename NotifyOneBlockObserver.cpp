@@ -6,12 +6,10 @@ std::array<int, 2> _privateFirstOneBlockArray{ 0,-1 };
 std::array<int, 2> _privateSecondOneBlockArray{ 0,-1 };
 std::array<int, 2> _privateThirdOneBlockArray{ 0,-1 };
 std::array<int, 2> _privateFourthOneBlockArray{ 0,-1 };
-
 std::array<int, 2> FirstOneBlockArray;
+std::array<int, 2> FourthOneBlockArray;
 std::array<int, 2> SecondOneBlockArray;
 std::array<int, 2> ThirdOneBlockArray;
-std::array<int, 2> FourthOneBlockArray;
-
 bool _isFirstOneBlockArrayDone = false;
 bool _isSecondOneBlockArrayDone = false;
 bool _isThirdOneBlockArrayDone = false;

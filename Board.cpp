@@ -93,7 +93,6 @@ void Board::EndProgresssion()
     GenerateDotsForBot.GenerateDots(userGridArray);
 }
 
-
 bool Board::PlaceWithProgression(int row, int column)
 {
     if ((_previousRow == (row -1) && _previousColumn == column))
@@ -173,7 +172,6 @@ void Board::ValidateInPut(int row, int column)
         {
             canChangeColour = true;
             userGridArray[row][column] = _shipTypeInProgression;
-            //tutaj stawia statek
 
             _previousRow = row;
             _previousColumn = column;
@@ -369,7 +367,6 @@ bool Board::gridEvent(sf::RenderWindow& win)
     if (_Player1BlockShipsRemaining == _1BlockShipInGame)
     {
         _isPlayer1BlockShipsPresent = true;
-        return NULL;
     }
     for (int i = 0; i < square_grid.size(); i++)
     {

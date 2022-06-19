@@ -34,8 +34,4 @@ GenerateNavigationDots generateNavigationDots;
 		}
 	#pragma endregion
 	}
-	
-	
-
-
 };

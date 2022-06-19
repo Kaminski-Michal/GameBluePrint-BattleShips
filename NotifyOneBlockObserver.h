@@ -1,4 +1,3 @@
-#pragma once
 class NotifyOneBlockObserver : public NotifyObservers
 {
 	void SaveValueOfHitPositionInPrivateArray(std::array<int, 2>& arrayToCheck, int positionOfHit, int positionInArray);

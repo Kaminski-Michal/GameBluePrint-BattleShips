@@ -82,13 +82,13 @@ int main()
 	sf::Event event;
 	sf::Texture boardTexture;
 	sf::Texture GridTexture;
+	sf::Texture instruction1;
+	sf::Texture instructionPlaceHolder;
 	sf::Sprite board;
 	sf::Sprite botgrid;
-	sf::Texture instructionPlaceHolder;
-	sf::Texture instruction1;
-	sf::Image instruction2;
 	sf::Sprite currentInstriction;
 	sf::Sprite usergrid;
+	sf::Image instruction2;
 
 	boardTexture.loadFromFile("Plansze.png");
 	window.display();
@@ -199,19 +199,18 @@ int main()
 
 	if (BotHaveRemainingShips)
 	{
-		boardTexture.loadFromFile("BotWON.png");
+		boardTexture.loadFromFile("NEWBotWON.png");
 		window.display();
 	}
 	else
 	{
-		boardTexture.loadFromFile("PlayerWON.png");
+		boardTexture.loadFromFile("NEWPlayerWON.png");
 		window.display();
 	}
 
 	board.setTexture(boardTexture);
 	window.draw(board);
 	window.display();
-
-	Sleep(4000);
+	Sleep(6000);
 	return 0;
 }

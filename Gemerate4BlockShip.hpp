@@ -45,13 +45,10 @@ void GenerateRest4BlockShip(std::array<std::array<char, 10>, 10> BotBoard, int S
 }
 void PlaceTemporartyShipPositon()
 {
-		
 	for (int i = 0; i < 4; i++)
 	{
 		char shipInRow = temporartyShipPositon[i][0];
 		char shipInColumn = temporartyShipPositon[i][1];
-
-
 	}
 }
 void PlaceShipFromTemporaryArray(std::array<std::array<char, 10>, 10>& BotBoard)
@@ -64,8 +61,8 @@ void PlaceShipFromTemporaryArray(std::array<std::array<char, 10>, 10>& BotBoard)
 		Bot4BlockShipInNavigationArray[i+1] = (row * 10 + column);
 	} 
 }
-
 public:
+
 	std::array<std::array<char, 10>, 10> CopyOfBotBoard;
 
 	void  Generate4BlockShip(std::array<std::array<char, 10>, 10> &BotBoard)
@@ -87,7 +84,6 @@ public:
 			{
 				goto again;
 			}
-			
 			_isShipPlaceable = true;//pathFinding.VerifyPossiblePatch(BotBoard, randomRowStartPositon, randomColumnStartPosition, _shipSize);
 			if (!_isShipPlaceable)
 			{
